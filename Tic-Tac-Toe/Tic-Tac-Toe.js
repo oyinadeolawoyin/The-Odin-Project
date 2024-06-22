@@ -20,7 +20,11 @@ function Gameboard(numOfGrid) {
 
     const choosenCells = (playercell) => {
         let lengthOfColumns = 0; let getCell = 0;
-
+        
+        // console.log('getplayerss:',getPlayers)
+        let getplayer1 = player1()
+        let getplayer2 = player2();
+        console.log(getPlayers)
         for(cells in board) {console.log("continue if:", playercell)
             lengthOfColumns += board[cells].length; 
             getCell = lengthOfColumns; 
@@ -31,57 +35,48 @@ function Gameboard(numOfGrid) {
                 if(playercell > 3) { console.log(">3",playercell)
                     lengthOfColumns -= [board[cells].length*(cells)]; 
                     getCell -= playercell;
-                    board[cells][lengthOfColumns-(getCell+1)].push("X");
+                    if(getPlayers[0] === "player1") {
+                        board[cells][lengthOfColumns-(getCell+1)].push(getplayer1.gift);
                         break;
-                    // if(!player1) {
-                    //     board[cells][lengthOfColumns-(getCell+1)].push(players.player2Gift);
-                    //     break;
-                    // }
-                    // else{
-                    //     board[cells][lengthOfColumns-(getCell+1)].push(players.player1Gift);
-                    //     break;
-                    // }
+                    }
+                    else{
+                        board[cells][lengthOfColumns-(getCell+1)].push(getplayer2.gift);
+                        break;
+                    }
                 }
                 else{
                     playercell -=  1; console.log("<3",playercell)
-                    board[cells][playercell].push("X");
-                    break;
-                    // if(!player1) {
-                    //     board[cells][playercell].push(players.player2Gift);
-                    //     break;
-                    // }
-                    // else{
-                    //     board[cells][playercell].push(players.player1Gift);
-                    //     break;
-                    // }
-                    // board[cells][playercell].push("X");
-                    // break
+                    if(getPlayers[0] === "player1") {
+                        board[cells][playercell].push(getplayer1.gift);
+                        break;
+                    }
+                    else{
+                        board[cells][playercell].push(getplayer2.gift);
+                        break;
+                    };
                 };
             };
         };
             return board;
-    };    
-
-    let players = [{player1: "", player1Gift: "X"},
-                     {player2: "", player2Gift: "O"}];
+    };                 
     
     const player1 = (name) => {
-        players[0].player1 = name;
-        let getPlayer1 = players[0];
-        return getPlayer1
+        let player = {
+            name: name,
+            gift: "X"
+        }
+        return player
     };
 
     const player2 = (name) => {
-        players[1].player2 = name;
-        let getPlayer2 = players[1];
-        return getPlayer2
-    };
-
-    const activePlayer = (name) => {
-        return player1(name)
+        let player = {
+            name: name,
+            gift: "O"
+        };
+        return player
     };
         
-    return { getNumGrid, creatGridBoard, getBoard, choosenCells, activePlayer, player2 }
+    return { getNumGrid, creatGridBoard, getBoard, choosenCells, player1, player2, getPlayers }
 };
 
 // let board = Gameboard(4);
@@ -92,18 +87,14 @@ function Gameboard(numOfGrid) {
 // console.log(board.player1("Computer"))
 
 
-function GamePlay(numOfGrid) {
-    let board = Gameboard(numOfGrid);
-    // board.creatGridBoard();
-    // numOfGrid = board.getNumGrid();
+function PlayGame(numOfGrid) {
     let gridList = [];
-
     
+    for(let i = 1; i < (numOfGrid*numOfGrid+1); i++) {
+        gridList.push(i);   
+    };
 
-    const ComputerGame = () => {
-        for(let i = 1; i < (numOfGrid*numOfGrid+1); i++) {
-            gridList.push(i);   
-        };
+    const getComputerEasyMove = () => {
 
         let randomCellsPicking = Math.floor(Math.random() * gridList.length);
 
@@ -115,21 +106,52 @@ function GamePlay(numOfGrid) {
                 if(randomCellsPicking !== 0) {
                     console.log("!=0:", randomCellsPicking)
                     checkZero = false
-            };
-            // for(i = 0; i < gridList.length; i++) {
-            //     console.log("in for:", randomCellsPicking)
-                
-                    
-            //         // gridList.splice(randomCellsPicking-1, 1)
-            //         break
-            //     };
-            };   
+                }
+            }
         }
-        // else {
-        //     gridList.splice((randomCellsPicking-1), 1);   
-        // }
+        
+        else{
+            if(!gridList.includes(randomCellsPicking)) {
+                let rightNumber = true
+                while(rightNumber) {
+                    randomCellsPicking = Math.floor(Math.random() * gridList.length);
+                    console.log(`not in list`, randomCellsPicking)
+                    if(gridList.includes(randomCellsPicking)) {
+                        rightNumber = false
+                    };
+                };
+            };
+        };
+        
+        console.log("randoncellpicking:",randomCellsPicking);
         return randomCellsPicking;
     };
+
+    const removePickedCells = (num) => {
+        // console.log(`num ${num}`)
+        let indexNum = gridList.indexOf(num)
+        return gridList.splice((indexNum), 1) 
+    }
+
+    const getHumanMove = (num) => {
+        if(!gridList.includes(num)) {
+            return false
+        }
+        else {
+            return num
+        };   
+    };
+
+    return { getHumanMove, removePickedCells, getComputerEasyMove, gridList }
+}
+
+const getPlayers = [];
+
+function GameController(numOfGrid) {
+    let board = Gameboard(numOfGrid);
+    let playersMove = PlayGame(numOfGrid);
+    let creatBoard = board.creatGridBoard(numOfGrid)
+    // board.player1(); board.player2()
 
     const checkingRows = (board) => {
         for(rows in board) {
@@ -158,12 +180,13 @@ function GamePlay(numOfGrid) {
         };
 
         return false
-        
     };
 
     const checkingColumns = (board) => {
         for(columns in board) {
-            getColumn = board[columns]
+            console.log(`board:`, board)
+            getColumn = board[columns];
+            console.log('getcolumnnn',getColumn)
             let getCells = getColumn[0][0]; console.log('getcells:',getCells)
             
             for(i = 1; i < (getColumn.length); i++) {
@@ -199,25 +222,119 @@ function GamePlay(numOfGrid) {
         }
     };
 
-    const switchTurn = (name) => {
-          let gamePlayer = board.activePlayer(name);
-
+    const checkingDraw = (board) => {
+        let item ; 
+        for(element in board) {
+            console.log('e:', element, "boardlen:", board.length-1)
+            for(i = 0; i < board[element].length; i++) {
+                if(item !== board[element][i][0] && i !== (board[element].length)-1) {
+                    console.log("continue if:", board[element][i][0], 'belen:', board[element].length-1)
+                    continue;
+                }
+                else if(item === board[element][i][0]) {
+                    return false;
+                }
+                else {
+                    if(item !== board[element][i][0] && i === (board[element].length-1)) {
+                        console.log('continue to the next column')
+                        break
+                    }
+                };
+            };
+        };
+        return "Draw!"
     }
 
-    return { ComputerGame, checkingColumns, checkingRows, checkingDiagonal }
-}
+    const winningSearch = (board) => {
+        if(checkingColumns(board) === true || checkingRows(board) === true || checkingDiagonal(board) === true){
+            return true
+        }
+        else {
+            if(checkingDraw(board) === "Draw!") {
+                return "Draw!"
+            }
+        };
+    }
 
-let game = GamePlay(3);
+    const switchTurn = (name, num) => {
+        let checkingFullStop = true;
+        let getplayer1 = board.player1("Computer");
+        let getPlayer2 = board.player2(name);
 
-// console.log(GamePlay());
-// console.log(game.ComputerGame());
-let board = [[["X"],["X"],["X"]],[["X"],[""],["X"]],[["X"],["X"],["X"]]]
-console.log(game.checkingRows(board))
-console.log(game.checkingColumns(board))
-console.log(game.checkingDiagonal(board))
-console.log(game.checkingDiagonal(board))
+        while (checkingFullStop) {
+            let index = 0;
+            getPlayers.push("player1")
+            
+            if(getplayer1.name !== "Computer") {
+                let player1Move = playersMove.getHumanMove(num);
+                
+                if(player1Move === false) {
+                    console.log("Cell not eligible");
+                }
+                else{
+                    console.log(board.choosenCells(player1Move));
+                    playersMove.removePickedCells(player1Move); console.log(`player1gridlist: ${playersMove.gridList}`) 
+                    index +=1; 
+                };
+            }
+            else{
+                let player2Move = playersMove.getComputerEasyMove()
+                console.log(board.choosenCells(player2Move)); console.log('player2Move:',player2Move);
+                playersMove.removePickedCells(player2Move); console.log(`player2gridlist: ${playersMove.gridList}`);
+                index +=1; 
+            }
+            
+            if(index === 1) {
+                getPlayers.pop(); getPlayers.push("player2");
+                
+                if(getPlayer2.name !== "Computer") {
+                    
+                let player2Move = playersMove.getHumanMove(num);
+                console.log(player2Move)
+                    if(player2Move === false) {
+                        console.log("Cell not eligible");
+                    }
+                    else{
+                        console.log(board.choosenCells(player2Move));
+                        playersMove.removePickedCells(player2Move); console.log(`player1gridlist: ${playersMove.gridList}`) 
+                        index = 0; 
+                    };
+                }
+                else{
+                    let player2Move = playersMove.getComputerEasyMove();
+                    console.log(board.choosenCells(player2Move)); console.log("computerMove:", player2Move)
+                    playersMove.removePickedCells(player2Move); console.log(`player2gridlist: ${playersMove.gridList}`) 
+                    index = 0; console.log(player2Move)
+                };
+                getPlayers.pop()
+            };
+           console.log('creatboard',creatBoard)
+            
+           if(winningSearch(creatBoard) === true) {
+                console.log('true')
+                checkingFullStop = false
+            }
+            else{
+                if(winningSearch(creatBoard) === "Draw!") {
+                    checkingFullStop = false
+                }
+            }
+            
+            return "finish!" 
+        }
+    }
 
-
-function GameController() {
-
+    return { checkingRows, checkingColumns, checkingDiagonal, checkingDraw, switchTurn }
 };
+
+let playgame = GameController(3);
+let board = [[["X"],["0"],["X"]],
+            [["0"],[],["X"]],
+            [["0"],["X"],["0"]]]
+// console.log(game.checkingRows(board))
+// console.log(game.checkingColumns(board))
+// console.log(game.checkingDiagonal(board))
+// console.log(playgame.checkingDraw(board))
+
+
+console.log(playgame.switchTurn("Tolani", 5))
