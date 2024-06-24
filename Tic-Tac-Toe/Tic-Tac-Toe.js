@@ -119,58 +119,87 @@ function PlayGame(numOfGrid) {
     };
 
     // This describe how computer picke its cell based on what cell human pick.
-    const getComputerHardMove = (num, round, player1, player2) => {
-        let player = Gameboard(numOfGrid);
-        player1 = player.player1(player1);
-        player2 = player.player2(player2);
+    const getComputerHardMove = (num, round, player1) => {
+        console.log('player1',player1)
         let randomCellsPicking = '';
-        // let firstRound = 0;
-        // console.log(firstRound)
-        console.log(player1.name)
-        let list = [4, 5, 6]
-        if(player1.name === "Computer") {
-            randomCellsPicking = list[Math.floor(Math.random() * list.length)];
-            console.log(`player1`, randomCellsPicking)
-            round +=1
-        }
-        else{
-            if(num === 1) {
-                let list = [(num + 1), (num + 3), (num + 4), (num + 5)]
-                randomCellsPicking = list[Math.floor(math.random * list.length)]; console.log(`player2`, randomCellsPicking)
-                round +=1
+       
+        if(round === 0) {
+            let list = [4, 5, 6];
+            if(player1 === "Computer") {
+                randomCellsPicking = list[Math.floor(Math.random() * list.length)];
+                console.log(`player1`, randomCellsPicking)
             }
             else{
-                let list = [(num + 1), (num - 1), (num - 2), (num + 2), (num + 3),(num + 4)]
-                if(gridList.includes(num + 1) || gridList.includes(num - 1) || gridList.includes(num + 2) || gridList.includes(num - 2)|| gridList.includes(num + 3) || gridList.includes(num + 4)) {
-                    randomCellsPicking = list[Math.floor(Math.random() * list.length)];
-                    console.log(`rand`, randomCellsPicking)
+                if(num === 1) {
+                    let list = [(num + 1), (num + 3), (num + 4), (num + 5)]
+                    randomCellsPicking = list[Math.floor(Math.random() * list.length)]; console.log(`player2`, randomCellsPicking);
                 }
-                else {
-                    randomCellsPicking = getComputerEasyMove();
-                    round +=1
-                    console.log(`easy`, randomCellsPicking)
-                };  
-            };
-        };
-
-        if(round === 1) {
-            let list = [(num + 1), (num - 1), (num - 2), (num + 2)]
-            if(gridList.includes(randomCellsPicking + 1) || gridList.includes(randomCellsPicking - 1) || gridList.includes(randomCellsPicking + 2) || gridList.includes(randomCellsPicking - 2) || gridList.includes(randomCellsPicking + 3) || gridList.includes(randomCellsPicking + 4) || gridList.includes(randomCellsPicking - 3) || gridList.includes(randomCellsPicking - 4))
-            {
-            randomCellsPicking = list[Math.floor(Math.random() * list.length)];
-            console.log(`if round1,`, randomCellsPicking)
-            }
-            else {
-                let list = [(num + 1), (num  - 1), (num + 3), (num - 3), (num + 2), (num - 2)];
-                if(gridList.includes(num + 1) || gridList.includes(num - 1) || gridList.includes(num + 2) || gridList.includes(num - 2) || gridList.includes(num + 3) || gridList.includes(num - 3))
-                {
-                randomCellsPicking = list[Math.floor(Math.random() * list.length)]; console.log(`else if round`, randomCellsPicking)
-                }
-                else {
-                    randomCellsPicking = getComputerEasyMove(); console.log(`final else`, randomCellsPicking)
+                else{
+                    let list = [(num + 1), (num - 1), (num - 2), (num + 2), (num + 3),(num + 4)]
+                    if(gridList.includes(num + 1) || gridList.includes(num - 1) || gridList.includes(num + 2) || gridList.includes(num - 2)|| gridList.includes(num + 3) || gridList.includes(num + 4)) {
+                        if(list.includes(num-num)) {
+                            let findIndex = list.indexOf(num-num);
+                            list.splice(findIndex, 1);
+                        };
+                       
+                        console.log(`list1`, list)
+                        randomCellsPicking = list[Math.floor(Math.random() * list.length)];
+                        console.log(`rand`, randomCellsPicking);
+                    }
+                    else {
+                        randomCellsPicking = getComputerEasyMove();
+                        console.log(`easy`, randomCellsPicking)
+                    };  
                 };
             };
-        };  
+        }
+        
+        else{
+            if(round === 1) {
+                let list = [(randomCellsPicking + 1), (randomCellsPicking - 1), (randomCellsPicking - 2), (randomCellsPicking + 2)]; console.log(list)
+                for(i = 0; i < (list.length); i++)
+                {   console.log(i)
+                    if(gridList.includes(list[i])) {
+                        console.log(list[i])
+                        continue
+                    }
+                    else {
+                        console.log(`i:`, list[i], `gridlist:`, gridList)
+                        let findIndex = list.indexOf(list[i]);
+                        list.splice(findIndex, 1)
+                    };  
+                };
+    
+                if(list.length != 0) {
+                    console.log( list);
+                    randomCellsPicking = list[Math.floor(Math.random() * list.length)];
+                    console.log(`if round1,`, randomCellsPicking); 
+                }
+                else{
+                    let list2 = [(num + 1), (num  - 1), (num + 3), (num - 3), (num + 2), (num - 2)];
+                    console.log(`list2:`,list2)
+                    for(j = 0; j < (list2.length); j++) {
+                        if(gridList.includes(list2[j])) {
+                            continue
+                        }
+                        else{
+                            console.log('j', list2[j])
+                            let findIndex = list2.indexOf(list2[j]);
+                            list2.splice(findIndex, 1)
+                        };
+                    };
+    
+                    if(list2.length != 0) {
+                        console.log(`list2`, list2)
+                        randomCellsPicking = list2[Math.floor(Math.random() * list.length)]; console.log(`else if round`, randomCellsPicking);
+                    }
+                    else {
+                        randomCellsPicking = getComputerEasyMove(); console.log(`final else`, randomCellsPicking);
+                    };   
+                };
+            };  
+        }
+        
 
         console.log(randomCellsPicking);
         return randomCellsPicking
@@ -336,7 +365,7 @@ function GameController(numOfGrid, gameboard) {
     }
 
     // This function switch turn between player1 && player2.
-    const switchTurn = (player1 = "Computer", player2 = "Computer", num, board) => {
+    const switchTurnForEasyGame = (player1 = "Computer", player2 = "Computer", num, board) => {
         let getplayer1 = gameboard.player1(player1);
         let getPlayer2 = gameboard.player2(player2);
         console.log('MyfirstBoard',board);
@@ -415,10 +444,96 @@ function GameController(numOfGrid, gameboard) {
             };
 
           return board
+    };
+
+    const switchTurnForHardGame = (player1 = "Computer", player2 = "Computer", num, round, board) => {
+        console.log(player1)
+    let getplayer1 = gameboard.player1(player1);
+    let getPlayer2 = gameboard.player2(player2);
+    console.log('MyfirstBoard',board);
+    console.log(`player1: ${player1}, player2: ${player2}, num: ${num}`)
+
+    let index = 0;
+    getPlayers.push("player1")
+    let humanMove = "";
+
+    if(getplayer1.name !== "Computer") {
+        let humanMove = playersMove.getHumanMove(num);
+        
+        if(humanMove === false) {
+            console.log("Cell not eligible");
+        }
+        else{
+            console.log(gameboard.choosenCells(humanMove));
+            playersMove.removePickedCells(humanMove); 
+            // console.log(`player1gridlist: ${playersMove.gridList}`);
+            index +=1;  
+            // console.log(board)
+        };
     }
+    else{
+        
+        
+        let computerMove = playersMove.getComputerHardMove(humanMove, round, getplayer1.name)
+        console.log(gameboard.choosenCells(computerMove)); 
+        console.log('computerMove:',computerMove);
+        
+        playersMove.removePickedCells(computerMove); 
+        // console.log(`player2gridlist: ${playersMove.gridList}`);
+        index +=1;
+        // console.log(board)
+    };
+
+    let announcement = announcedWinner(board);
+    
+    if(announcement === true) {
+        console.log(`my board`, board)
+        return board
+    };
+
+    if(index === 1) {
+        getPlayers.pop(); getPlayers.push("player2");
+        
+        if(getPlayer2.name !== "Computer") {
+            
+        humanMove = playersMove.getHumanMove(num);
+        console.log(humanMove)
+            if(humanMove === false) {
+                console.log("Cell not eligible");
+            }
+            else{
+                console.log(gameboard.choosenCells(humanMove));
+                playersMove.removePickedCells(humanMove);
+                //  console.log(`player1gridlist: ${playersMove.gridList}`) 
+                index = 0; 
+                // console.log(board)
+            };
+        }
+        else{
+            console.log('get:', getplayer1.name)
+            let computerMove2 = playersMove.getComputerHardMove(humanMove, round, getplayer1.name);
+            console.log(gameboard.choosenCells(computerMove2)); 
+            console.log("player2Move:", computerMove2)
+            playersMove.removePickedCells(computerMove2); 
+            // console.log(`player2gridlist: ${playersMove.gridList}`) 
+            index = 0; console.log(computerMove2)
+            // console.log(board)
+        };
+        getPlayers.pop()
+    };
+    
+    let announcement2 = announcedWinner(board);
+    
+    if(announcement2 === true) {
+        console.log(`my board2`, board)
+        return board
+    };
+
+        return board
+    };
 
     // This return the function in my factory function.
-    return { checkingRows, checkingColumns, checkingDiagonal, checkingDraw, switchTurn }
+    return { checkingRows, checkingColumns, checkingDiagonal, checkingDraw, switchTurnForEasyGame,      switchTurnForHardGame }
 };
 
 let mygameBoard = Gameboard(3);
@@ -427,18 +542,18 @@ let board = [[["X"],["0"],["X"]],
             [["0"],[],["X"]],
             [["0"],["X"],["0"]]]
 
-let mygame = PlayGame(2);
-console.log(mygame.getComputerHardMove(3, 0, player1 = "Tolani", player2 = "Computer"));
+// let mygame = PlayGame(2);
+// console.log(mygame.getComputerHardMove(2, 0, player1 = "Tolani", player2 = "Computer"));
 
 // let board2 = mygameBoard.creatGridBoard(); console.log(board2)
 // console.log(game.checkingRows(board))
 // console.log(game.checkingColumns(board))
 // console.log(game.checkingDiagonal(board))
 // console.log(playgame.checkingDraw(board))
-// let board2 = mygameBoard.creatGridBoard();
-// console.log('Outerboard', board2)
-// let switchTurn1 = playgame.switchTurn(player1 = "Tolani", player2 = "Computer", 4, board2)
-// console.log('myfinal result',switchTurn1)
+let board2 = mygameBoard.creatGridBoard();
+console.log('Outerboard', board2)
+let switchTurn1 = playgame.switchTurnForHardGame(player1 = "Computer", player2 = "Tolani", 4, 0, board2)
+console.log('myfinal result',switchTurn1)
 // let switchTurn2 = playgame.switchTurn(player1 = "Tolani", player2 = "Computer", 5, switchTurn1)
 // console.log('my Second Final result:', switchTurn2)
 // let switchTurn3 = playgame.switchTurn(layer1 = "Tolani", player2 = "Computer", 6, switchTurn2)
