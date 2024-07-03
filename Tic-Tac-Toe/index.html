@@ -9,17 +9,21 @@
 </head>
 <body>
     
+    <div class="grid">
+        <p id="gridButtons">
+            <button id="grid3">Gird 3 * 3</button>
+            <button id="grid4">Gird 4 * 4</button>
+        </p>
+    </div>
+
     <div id="questions">
         <div id="form">
-            <div class="grid">
-                <p id="grid3"><button>Gird 3 * 3</button></p>
-                <p id="grid4"><button>Grid 4 * 4</button></p>
-            </div>
+            <p class="label">
+               <label for="name"><strong><em>Name:</em></strong></label>
+                <input type="text" id="name" class="playerName" required />
+            </p>
             
             <div class="players">
-                <p><label for="name">Name:</label>
-                    <input type="text" id="name" class="playerName" required />
-                </p>
                 <p id="player1"><button>player 1</button></p>
                 <p id="player2"><button>Player 2</button></p>
             </div>
@@ -28,7 +32,14 @@
         </div>
     </div>
 
-    <div id="DivBoard"></div>
+    <div class="container">
+        <div id="Afterround"></div>
+    </div>
+    
+    <div class="container2">
+        <div id="DivBoard"></div>
+    </div>
+   
 
 </body>
 </html>

@@ -35,7 +35,7 @@ function Gameboard(numOfGrid) {
                     lengthOfColumns -= [board[cells].length*(cells)]; 
                     getCell -= playercell;
                     
-                    if(getPlayers[0] === "player1") {
+                    if(getPlayers[getPlayers.length-1] === "player1") {
                         board[cells][lengthOfColumns-(getCell+1)].push(getplayer1.gift);
                         break;
                     }
@@ -47,7 +47,7 @@ function Gameboard(numOfGrid) {
                 else{
                     playercell -=  1;
 
-                    if(getPlayers[0] === "player1") {
+                    if(getPlayers[getPlayers.length-1] === "player1") {
                         board[cells][playercell].push(getplayer1.gift);
                         break;
                     }
@@ -101,19 +101,13 @@ function PlayGame(numOfGrid) {
     // Remove any number the computer picked to avoid it picking the same cell and appending "O" || "X" in a cell.
     const removePickedCells = (num) => {
         let indexNum = gridList.indexOf(parseInt(num));
-        return gridList.splice((indexNum), 1) 
+        return gridList.splice((indexNum), 1);
     }
 
     // This get the cell human picked, but check if not in gridList to avoiding choosing a cell.
     const getHumanMove = (num) => {
-        if(!gridList.includes(num)) {
-            console.log(num)
-            return false
-        }
-        else{
-            console.log(num)
             return num
-        }              
+                    
     };
 
     // This return all avaliable function in Playgame factory function.
@@ -125,10 +119,10 @@ const getPlayers = []; const getComputerMove = [];
 
 // This function helps in checking if a row is complete with "X" || "O", and return true. 
 // It also help in switching turn between player1 and player2.
-function GameController(gameboard, playersMove) {
+function GameController() {
+
     // This check the rows in board.
     const checkingRows = (board) => {
-        console.log("How are you doing?")
         for(rows in board) {
             let getfistRowCell = board[0][rows][0]; 
 
@@ -153,7 +147,6 @@ function GameController(gameboard, playersMove) {
 
     // This check the columns in board.
     const checkingColumns = (board) => {
-        console.log("hello")
         for(columns in board) {
             getColumn = board[columns];
             let getCells = getColumn[0][0];  
@@ -177,21 +170,46 @@ function GameController(gameboard, playersMove) {
     };
 
     // This check the diagonal in board.
-    const checkingDiagonal = (board) => {
-        console.log("hi")
-        let cell = board[0][0][0]; console.log(cell)
-        if(cell !== undefined && cell === board[1][1][0] && board[1][1][0] === board[2][2][0] ||
-        board[0][2][0] !== undefined && board[0][2][0] === board[1][1][0] && board[1][1][0] === board[2][0][0]) {
-            return true
-        }
-        else{
-            return false
-        }
+    const checkingLeftDiagonal = (board) => {
+        let cell1 = board[0][0][0]; 
+
+        for(i = 1; i < board.length; i++) {
+            let cell2 = board[i][i][0];
+
+            if(cell1 !== undefined && cell1 === cell2 && i !== (board.length-1)) {
+                cell1 = cell2;
+                continue
+            }
+            else if(cell1 !== undefined && cell1 === cell2 && i === (board.length-1)) {
+                return true;
+            }
+            else{
+                return false
+            };
+        };
     };
 
+    const checkingRightDiagonal = (board) => {
+        let cell1 = board[0][2][0]; 
+        let boardLenght = (board.length-1);
+
+        for(i = 1; i < board.length; i++) {
+            let cell2 = board[i][boardLenght-i][0]; 
+
+            if(cell1 !== undefined && cell1 === cell2 && i !== (board.length-1)) {
+                cell1 = cell2;
+                continue
+            }
+            else if(cell1 !== undefined && cell1 === cell2 && i === (board.length-1)) {
+                return true;
+            }
+            else{
+                return false
+            };
+        };
+    }
     // This check if there's no winner.
     const checkingDraw = (board) => {
-        console.log("I'm here")
         for(element in board) {
             for(i = 0; i < board[element].length; i++) {
                 if(board[element][i][0] !== undefined && i !== (board[element].length)-1) {
@@ -212,149 +230,144 @@ function GameController(gameboard, playersMove) {
 
     // This search for which row || column || diagonal cells completed first. And it also check for draw.
     const winningSearch = (board) => {
-        if(checkingColumns(board) === true || checkingRows(board) === true || checkingDiagonal(board) === true){
+        if(checkingColumns(board) === true || checkingRows(board) === true || checkingLeftDiagonal(board) === true || checkingRightDiagonal(board) === true ) {
             return true
         }
         else {
             if(checkingDraw(board) === "Draw!") {
                 return "Draw!"
             }
-        };
-    };
-
-    // This return the board once it find the winning row || column || diagoanl. It also announce draw if there's no winner.
-    const announcedWinner = (board) => {
-        if(winningSearch(board) === true) {
-            return true
-        }
-        else{
-            if(winningSearch(board) === "Draw!") {
-               return "Draw!"
-            }
-            else {
+            else{
                 return false
             }
         };
-
-    }
-
-    // This function switch turn between player1 && player2.
-    const switchTurn = (player1 = "Computer", player2 = "Computer", num, board) => {
-        console.log(`player1: ${player1}, player2: ${player2}, num: ${num}, board: ${board}`)
-        
-        // let gameboard = Gameboard(numOfGrid)
-        console.log(board)
-        let getplayer1 = gameboard.player1(player1); 
-        let getPlayer2 = gameboard.player2(player2);
-        let index = 0;
-        getPlayers.push("player1")
-            
-        if(getplayer1.name !== "Computer") {
-            let player1Move = playersMove.getHumanMove(num);
-                
-            if(player1Move === false) {
-                alert("Cell not eligible");
-            }
-            else{
-                console.log(gameboard.choosenCells(player1Move));
-                playersMove.removePickedCells(player1Move); 
-                index +=1;  
-            };
-            }
-            else{
-                let player1Move = playersMove.getComputerMove();console.log("computerMove:", player1Move)
-                console.log(gameboard.choosenCells(player1Move)); 
-                playersMove.removePickedCells(player1Move);
-                index +=1;  getComputerMove.push(player1Move);
-            };
-            
-            let announcement = announcedWinner(board);
-            
-            if(announcement === true) {
-                console.log(getPlayers)
-                console.log(announcement, "Player 1 Win!")
-                return true
-            }
-            else{
-                if(announcement === "Draw!") {
-                    console.log(announcement)
-                    return "Draw!"
-                }
-            };
-
-            if(index === 1) {
-                getPlayers.pop(); getPlayers.push("player2");
-                
-                if(getPlayer2.name !== "Computer") {
-                    
-                let player2Move = playersMove.getHumanMove(num);
-              
-                    if(player2Move === false) {
-                        alert("Cell not eligible");
-                        index +=1
-                    }
-                    else{
-                        console.log(gameboard.choosenCells(player2Move));
-                        playersMove.removePickedCells(player2Move);
-                        index = 0; 
-                    };
-                }
-                else{
-                    let player2Move = playersMove.getComputerMove(); console.log("computerMove:", player2Move);
-                    console.log(gameboard.choosenCells(player2Move)); 
-                    playersMove.removePickedCells(player2Move); 
-                    index = 0; getComputerMove.push(player2Move);
-                };
-
-                getPlayers.pop()
-            };
-            
-            let announcement2 = announcedWinner(board);
-            
-            if(announcement2 === true) {
-                console.log(getPlayers)
-                console.log(announcement, "Player 2 Win!")
-                return true
-            }
-            else{
-                if(announcement === "Draw!") {
-                    console.log(announcement)
-                    return "Draw!"
-                }
-            };
-
-          return board
     };
-
+               
     // This return the function in my factory function.
-    return { checkingRows, checkingColumns, checkingDiagonal, checkingDraw, switchTurn }
+    return { winningSearch }
 };
 
-let game = Gameboard(3);
-let myboard = game.creatGridBoard()
-let playGame = PlayGame(3)
-// let play = GameController(game, playGame);
-// let switchTurn = play.switchTurn("Computer", "oyin", 9, myboard)
+// This function describe how turn switch from player one to player2.
+const SwitchTurn = (gameboard, playersMove, player1, player2) => {
+    let getplayer1 = gameboard.player1(player1); 
+    let getPlayer2 = gameboard.player2(player2);
+    let board = gameboard.creatGridBoard();
 
+    let boardCheck = GameController();
+
+    const player1Turn = (num) => {
+        getPlayers.push("player1");
+
+        if(getplayer1.name !== "Computer") {
+            let player1Move = playersMove.getHumanMove(num);
+                gameboard.choosenCells(player1Move);
+                playersMove.removePickedCells(player1Move);    
+        }
+        else{
+            
+            let player1Move = playersMove.getComputerMove();
+            gameboard.choosenCells(player1Move); 
+            playersMove.removePickedCells(player1Move);
+            getComputerMove.push(player1Move);
+        };
+
+        let winAnnouncement = boardCheck.winningSearch(board);
+
+        if(winAnnouncement === true) {
+            return true
+        }
+        else{
+            if(winAnnouncement === "Draw!") {
+                return ("Draw!")
+            }
+            else{
+                return board
+            };
+        };  
+    };
+
+    const player2Turn = (num) => {
+        getPlayers.pop(); getPlayers.push("player2");
+
+        if(getPlayer2.name !== "Computer") {
+            let player1Move = playersMove.getHumanMove(num);
+                gameboard.choosenCells(player1Move);
+                playersMove.removePickedCells(player1Move);    
+        }
+        else{
+            let player1Move = playersMove.getComputerMove();
+            gameboard.choosenCells(player1Move); 
+            playersMove.removePickedCells(player1Move);
+            getComputerMove.push(player1Move);
+        };
+
+        getPlayers.pop();
+
+        let winAnnouncement = boardCheck.winningSearch(board);
+
+        if(winAnnouncement === true) {
+            return (true)
+        }
+        else{
+            if(winAnnouncement === "Draw!") {
+                return ("Draw!")
+            }
+            else{
+                return board
+            };
+        }; 
+
+    };
+
+    // This return the player1Turn and Player2Turn functions.
+    return { player1Turn, player2Turn }
+};
+
+// This function made up the interaction of the DOM with the users.
 const GameInteraction = ( function() {
     let grid = [];
 
-    const displayQuestions = (doc, selector1, selector2) => {
+    // This function describe how the questions form pop up and close in the page.
+    const gridDiv = (doc, selector1, selector2, selector3) => {
         doc.addEventListener("DOMContentLoaded", () => {
+            const divGrid = doc.querySelector(selector1)
+            const closeFormButton = doc.querySelector(selector2);
+
+            const afterRound = doc.querySelector(selector3);
+            afterRound.style.display = "none";
+
+            closeFormButton.addEventListener("click", () =>{
+                divGrid.style.display = "none";  
+            });
+        });
+    };
+
+    // This function describe how the questions form pop up and close in the page.
+    const displayQuestions = (doc, selector1, selector2, selector3) => {
+        doc.addEventListener("DOMContentLoaded", () => {
+
+            const openFormButton = doc.querySelector(selector3)
             const closeFormButton = doc.querySelector(selector1);
             const questionsForm = doc.querySelector(selector2);
+
+            questionsForm.style.display = "none";
+
+            openFormButton.addEventListener("click", () => {
+                questionsForm.style.display = "flex";
+            });
 
             closeFormButton.addEventListener("click", () =>{
                 questionsForm.style.display = "none";  
 
-            })
-        })
-    }
+            });
+        });
+    };
 
+    // This function create the three * three grid board.
     const creatThreeGridBoard = (doc, selector1, selector2) => {
         let boardGrid = doc.querySelector(selector1);
         let divBoard = doc.querySelector(selector2)
-        
+    
         boardGrid.addEventListener("click", () => {
             divBoard.innerHTML = "";
             for(i = 1; i < (3 * 3)+1 ; i++) {
@@ -364,7 +377,9 @@ const GameInteraction = ( function() {
                 buttons.textContent = i;
                 divBoard.appendChild(buttons)
             }
-            grid.push(3); 
+
+            grid.pop();
+            grid.push(3);
             return divBoard
         });
 
@@ -373,7 +388,7 @@ const GameInteraction = ( function() {
     const creatFourGridBoard = (doc, selector1, selector2) => {
         let boardGrid = doc.querySelector(selector1);
         let divBoard = doc.querySelector(selector2)
-        
+    
         boardGrid.addEventListener("click", () => {
             divBoard.innerHTML = "";
             for(i = 1; i < (4 * 4)+1 ; i++) {
@@ -383,220 +398,300 @@ const GameInteraction = ( function() {
                 buttons.textContent = i;
                 divBoard.appendChild(buttons)
             }
-            grid.push(4)
+
+            grid.pop();
+            grid.push(4);
             return divBoard
         });
 
     };
     
+    // This list append either player1 or player2 once player click one of the player1 or player2 functions belows.
     let playerList = []; 
     
+    // This is player1 function for player1's button  addEventListener.
     const player1 = (doc, selector1, selector2) => {
         let player1 = doc.querySelector(selector1);
         
         player1.addEventListener("click", () => { 
-            playerList.push('player1:', doc.querySelector(selector2).value)
-            return playerList
+            if(playerList.length !== 0) {
+                playerList.pop();
+            }
+            else{
+                playerList.push('player1:', doc.querySelector(selector2).value)
+                return playerList
+            };
         });  
     }
 
+      // This is player2 function for player2's button  addEventListener.
     const player2 = (doc, selector1, selector2) => {
         let player2 = doc.querySelector(selector1);
         
         player2.addEventListener("click", () => { 
-            playerList.push('player2:', doc.querySelector(selector2).value)
-            return playerList
+            if(playerList.length !== 0) {
+                playerList.pop();
+            }
+            else{
+                playerList.push('player2:', doc.querySelector(selector2).value);
+                return playerList
+            };
         });  
     }
 
-    const playOrQuitButtons = (doc, selector1, selector2) => {
-        let playPara = doc.createElement("p")
-        let playButton = doc.createElement("button");
-        playButton.classList.add("playButton");
-        playButton.textContent = "Play!";
-        playPara.appendChild(playButton)
+    // This function tell if the player want to continue playing game or want to quit after one round.
+    const playOrQuitButtons = (doc, selector1, selector2, selector3) => {
+            let playPara = doc.createElement("p");
+            let playButton = doc.createElement("button");
+            playButton.classList.add("playButton");
+            playButton.textContent = "Play!";
+            playPara.appendChild(playButton)
 
-        let quitPara = doc.createElement("p")
-        let quitButton = doc.createElement("button");
-        quitButton.classList.add("quitButton");
-        quitButton.textContent = "Quit.";
-        quitPara.appendChild(quitButton)
+            let quitPara = doc.createElement("p")
+            let quitButton = doc.createElement("button");
+            quitButton.classList.add("quitButton");
+            quitButton.textContent = "Quit.";
+            quitPara.appendChild(quitButton)
 
-        let divBoard = doc.querySelector(selector1);
-        divBoard.innerHTML = ""
-        divBoard.appendChild(playPara);
-        divBoard.appendChild(quitPara);
+            let afterRound = doc.querySelector(selector1);
+            afterRound.appendChild(playPara);
+            afterRound.appendChild(quitPara);
 
-        let play = doc.querySelector(".playButton")
-        let quit = doc.querySelector(".quitButton");
+            let play = doc.querySelector(".playButton")
+            let quit = doc.querySelector(".quitButton");
 
-        play.addEventListener("click", () => {
-            const questionsForm = doc.querySelector(selector2); 
-            questionsForm.style.display = "block";
-        });
 
-        quit.addEventListener("click", () => {
-            divBoard.appendChild(doc.createTextNode("THANKS FOR PLAYING!"))
-        })
+            play.addEventListener("click", () => {
+                const divGrid = doc.querySelector(selector2); 
+                divGrid.style.display = "flex";
+
+                const closeDiv = doc.querySelector(selector3);
+                closeDiv.innerHTML = "";
+                closeDiv.style.display = "none";
+            });
+
+            quit.addEventListener("click", () => {
+                const textPara = doc.createElement("p");
+                textPara.classList.add("text");
+                const text = doc.createTextNode("THANKS FOR PLAYING!");
+                textPara.appendChild(text);
+                afterRound.appendChild(textPara)
+            });
     }
 
-    const mainGamePlay = (doc, selector1, selector2, selector3, selector4) => {
-       
-        let index = 0;
-        let boardList = []; 
+    const playGame = (doc, selector1, selector2, selector3, selector4) => {
+        let index = 0;  checkingElement = 0; 
         let startGame = doc.querySelector(selector1);
-        
+
         startGame.addEventListener("click", () => {
             let buttons = doc.querySelectorAll(selector2);
             let gameBoard = Gameboard(grid[0]);
-            let board = gameBoard.creatGridBoard(); 
             let playersMove = PlayGame(grid[0]);
 
             buttons.forEach(element => {
-               
-                element.addEventListener("click", () => {
 
-                   
-                    let elementTextNum = element.textContent; console.log('elementText:', elementTextNum);
-                    let Move = GameController(gameBoard, playersMove);
-            
-                    if(playerList[0] === "player1:") {
+                if(playerList[0] === "player1:") {
+                    let switchTurn = SwitchTurn(gameBoard, playersMove, playerList[1], "Computer");
+                    
+                    element.addEventListener("click", () => {
+                        let elementTextNum = element.textContent;                                
+
                         if(index === 0) {
-                            element.innerHTML = "";
-                            element.textContent = "X";
-                            element.style.color = "Green";
-
-                            let game = Move.switchTurn( playerList[1], "Computer", parseInt(elementTextNum), board);
-                           
-                            if(game === true) {
-                                let message = doc.querySelector(selector3)
-                                
-                                message.appendChild(doc.createTextNode("You Win!"))
-                                playOrQuitButtons(doc, selector3, selector4)
-                                playerList.splice(0); boardList.pop(); index = 0; grid.pop();  
-                            }
-                            else if(game === "Draw!") {
-                                let message = doc.querySelector(selector3)
-                                
-                                message.appendChild(doc.createTextNode("Draw!"))
-                                playOrQuitButtons(doc, selector3, selector4)
-                                playerList.splice(0); boardList.pop(); index = 0; grid.pop(); 
-                            }
-                            else{
-                                let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
-                                computerMoves.innerHTML = "";
-                                computerMoves.textContent = "O";
-                                computerMoves.style.color = "red"; 
-                                index+=1; boardList.push(game); getComputerMove.pop();
-                                console.log('g:',boardList)
-                            };
-                        }
-                        else{
+                            game = switchTurn.player1Turn(elementTextNum);
+ 
                             element.innerHTML = "";
                             element.textContent = "X";
                             element.style.color = "green";
 
-                            let game = Move.switchTurn( playerList[1], "Computer", parseInt(elementTextNum), boardList[0]);
+                            game = switchTurn.player2Turn(elementTextNum);
 
-                            if(game === true) {
-                                let message = doc.querySelector(selector3)
-                                
-                                message.appendChild(doc.createTextNode("You Win!"))
-                                playOrQuitButtons(doc, selector3, selector4)
-                                playerList.splice(0); boardList.pop(); index = 0; grid.pop(); 
-                            }
-                            else if(game === "Draw!") {
-                                let message = doc.querySelector(selector3)
-                                
-                                message.appendChild(doc.createTextNode("Draw!"))
-                                playOrQuitButtons(doc, selector3, selector4)
-                                playerList.splice(0); boardList.pop(); index = 0; grid.pop(); 
-                            }
-                            else{
-                                let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
-                                computerMoves.innerHTML = "";
-                                computerMoves.textContent = "O";
-                                computerMoves.style.color = "red"; 
-                                getComputerMove.pop(); boardList.pop(); boardList.push(game); 
-                                console.log('g:',boardList)
-                            };
-                        }
-                    }
-                    else {
-                        if(index === 0) {
-                            element.innerHTML = "";
-                            element.textContent = "0";
-                            element.style.color = "red";
-
-                            let game = Move.switchTurn( "Computer", playerList[1], parseInt(elementTextNum), board);
-                            
-                            if(game === true) {
-                                let message = doc.querySelector(selector3)
-                                
-                                message.appendChild(doc.createTextNode("You Win!"))
-                                playOrQuitButtons(doc, selector3, selector4)
-                                playerList.splice(0); boardList.pop(); index = 0; grid.pop(); 
-                            }
-                            else if(game === "Draw!") {
-                                let message = doc.querySelector(selector3)
-                                
-                                message.appendChild(doc.createTextNode("Draw!"))
-                                playOrQuitButtons(doc, selector3, selector4)
-                                playerList.splice(0); boardList.pop(); index = 0; grid.pop(); 
-                            }
-                            else{
-                                let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
-                                computerMoves.innerHTML = "";
-                                computerMoves.textContent = "X";
-                                computerMoves.style.color = "Green"; 
-                                index+=1; boardList.push(game); getComputerMove.pop();
-                                console.log('g:',boardList)
-                            };
+                            let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
+                            computerMoves.innerHTML = "";
+                            computerMoves.textContent = "O";
+                            computerMoves.style.color = "red"; 
+                          
+                            index+=1; getComputerMove.pop();
                         }
                         else{
-                            element.innerHTML = "";
-                            element.textContent = "0";
-                            element.style.color = "red";
+                            game = switchTurn.player1Turn(elementTextNum);
 
-                            let game = Move.switchTurn( "Computer", playerList[1], parseInt(elementTextNum), boardList[0]);
-                           
+                            element.innerHTML = "";
+                            element.textContent = "X";
+                            element.style.color = "green";
+
                             if(game === true) {
                                 let message = doc.querySelector(selector3)
-                                console.log('message:',message)
-                                message.appendChild(doc.createTextNode("You Win!"))
-                                playOrQuitButtons(doc, selector3, selector4)
-                                playerList.splice(0); boardList.pop(); index = 0; grid.pop();  
+                                message.appendChild(doc.createTextNode(`${playerList[1]} Wins!`));
+                                message.style.display = "flex";
+
+                                playerList.splice(0); index = 0; grid.pop(); 
+                                getComputerMove.pop(); getPlayers.splice(0);
+
+                                return  playOrQuitButtons(doc, selector3, selector4, selector3);
+                               
+                            }
+                            else{
+                                if(game === "Draw!") {             
+                                    let message = doc.querySelector(selector3)
+                                    message.appendChild(doc.createTextNode("Draw!"));
+                                    message.style.display = "flex";
+
+                                    playerList.splice(0); index = 0; grid.pop(); 
+                                    getComputerMove.pop(); getPlayers.splice(0);
+
+                                    return  playOrQuitButtons(doc, selector3, selector4, selector3);
+                                };
+                            } ;
+                            
+                            game = switchTurn.player2Turn(elementTextNum);
+
+                            let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
+                            computerMoves.innerHTML = "";
+                            computerMoves.textContent = "O";
+                            computerMoves.style.color = "red"; 
+
+                            if(game === true) {
+                                let message = doc.querySelector(selector3)
+                                message.appendChild(doc.createTextNode("Player2 Wins!"));
+                                message.style.display = "flex";
+
+                                playerList.splice(0); index = 0; grid.pop();
+                                getComputerMove.pop(); getPlayers.splice(0);
+
+                                return playOrQuitButtons(doc, selector3, selector4, selector3);
                             }
                             else if(game === "Draw!") {
                                 let message = doc.querySelector(selector3)
-                                
-                                message.appendChild(doc.createTextNode("Draw!"))
-                                playOrQuitButtons(doc, selector3, selector4)
-                                playerList.splice(0); boardList.pop(); index = 0; grid.pop(); 
+                                message.appendChild(doc.createTextNode("Draw!"));
+                                message.style.display = "flex";
+
+                                playerList.splice(0); index = 0; grid.pop(); 
+                                getComputerMove.pop(); getPlayers.splice(0);
+
+                                return playOrQuitButtons(doc, selector3, selector4, selector3);
                             }
                             else{
-                                let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
-                                computerMoves.innerHTML = "";
-                                computerMoves.textContent = "X";
-                                computerMoves.style.color = "Green"; 
-                                getComputerMove.pop(); boardList.pop(); boardList.push(game); 
-                                console.log('g:',boardList)
+                               
+                                getComputerMove.pop();                 
                             };
+                        };
+                    });
+                }
+                else{
+                    let switchTurn = SwitchTurn(gameBoard, playersMove, playerList[1], playerList[1]);
+                    let game = "";
+    
+                    element.addEventListener("click", () => {
+                        checkingElement+=1; 
+                        let elementTextNum = element.textContent; 
+    
+                        if(index === 0) {
+                            if(checkingElement === 1) {
+                                game = switchTurn.player1Turn(elementTextNum);
+    
+                                element.innerHTML = "";
+                                element.textContent = "X";
+                                element.style.color = "green";
+                            }
+                            else{
+                                if(checkingElement === 2) {
+                                    game = switchTurn.player2Turn(elementTextNum);
+    
+                                    element.innerHTML = "";
+                                    element.textContent = "O";
+                                    element.style.color = "red";
+    
+                                    index+=1; checkingElement = 0;
+                                };
+                            }; 
                         }
-                    };
+                        else{
+                            if(checkingElement === 1) {
+                                game = switchTurn.player1Turn(elementTextNum);
+    
+                                element.innerHTML = "";
+                                element.textContent = "X";
+                                element.style.color = "green";
+    
+                                if(game === true) {
 
-                });
-            }); 
-        }); 
+                                    let message = doc.querySelector(selector3)
+                                    message.appendChild(doc.createTextNode(`player1 Wins!`));
+                                    message.style.display = "flex";
+
+                                    playerList.splice(0); index = 0; grid.pop(); getPlayers.splice(0);
+                                    getComputerMove.pop(); checkingElement = 0;
+        
+                                    return playOrQuitButtons(doc, selector3, selector4, selector3);
+                                    }
+                                    else{
+                                        if(game === "Draw!") {
+                                            let message = doc.querySelector(selector3)
+                                            message.appendChild(doc.createTextNode("Draw!"));
+                                            
+                                            playerList.splice(0); index = 0; grid.pop(); getPlayers.splice(0);
+                                            getComputerMove.pop(); checkingElement = 0;
+        
+                                            return playOrQuitButtons(doc, selector3, selector4, selector3)
+                                        };
+                                    } ;
+                                }
+                                else{
+                                    if(checkingElement === 2) {
+                                        game = switchTurn.player2Turn(elementTextNum);
+    
+                                        element.innerHTML = "";
+                                        element.textContent = "O";
+                                        element.style.color = "red";
+    
+                                    if(game === true) {
+                                        let message = doc.querySelector(selector3);
+                                        message.appendChild(doc.createTextNode(`${playerList[1]} Wins!`));
+                                        message.style.display = "flex";
+
+                                        playerList.splice(0); index = 0; grid.pop(); getPlayers.splice(0);
+                                        getComputerMove.pop(); checkingElement = 0;
+        
+                                        return playOrQuitButtons(doc, selector3, selector4, selector3);
+                                    }
+                                    else{
+                                        if(game === "Draw!") {
+                                            let message = doc.querySelector(selector3)
+                                            message.appendChild(doc.createTextNode("Draw!"));
+                                            message.style.display = "flex";
+                                            
+                                            playerList.splice(0); index = 0; grid.pop(); checkingElement = 0;
+                                            getComputerMove.pop(); getPlayers.splice(0);
+        
+                                            return playOrQuitButtons(doc, selector3, selector4, selector3)
+                                        }
+                                        else{
+                                            checkingElement = 0;
+                                        }
+                                    };
+    
+                                };
+                            };
+                        };
+                    });       
+                };               
+            });
+        });
     };
 
-   return {  displayQuestions, creatThreeGridBoard, creatFourGridBoard, player1, player2, mainGamePlay }
+   return {  displayQuestions, creatThreeGridBoard, creatFourGridBoard, player1, player2, playGame, gridDiv }
 
 }) ();
 
-GameInteraction.displayQuestions(document, "#start", "#questions");
+GameInteraction.gridDiv(document, ".grid", "#grid3", "#Afterround");
+GameInteraction.gridDiv(document, ".grid", "#grid4", "#Afterround");
+
 GameInteraction.creatThreeGridBoard(document, "#grid3", "#DivBoard");
-GameInteraction.creatFourGridBoard(document, "#grid4", "#DivBoard")
+GameInteraction.creatFourGridBoard(document, "#grid4", "#DivBoard");
+
+GameInteraction.displayQuestions(document, "#start", "#questions", "#grid3");
+GameInteraction.displayQuestions(document, "#start", "#questions", "#grid4");
+
 GameInteraction.player1(document, "#player1", ".playerName");
-GameInteraction.player2(document, "#player2", ".playerName")
-GameInteraction.mainGamePlay(document, "#start", ".num", "#DivBoard", "#questions");
+GameInteraction.player2(document, "#player2", ".playerName");
+GameInteraction.playGame(document, "#start", ".num", "#Afterround", ".grid");
