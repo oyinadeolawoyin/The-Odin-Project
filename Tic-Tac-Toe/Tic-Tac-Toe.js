@@ -27,7 +27,10 @@ function Gameboard(numOfGrid) {
             lengthOfColumns += board[cells].length; 
             getCell = lengthOfColumns; 
             
-            if(playercell > lengthOfColumns) {
+            if(playercell === "X" || playercell === "O") {
+                break;
+            }
+            else if(playercell > lengthOfColumns) {
                 continue;
             }
             else{
@@ -169,7 +172,7 @@ function GameController() {
         return false
     };
 
-    // This check the diagonal in board.
+    // This check the left side diagonal in board.
     const checkingLeftDiagonal = (board) => {
         let cell1 = board[0][0][0]; 
 
@@ -189,8 +192,9 @@ function GameController() {
         };
     };
 
+     // This check the right side diagonal in board.
     const checkingRightDiagonal = (board) => {
-        let cell1 = board[0][2][0]; 
+        let cell1 = board[0][board.length - 1][0]; 
         let boardLenght = (board.length-1);
 
         for(i = 1; i < board.length; i++) {
@@ -208,6 +212,7 @@ function GameController() {
             };
         };
     }
+
     // This check if there's no winner.
     const checkingDraw = (board) => {
         for(element in board) {
@@ -230,7 +235,8 @@ function GameController() {
 
     // This search for which row || column || diagonal cells completed first. And it also check for draw.
     const winningSearch = (board) => {
-        if(checkingColumns(board) === true || checkingRows(board) === true || checkingLeftDiagonal(board) === true || checkingRightDiagonal(board) === true ) {
+        if( checkingColumns(board) === true || checkingRows(board) === true || 
+            checkingLeftDiagonal(board) === true || checkingRightDiagonal(board) === true ) {
             return true
         }
         else {
@@ -243,7 +249,7 @@ function GameController() {
         };
     };
                
-    // This return the function in my factory function.
+    // This return the winningSearch function that holds all the functions in my factory function.
     return { winningSearch }
 };
 
@@ -366,16 +372,22 @@ const GameInteraction = ( function() {
     // This function create the three * three grid board.
     const creatThreeGridBoard = (doc, selector1, selector2) => {
         let boardGrid = doc.querySelector(selector1);
-        let divBoard = doc.querySelector(selector2)
+        let divBoard = doc.querySelector(selector2);
     
         boardGrid.addEventListener("click", () => {
             divBoard.innerHTML = "";
+
+            let threeGridDiv = doc.createElement("div");
+            threeGridDiv.classList.add("three");
+
             for(i = 1; i < (3 * 3)+1 ; i++) {
                 buttons =  doc.createElement("button"); 
                 buttonsPara = doc.createElement("p")
                 buttons.classList.add("number"+i, "num");
                 buttons.textContent = i;
-                divBoard.appendChild(buttons)
+                threeGridDiv.appendChild(buttons);
+                
+                divBoard.appendChild(threeGridDiv);
             }
 
             grid.pop();
@@ -385,18 +397,25 @@ const GameInteraction = ( function() {
 
     };
 
+    // This function create the four * four grid board.
     const creatFourGridBoard = (doc, selector1, selector2) => {
         let boardGrid = doc.querySelector(selector1);
-        let divBoard = doc.querySelector(selector2)
+        let divBoard = doc.querySelector(selector2);
     
         boardGrid.addEventListener("click", () => {
             divBoard.innerHTML = "";
+
+            let fourGridDiv = doc.createElement("div");
+            fourGridDiv.classList.add("four");
+
             for(i = 1; i < (4 * 4)+1 ; i++) {
                 buttons =  doc.createElement("button"); 
                 buttonsPara = doc.createElement("p")
                 buttons.classList.add("number"+i, "num");
                 buttons.textContent = i;
-                divBoard.appendChild(buttons)
+                fourGridDiv.appendChild(buttons);
+                
+                divBoard.appendChild(fourGridDiv);
             }
 
             grid.pop();
@@ -479,8 +498,9 @@ const GameInteraction = ( function() {
             });
     }
 
+    // This function describe how the players play the game by switching turn.
     const playGame = (doc, selector1, selector2, selector3, selector4) => {
-        let index = 0;  checkingElement = 0; 
+        let index = 0;  checkingElement = 0;
         let startGame = doc.querySelector(selector1);
 
         startGame.addEventListener("click", () => {
@@ -497,83 +517,105 @@ const GameInteraction = ( function() {
                         let elementTextNum = element.textContent;                                
 
                         if(index === 0) {
-                            game = switchTurn.player1Turn(elementTextNum);
- 
-                            element.innerHTML = "";
-                            element.textContent = "X";
-                            element.style.color = "green";
+                            if(elementTextNum === "O" || elementTextNum === "X") {
+                                alert("You can only choose a cell once!");
+                            }
+                            else{
+                                game = switchTurn.player1Turn(elementTextNum);
+                                    
+                                element.innerHTML = "";
+                                element.textContent = "X";
+                                element.style.color = "green";
+                                checkingElement +=1;
+                            };
+                        
+                            if(checkingElement === 1) {
+                                game = switchTurn.player2Turn(elementTextNum);
+                                
+                                let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
+                                computerMoves.innerHTML = "";
+                                computerMoves.textContent = "O";
+                                computerMoves.style.color = "red";
 
-                            game = switchTurn.player2Turn(elementTextNum);
-
-                            let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
-                            computerMoves.innerHTML = "";
-                            computerMoves.textContent = "O";
-                            computerMoves.style.color = "red"; 
-                          
-                            index+=1; getComputerMove.pop();
+                                 index+=1; getComputerMove.pop(); checkingElement = 0;
+                            }
+                            else{
+                                alert("Pick another cell!")
+                            };  
                         }
                         else{
-                            game = switchTurn.player1Turn(elementTextNum);
+                            if(elementTextNum === "O" || elementTextNum === "X") {
+                                alert("You can only choose a cell once!")
+                            }
+                            else{
+                                game = switchTurn.player1Turn(elementTextNum);
+                                checkingElement +=1;
 
-                            element.innerHTML = "";
-                            element.textContent = "X";
-                            element.style.color = "green";
+                                element.innerHTML = "";
+                                element.textContent = "X";
+                                element.style.color = "green";
+                            };
 
                             if(game === true) {
                                 let message = doc.querySelector(selector3)
                                 message.appendChild(doc.createTextNode(`${playerList[1]} Wins!`));
                                 message.style.display = "flex";
 
-                                playerList.splice(0); index = 0; grid.pop(); 
+                                playerList.splice(0); index = 0; grid.pop(); checkingElement = 0;
                                 getComputerMove.pop(); getPlayers.splice(0);
 
                                 return  playOrQuitButtons(doc, selector3, selector4, selector3);
                                
                             }
                             else{
-                                if(game === "Draw!") {             
+                                if(game === "Draw!") {            
                                     let message = doc.querySelector(selector3)
                                     message.appendChild(doc.createTextNode("Draw!"));
                                     message.style.display = "flex";
 
                                     playerList.splice(0); index = 0; grid.pop(); 
-                                    getComputerMove.pop(); getPlayers.splice(0);
+                                    getComputerMove.pop(); getPlayers.splice(0); checkingElement = 0;
 
                                     return  playOrQuitButtons(doc, selector3, selector4, selector3);
                                 };
                             } ;
                             
-                            game = switchTurn.player2Turn(elementTextNum);
+                            if(checkingElement === 1){
+                                game = switchTurn.player2Turn(elementTextNum);
 
-                            let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
-                            computerMoves.innerHTML = "";
-                            computerMoves.textContent = "O";
-                            computerMoves.style.color = "red"; 
+                                let computerMoves = doc.querySelector(`.number${getComputerMove[0]}`);
+                                computerMoves.innerHTML = "";
+                                computerMoves.textContent = "O";
+                                computerMoves.style.color = "red"; 
 
+                                getComputerMove.pop(); checkingElement = 0;
+                            } 
+                            else{
+                                alert("Pick another cell!")
+                            };  
+                            
                             if(game === true) {
                                 let message = doc.querySelector(selector3)
                                 message.appendChild(doc.createTextNode("Player2 Wins!"));
                                 message.style.display = "flex";
 
                                 playerList.splice(0); index = 0; grid.pop();
-                                getComputerMove.pop(); getPlayers.splice(0);
+                                getComputerMove.pop(); getPlayers.splice(0); checkingElement = 0;
 
                                 return playOrQuitButtons(doc, selector3, selector4, selector3);
                             }
-                            else if(game === "Draw!") {
+                            else { 
+                                if (game === "Draw!") {
                                 let message = doc.querySelector(selector3)
                                 message.appendChild(doc.createTextNode("Draw!"));
                                 message.style.display = "flex";
 
                                 playerList.splice(0); index = 0; grid.pop(); 
-                                getComputerMove.pop(); getPlayers.splice(0);
+                                getComputerMove.pop(); getPlayers.splice(0); checkingElement = 0;
 
                                 return playOrQuitButtons(doc, selector3, selector4, selector3);
-                            }
-                            else{
-                               
-                                getComputerMove.pop();                 
-                            };
+                                };
+                            };        
                         };
                     });
                 }
@@ -583,35 +625,54 @@ const GameInteraction = ( function() {
     
                     element.addEventListener("click", () => {
                         checkingElement+=1; 
+    
                         let elementTextNum = element.textContent; 
     
                         if(index === 0) {
                             if(checkingElement === 1) {
-                                game = switchTurn.player1Turn(elementTextNum);
-    
-                                element.innerHTML = "";
-                                element.textContent = "X";
-                                element.style.color = "green";
+                                if(elementTextNum === "O" || elementTextNum === "X") {
+                                    alert("You can only choose a cell once!")
+                                    checkingElement = 0;
+                                }
+                                else{
+                                    game = switchTurn.player1Turn(elementTextNum);
+                                    
+                                    element.innerHTML = "";
+                                    element.textContent = "X";
+                                    element.style.color = "green";
+                                };   
                             }
                             else{
                                 if(checkingElement === 2) {
-                                    game = switchTurn.player2Turn(elementTextNum);
-    
-                                    element.innerHTML = "";
-                                    element.textContent = "O";
-                                    element.style.color = "red";
-    
-                                    index+=1; checkingElement = 0;
+                                    if(elementTextNum === "O" || elementTextNum === "X") {
+                                        alert("You can only choose a cell once!")
+                                        checkingElement = 1;
+                                    }
+                                    else{
+                                        game = switchTurn.player2Turn(elementTextNum);
+                                        
+                                        element.innerHTML = "";
+                                        element.textContent = "O";
+                                        element.style.color = "red";
+        
+                                        index+=1; checkingElement = 0;
+                                    };    
                                 };
                             }; 
                         }
                         else{
                             if(checkingElement === 1) {
-                                game = switchTurn.player1Turn(elementTextNum);
-    
-                                element.innerHTML = "";
-                                element.textContent = "X";
-                                element.style.color = "green";
+                                if(elementTextNum === "O" || elementTextNum === "X") {
+                                    alert("You can only choose a cell once!")
+                                    checkingElement = 0;
+                                }
+                                else{
+                                    game = switchTurn.player1Turn(elementTextNum);
+
+                                    element.innerHTML = "";
+                                    element.textContent = "X";
+                                    element.style.color = "green";  
+                                };
     
                                 if(game === true) {
 
@@ -628,6 +689,7 @@ const GameInteraction = ( function() {
                                         if(game === "Draw!") {
                                             let message = doc.querySelector(selector3)
                                             message.appendChild(doc.createTextNode("Draw!"));
+                                            message.style.display = "flex";
                                             
                                             playerList.splice(0); index = 0; grid.pop(); getPlayers.splice(0);
                                             getComputerMove.pop(); checkingElement = 0;
@@ -638,11 +700,19 @@ const GameInteraction = ( function() {
                                 }
                                 else{
                                     if(checkingElement === 2) {
-                                        game = switchTurn.player2Turn(elementTextNum);
-    
-                                        element.innerHTML = "";
-                                        element.textContent = "O";
-                                        element.style.color = "red";
+                                        if(elementTextNum === "O" || elementTextNum === "X") {
+                                            alert("You can only choose a cell once!")
+                                            checkingElement = 1;
+                                        }
+                                        else{
+                                            game = switchTurn.player2Turn(elementTextNum);
+
+                                            element.innerHTML = "";
+                                            element.textContent = "O";
+                                            element.style.color = "red";
+
+                                            checkingElement = 0;
+                                        };      
     
                                     if(game === true) {
                                         let message = doc.querySelector(selector3);
@@ -664,10 +734,7 @@ const GameInteraction = ( function() {
                                             getComputerMove.pop(); getPlayers.splice(0);
         
                                             return playOrQuitButtons(doc, selector3, selector4, selector3)
-                                        }
-                                        else{
-                                            checkingElement = 0;
-                                        }
+                                        };
                                     };
     
                                 };

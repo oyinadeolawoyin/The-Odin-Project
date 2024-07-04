@@ -26,10 +26,11 @@ body {
     height: 100%;
     text-align: center;
 
-    background-color: rgb(26, 20, 20);
+    background-color: rgb(104, 86, 52);
 
     --font: "Writing",  serif, Aria;
     --font2: "fontwriting",  serif, Aria;
+    --top: 250px;
 }
 .grid{
     position: relative;
@@ -40,9 +41,18 @@ body {
 
 }
 
+.grid > p {
+    font-family: var(--font);
+    font-size: 2em;
+    word-spacing: 1rem;
+
+    color: white;
+    text-shadow: 0 0 10px black;
+} 
+
 #gridButtons{
     position: absolute;
-    top: 150px;
+    top: var(--top);
     height: 200px;
     width: 450px;
 
@@ -97,8 +107,8 @@ body {
     align-items: center;
 
     border-radius: 30px;
-    border: 2px solid black;
-    box-shadow: 0 0 5px black;
+    border: 5px solid  rgb(104, 86, 52);
+    box-shadow: 0 0 5px  rgb(104, 86, 52);
     padding: 15px;
 
     background-image: url(images/grid.jpeg);
@@ -173,26 +183,38 @@ body {
 #DivBoard {
     padding: 25px;
     padding-top: 40px;
-    margin-top: 45px;
+    margin-top: 30px;
 
-    height: 400px;
+    height: 500px;
     width: 600px;
     font-size: 50px;
     border: 2px solid black; 
-    box-shadow: 0 0 8px white;  
+    box-shadow: 0 0 8px black;  
 
+    background-image: url(images/wooden\ board.jpeg);
+}
+
+.three {
     display: grid;
     grid-template-columns: repeat(3, 90px);
     grid-template-rows: repeat(3, 90px);
     justify-content: center;
     gap: 10px;
 
-    background-image: url(images/wooden\ board.jpeg);
+    margin-top: 45px;
+}
+
+.four {
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: repeat(4, 90px);
+    justify-content: center;
+    gap: 10px;
 }
 
 #DivBoard button{
     font-family: var(--font);
-    font-size: 20px;
+    font-size: 30px;
 
     border: none;
     background-color: rgb(26, 20, 20);
@@ -212,7 +234,7 @@ body {
     align-items: center;
     justify-content: center;
 
-    top: 150px;
+    top: var(--top);
     border-radius: 30px;
     border: 1px solid white;
     box-shadow: 0 0 5px white;
@@ -247,5 +269,6 @@ body {
 .text {
     font-family: var(--font2);
     font-size: 25px;
-    color: black;
+    color: white;
+    text-shadow: 0 0 10px black;
 };
