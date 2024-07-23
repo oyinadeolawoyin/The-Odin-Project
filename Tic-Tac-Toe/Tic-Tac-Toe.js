@@ -489,9 +489,11 @@ const GameInteraction = ( function() {
                 closeDiv.style.display = "none";
             });
 
+            const textPara = doc.createElement("p");
+            textPara.classList.add("text");
+
             quit.addEventListener("click", () => {
-                const textPara = doc.createElement("p");
-                textPara.classList.add("text");
+                textPara.innerHTML = "";
                 const text = doc.createTextNode("THANKS FOR PLAYING!");
                 textPara.appendChild(text);
                 afterRound.appendChild(textPara)
