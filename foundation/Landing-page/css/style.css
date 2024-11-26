@@ -1,0 +1,175 @@
+/* style.css */
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0%; 
+        
+}
+
+.website{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.header_logo{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8%;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+#eagle{
+    border-radius: 100%;
+    padding: 10px;
+}
+
+.soar{
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  color: #f9faf8;
+
+}
+
+ul{
+    display: flex;
+    flex: auto;
+    justify-content: flex-end;
+    list-style: none;
+    gap: 20px;
+    
+    
+}
+
+a{
+    text-decoration: none;
+    font-size: 18px;
+    color: #e5e7eb;
+    
+}
+
+.sub_header{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 16%;
+    gap: 20%;
+    padding-left: 20%;
+    padding-right: 20%;   
+}
+
+#sisters{
+    padding-bottom: 10%;
+}
+
+h1{
+    font-size: 48px;
+    font: bolder;
+}
+
+
+.headers{
+    background-color: #1f2931;
+    color: #f9faf8;
+}
+
+h2{
+    text-align: center;
+    font-size: 36px;
+    font: bold;
+    color: #1f2937;
+}
+
+.quotes{
+    display: flex;
+    gap: 20%;
+    justify-content: center;
+    padding-left: 30%;
+    padding-right: 30%;
+    margin-bottom: 16%;
+    margin-top: 8%;
+
+}
+
+img{
+    border-radius: 10px;
+}
+
+.quotes{
+    display: flex;
+    
+}
+
+.first_list{
+    display: flex;
+    flex-direction: column;
+}
+
+.quote{
+    padding-left: 30%;
+    padding-right: 20%;
+    padding-top: 10%;
+    margin-right: 0%;
+    height: 300px;
+    background-color: #e5e7eb;
+    font-size: 16px;
+    color: #1f2937;
+}
+
+#oyin{
+    text-align: right;
+}
+
+.button{
+    display: flex;
+    padding: 15%;
+    gap: 20%;
+    margin-left: 20%;
+    margin-right: 30%;
+    padding: 0;
+    padding-left: 40px;
+    padding-top: 20px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    background-color: #3882f6;
+    border-radius: 5px;
+    color: white;
+}
+
+.link{
+    background-color: #3882f6;
+    color: white;
+}
+
+.read{
+    border-color: white;
+    margin-bottom: 5%;
+}
+
+#p{
+    flex: auto;
+}
+
+.foot{
+    display: flex;
+    flex-direction: column;
+    
+} 
+
+button{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: solid white;
+    
+}
+
+.footer{
+    text-align: center;
+    height: 72px;
+    padding-top: 40px;
+    margin-top: auto;
+}
+
+

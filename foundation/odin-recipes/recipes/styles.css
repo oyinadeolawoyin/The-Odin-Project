@@ -1,0 +1,52 @@
+/**style**/
+
+/* *{
+    outline: 2px solid red;
+} */
+
+body{
+    background-color:  burlywood;
+}
+
+.head {
+    font: 350px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color: chocolate;
+    padding: 8px 24px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+p,
+ul,
+ol {
+    font: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+}
+
+.image {
+    display: block;
+    margin: 0 auto;
+    padding: 50px 150px;
+    border: 20px solid black;
+    border-style:groove;
+    padding: 0;
+    margin-bottom: 60px;
+}
+
+#list {
+    padding: 20px;
+    border: 30px solid black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+.text {
+    color: brown;
+}
+
+.text2 {
+    color: darkgreen;
+}
