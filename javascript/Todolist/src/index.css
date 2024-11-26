@@ -1,0 +1,412 @@
+/* style */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+body {
+  color: white;
+  height: 100%;
+}
+
+img {
+  height: 20px;
+  width: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.para {
+  display: flex;
+  padding: 10px;
+}
+
+.para:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#prioritydiv {
+  margin-bottom: 50px;
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#prioritydiv p {
+  padding: 3px 10px;
+}
+
+/* Center overlay on the screen, covering full viewport */
+#popupOverlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Ensures overlay covers full viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Optional: adds a semi-transparent background */
+  z-index: 999; /* Brings overlay to the front */
+  margin-right: 0; /* Remove any extra margin */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background-color: #0e0220;
+  box-shadow: 0 0 4px #fdf0f6;
+  border-radius: 10px;
+  color: #fdf0f6;
+  font-size: 20px;
+  position: relative; /* Use relative instead of absolute to avoid positioning issues */
+  margin: 0; /* Removes any margin to keep it centered */
+
+  width: 100%; /* Ensure form is responsive */
+  max-width: 400px; /* Set a max-width for your form */
+}
+
+input {
+  font-size: 20px;
+  border-radius: 5px;
+  border: 0px;
+
+  padding: 5px;
+}
+
+input:hover {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 2px blue;
+}
+
+input:invalid {
+  border: 2px solid red;
+  box-shadow: 0 0 2px white;
+}
+
+input:valid {
+  border: 2px solid green;
+  box-shadow: 0 0 2px white;
+}
+
+form button {
+  margin-bottom: 12px;
+  margin-top: 12px;
+
+  background-color: rgb(1, 1, 14);
+  color: white;
+
+  border-radius: 10px;
+  border: none;
+
+  width: 100px;
+  height: 50px;
+}
+
+form button:hover {
+  background-color: #e40475;
+}
+
+.butons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+select {
+  height: 40px;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  width: 100%; /* Make the select fit the form width */
+  max-width: 100%; /* Prevent select from exceeding form width */
+  box-sizing: border-box; /* Ensures padding doesn’t affect width */
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+select option {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%; /* Prevent option width from overflowing */
+  display: block;
+}
+
+select:hover {
+  border: 2px solid #007bff;
+  box-shadow: 0 0 2px blue;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
+}
+
+#sidebar {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #771144;
+}
+
+#sidebar h1 {
+  margin-bottom: 30px;
+  margin-top: 20px;
+
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+#sidebar h1:hover {
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+}
+
+#project {
+  margin-top: 15px;
+}
+
+#project h3 {
+  font-size: 19px;
+}
+
+.head {
+  list-style: none;
+  color: #007bff;
+}
+
+.lists {
+  font-size: 15px;
+}
+
+#projectTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#projectSubmit {
+  background-color: rgb(1, 1, 14);
+  color: white;
+
+  margin: 10px;
+  margin-left: 20px;
+
+  border-radius: 10px;
+  border: none;
+
+  width: 100px;
+  height: 25px;
+}
+
+#projectSubmit:hover {
+  background-color: #e40475;
+}
+
+#nameLabel {
+  font-size: 19px;
+}
+
+#projectInput {
+  width: 100px;
+  margin: 10px;
+  margin-left: 20px;
+}
+
+#cancel {
+  filter: hue-rotate(-90deg);
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#content {
+  background-color: #f0f0f0;
+  height: 100%;
+
+  position: relative;
+}
+
+#noteDiv {
+  background-image: url(images/welcome.webp);
+  background-size: cover; /* Ensures the image covers the entire div */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents repeating the image */
+
+  position: relative;
+
+  height: 100%;
+  width: 100%; /* Make sure the div takes up the full width of its parent */
+  /* padding: 100px;  */
+  box-sizing: border-box; /* Ensures padding is included in the div's total size */
+}
+
+#note {
+  background-color: #0e0220;
+  opacity: 0.8;
+
+  position: fixed; /* Use absolute positioning inside the parent */
+  width: 90%; /* Set width as a percentage of the parent div */
+  max-width: 100%; /* Ensure it doesn't exceed the parent's width */
+  height: auto; /* Let the height adjust automatically */
+  min-height: 200px; /* Set a minimum height to avoid it being too small */
+
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding-left: 50px;
+  padding-top: 40px;
+  padding-right: 40px;
+
+  box-sizing: border-box; /* Include padding in width/height calculation */
+}
+
+#noteH1 {
+  margin-bottom: 40px;
+}
+
+#paragraph {
+  font-size: 19px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+}
+
+.delete:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+}
+
+.listHeadDiv {
+  display: flex;
+  align-items: center;
+}
+
+.listHeadDiv li {
+  margin-right: 20px;
+}
+
+.listHeadDiv img:hover {
+  cursor: pointer;
+}
+
+.todoDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fdf0f6;
+  color: #451029;
+  padding: 20px;
+  margin: 10px 0;
+  border: 2px solid #90007f;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  height: 300px; /* optional: control the height for consistent layout */
+}
+
+.headDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.headDiv .title {
+  color: #90007f;
+  font-size: 1.5em;
+}
+
+.headDiv .delete {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  filter: invert(20%) sepia(60%) saturate(600%) hue-rotate(270deg);
+}
+
+.descriptionPara {
+  font-size: 1em;
+  color: #451029;
+  margin-bottom: 10px;
+  flex-grow: 1; /* Allow the description area to grow and push the button down */
+}
+
+.dueDatePara {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  color: #700055;
+  margin-bottom: 15px;
+}
+
+.dueDatePara .dueDateImg {
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+  filter: hue-rotate(-30deg) saturate(200%);
+}
+
+.doneBox {
+  background-color: #0e0220;
+  color: #fdf0f6;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  align-self: flex-end; /* Aligns button to the bottom */
+}
+
+.doneBox:hover {
+  background-color: #700055;
+}
+
+.completeBox {
+  color: #700055;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 16px;
+  background-color: #d0a1c7;
+  border-radius: 5px;
+  align-self: flex-end; /* Aligns "Completed" message to the bottom */
+}
+
+/* Small devices (phones, 767px and down) */
+@media (max-width: 767px) {
+  #container {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-template-rows: 1fr;
+    height: 100vh;
+  }
+
+  #note {
+    background-color: #0e0220;
+    opacity: 0.8;
+    position: absolute;
+
+    width: 100%; /* Ensure it fills the parent on small screens */
+    min-height: 150px; /* Reduce minimum height for small screens */
+    padding-left: 20px; /* Adjust padding */
+    padding-top: 20px;
+    padding-right: 20px;
+    margin-top: 100px;
+  }
+}

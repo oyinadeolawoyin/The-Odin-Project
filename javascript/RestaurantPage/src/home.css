@@ -1,0 +1,86 @@
+@font-face {
+    font-family: "Mywriting";
+    src: url(fonts/inriasans-bold-webfont.woff2) format("woff2");
+    src: url(fonts/inriasans-bold-webfont.woff) format("woff");
+}
+
+@font-face {
+    font-family: "writing";
+    src: url(fonts/inriasans-bolditalic-webfont.woff2) format("woff2");
+    src: url(fonts/inriasans-bolditalic-webfont.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Handwriting";
+    src: url(fonts/inriasans-italic-webfont.woff2) format("woff2");
+    src: url(fonts/inriasans-italic-webfont.woff) format("woff");
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    line-height: 1.5;
+    font-size: 20px;
+    font-family: "Handwriting";
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.restuarantImage {
+    width: 100%;
+}
+
+.restuarantImageDiv {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.restuarantTagline {
+    font-size: 25px;
+    font-family: "Mywriting";
+}
+
+.foodDiv {
+    display: flex;
+    gap: 16px;
+
+    margin-top: 30px;
+}
+
+.foodImageDiv {
+    text-align: center;
+}
+
+.foodImage {
+    height: 300px;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px black;
+}
+
+.foodTagline {
+    color: #780000;
+    font-size: 35px;
+}
+
+.Para1 {
+    color: #780000;
+    font-size: 30px;
+    font-family: "Mywriting";
+}
+
+/* Small devices (phones, 767px and down) */
+@media (max-width: 767px) {
+    
+    .foodDiv {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        margin-top: 30px;
+    }
+
+
+}

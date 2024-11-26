@@ -1,0 +1,275 @@
+/* style */
+
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: "Writing";
+    src: url("fonts/webfront.woff") format("woff");
+    src: url("fonts/webfont.woff2") format(("woff2"));
+    font-weight: normal;
+    font-size: normal;
+}
+
+@font-face {
+    font-family: "fontwriting";
+    src: url("fonts/bold-webfont.woff") format("woff");
+    src: url("fonts/bold-webfont.woff2") format(("woff2"));
+    font-weight: normal;
+    font-size: normal;
+}
+
+body {
+    height: 100%;
+    text-align: center;
+
+    background-color: rgb(104, 86, 52);
+
+    --font: "Writing",  serif, Aria;
+    --font2: "fontwriting",  serif, Aria;
+    --top: 250px;
+}
+.grid{
+    position: relative;
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.grid > p {
+    font-family: var(--font);
+    font-size: 2em;
+    word-spacing: 1rem;
+
+    color: white;
+    text-shadow: 0 0 10px black;
+} 
+
+#gridButtons{
+    position: absolute;
+    top: var(--top);
+    height: 200px;
+    width: 450px;
+
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 20px;
+
+    background-image: url(images/Tic\ Tac\ Toe_\ Tic\ Tac\ Toe\ Game\ \(Paperback\).jpeg);
+    background-size:210px
+}
+
+#gridButtons button {
+    width: 100px;
+    font-size: 15px;
+    font-family: var(--font);
+    padding: 10px;
+
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(26, 20, 20);
+    color: white;
+}
+
+#grid3 button:hover {
+    border: 2px solid saddlebrown;
+    background-color: black;
+}
+
+#questions {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    
+} 
+
+#form {
+    position: absolute;
+    top: 100px;
+    height: 300px;
+    width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 30px;
+    border: 5px solid  rgb(104, 86, 52);
+    box-shadow: 0 0 5px  rgb(104, 86, 52);
+    padding: 15px;
+
+    background-image: url(images/grid.jpeg);
+    background-size:500px;
+    opacity: 0.9;
+    
+}
+.label{
+    display: flex;
+    flex-direction: column;
+}
+
+.label label{
+    font-size: 20px;
+    font-family: var(--font);
+    text-align: left;
+
+    color: rgb(26, 20, 20);
+}
+
+#form input[type="text"] {
+    border: none;
+    border-radius: 5px;
+    
+    font-size: 18px;
+    font-family: var(--font);
+    text-align: center;
+}
+
+#form input[type="text"]:focus {
+    border: 2px solid rgb(26, 20, 20);
+    outline: none;
+}
+
+#form div {
+    margin-top: 8px;
+    margin-bottom: 18px;
+
+    display: flex;
+    gap: 10px;
+}
+
+#form button {
+    padding: 10px;
+    width: 100px;
+    font-size: 15px;
+    font-family: var(--font);
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: rgb(26, 20, 20);
+    color: white;
+}
+
+#form button:hover {
+    border: 2px solid saddlebrown;
+    background-color: black;
+}
+
+#form input {
+    margin-top: 8px;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#DivBoard {
+    padding: 25px;
+    padding-top: 40px;
+    margin-top: 30px;
+
+    height: 500px;
+    width: 600px;
+    font-size: 50px;
+    border: 2px solid black; 
+    box-shadow: 0 0 8px black;  
+
+    background-image: url(images/wooden\ board.jpeg);
+}
+
+.three {
+    display: grid;
+    grid-template-columns: repeat(3, 90px);
+    grid-template-rows: repeat(3, 90px);
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 45px;
+}
+
+.four {
+    display: grid;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: repeat(4, 90px);
+    justify-content: center;
+    gap: 10px;
+}
+
+#DivBoard button{
+    font-family: var(--font);
+    font-size: 30px;
+
+    border: none;
+    background-color: rgb(26, 20, 20);
+    
+}
+
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#Afterround{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    top: var(--top);
+    border-radius: 30px;
+    border: 1px solid white;
+    box-shadow: 0 0 5px white;
+
+    height: 200px;
+    width: 450px;
+    font-size: 25px;
+    padding: 50px;
+
+    color: rgb(78, 35, 5);
+    font-family: var(--font2);
+    background-image: url(images/Tic\ Tac\ Toe_\ Tic\ Tac\ Toe\ Game\ \(Paperback\).jpeg);
+    background-size:400px;
+}
+
+#Afterround button {
+    width: 100px;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 20px;
+    font-family: var(--font);  
+
+    border: 2px solid rgb(109, 48, 5);
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+}
+
+#Afterround button:hover {
+    background-color: wheat;
+}
+
+.text {
+    font-family: var(--font2);
+    font-size: 25px;
+    color: white;
+    text-shadow: 0 0 10px black;
+};

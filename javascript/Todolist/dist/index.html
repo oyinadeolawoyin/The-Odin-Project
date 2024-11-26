@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+<script defer src="main.js"></script></head>
+<body>
+  <div id="popupOverlay" class="popup-overlay">
+    <div class="popup-form">
+      <form id="popupForm">
+        <label for="mytitle">Title:</label>
+        <input type="text" name="mytitle" id="mytitle" required />
+
+        <label for="mydescription">Description:</label>
+        <input type="text" name="mydescribition" id="mydescribition" required />
+
+        <label for="mydueDate">Due Date:</label>
+        <input 
+          type="text" 
+          name="mydueDate" 
+          id="mydueDate" 
+          required 
+          pattern="([Mm]onday|[Tt]uesday|[Ww]ednesday|[Ff]riday|[Tt]hursday|[Ss]aturday|[Ss]unday|^[0-9]{2}(-/)[0-9]{2}(-/)[0-9]{4})$"
+          placeholder="A day or date (Monday / 12/12/2024)"
+        />
+
+        <label for="myPriority">Priority:</label>
+        <select name="myPriority" id="myPriority" required>
+          <option value="">Select Priority</option>
+          <option value="priority 1">Priority 1</option>
+          <option value="priority 2">Priority 2</option>
+          <option value="priority 3">Priority 3</option>
+          <option value="priority 4">Priority 4</option>
+          <option value="priority 5">Priority 5</option>
+        </select>
+
+        <label for="projects">Project:</label>
+        <select name="myproject" id="projects" required>
+          <option value="">Select Project</option>
+        </select>
+
+        <div id="buttons">
+          <button type="button" id="close">Close</button>
+          <button type="submit" id="submitForm">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="container">
+    <div id="sidebar">
+      <h1 id="taskMaster">Task Master</h1>
+    </div>
+    <div id="content"></div>
+  </div>
+</body>
+</html>

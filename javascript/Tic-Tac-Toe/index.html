@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="Tic-Tac-Toe.js" defer></script>
+</head>
+<body>
+    
+    <div class="grid">
+        <p>Choose A Grid</p>
+        <p id="gridButtons">
+            <button id="grid3">Gird 3 * 3</button>
+            <button id="grid4">Gird 4 * 4</button>
+      
+        </p>
+    </div>
+
+    <div id="questions">
+        <div id="form">
+            <p class="label">
+               <label for="name"><strong><em>Name:</em></strong></label>
+                <input type="text" id="name" class="playerName" required />
+            </p>
+            
+            <div class="players">
+                <p id="player1"><button>player 1</button></p>
+                <p id="player2"><button>Player 2</button></p>
+            </div>
+
+            <p id="start"><button>Start Game</button></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="Afterround"></div>
+    </div>
+    
+    <div class="container2">
+        <div id="DivBoard"></div>
+    </div>
+   
+
+</body>
+</html>

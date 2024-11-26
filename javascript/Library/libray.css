@@ -1,0 +1,143 @@
+/* style */
+
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    box-sizing: border-box; 
+    font-size: 16px;
+}
+
+@font-face {
+    font-family: "fontwriting";
+    src: url("bold-webfont.woff") format("woff");
+    src: url("bold-webfont.woff2") format(("woff2"));
+    font-weight: normal;
+    font-size: normal;
+}
+
+body {
+    height: 100%;
+    font-family: "fontwriting";
+}
+
+header {
+    background-color: rgb(24, 24, 119);
+    padding-bottom: 40px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+
+    font-size: 40px;
+    color: white;
+}
+
+#openFormButton {
+    margin: 20px;
+    padding: 8px;
+  
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(24, 24, 119);
+    color: white;
+
+    font-size: 20px;
+    width: 150px;
+}
+
+#popupOverlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: absolute;
+
+    background-color: rgb(24, 24, 119);
+    box-shadow: 0 0 5px blue;
+    border-radius: 10px;
+    color: white;
+}
+
+form input,
+form button {
+    margin-bottom: 8px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+
+    border: none;
+}
+
+#closeFormButton {
+    width: 40%;
+    height: 23px;
+    margin-left: 60%;
+
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(24, 24, 119);
+    box-shadow: 0 0 8px white;
+}
+
+.addBook {
+    margin-top: 10px;
+
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+
+    color: white;
+    background-color: rgb(24, 24, 119);
+    box-shadow: 0 0 8px white;
+}
+
+#bookStore {
+    padding: 10px;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    gap: 25px;
+}
+
+#bookStore button {
+    margin-top: 6px;
+    padding: 10px;
+    width: 100%;
+    padding:10px;
+    text-align: center;
+
+    border: none;
+    border-radius: 10px;
+}
+
+.readButton {
+    background-color: rgb(24, 24, 119);
+    color: white;
+}
+
+.removeBook {
+   background-color: white; 
+   color: blue;
+}
+
+#bookStore div {
+    background-color: rgb(190, 190, 223);
+    color: black;
+    font-size: 18px;
+    text-align: left;
+    padding: 10px;
+
+    border-radius: 10px;
+    box-shadow: 0 0 5px blue;
+}

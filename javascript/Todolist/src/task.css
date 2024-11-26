@@ -1,0 +1,31 @@
+/* style */
+
+#tasksDiv {
+  background-color: #1e0411;
+
+  padding: 50px;
+  padding-left: 80px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  #tasksDiv {
+    background-color: #1e0411;
+
+    padding: 50px;
+    padding-left: 80px;
+    position: relative;
+
+    display: flex;
+    flex-shrink: 50px;
+    flex-direction: column;
+    gap: 15px;
+
+    height: 100%;
+  }
+}

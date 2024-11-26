@@ -1,0 +1,31 @@
+/* style */
+
+#priorityOne {
+  background-color: gold;
+
+  padding: 50px;
+  padding-left: 80px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  #priorityOne {
+    background-color: gold;
+
+    padding: 50px;
+    padding-left: 80px;
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+    gap: 15px;
+
+    height: 100%;
+  }
+}
