@@ -1,0 +1,194 @@
+/* style */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #071952;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 15px;
+  color: #f3f7ec;
+}
+
+#forecast {
+  margin-top: 50px;
+  color: #f3f7ec;
+}
+
+input {
+  width: 700px;
+  border: 1px solid black;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #f3f7ec;
+}
+
+button {
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+button:hover {
+  background-color: #ff7f3e;
+}
+
+#form {
+  display: flex;
+  gap: 20px;
+}
+
+img {
+  height: 80px;
+  width: 80px;
+}
+
+#currentDiv {
+  margin-bottom: 70px;
+  padding: 20px;
+  padding-left: 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #f3f7ec;
+  box-shadow: 0 0 5px black;
+  font-size: 20px;
+}
+
+#div1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+#icon {
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
+
+#div2 {
+  display: flex;
+  gap: 300px;
+  margin-left: 200px;
+  margin-bottom: 20px;
+}
+
+.moonphase {
+  margin-left: 400px;
+}
+
+#time {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#daysDiv {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+#elementDiv {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 50px;
+  position: relative;
+  background-color: #f3f7ec;
+  box-shadow: 0 0 5px black;
+}
+
+#div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin-bottom: 20px;
+  gap: 30px;
+}
+
+#div img {
+  border-radius: 10px;
+}
+
+#icon {
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
+
+.date {
+  margin-bottom: 15px;
+}
+
+.description {
+  margin-top: 15px;
+}
+
+#label {
+  color: #4682a9;
+}
+
+#loading {
+  color: #f3f7ec;
+  font-size: 50px;
+  margin-top: 400px;
+}
+
+/* Phone Styles */
+@media (max-width: 767px) {
+  content {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  #currentDiv {
+    margin-bottom: 70px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #f3f7ec;
+    box-shadow: 0 0 5px black;
+    font-size: 20px;
+  }
+
+  input {
+    width: 100%; /* Full width input for small screens */
+  }
+
+  #div1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  #div2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #daysDiv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #elementDiv {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .moonphase {
+    margin-left: 50px; /* Reset margin */
+  }
+}
