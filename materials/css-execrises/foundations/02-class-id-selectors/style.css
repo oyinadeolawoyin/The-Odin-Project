@@ -1,0 +1,22 @@
+/* style.css */
+
+.odd-number {
+    color: light red;
+    background-color: pink;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+} 
+
+#even-number {
+    color: blue;
+    font-size: 36px;
+}
+
+.odd {
+    font-size: 24px;
+}
+
+#even-number2 {
+    background-color: lightgreen;
+    font-size: 24px;
+    font: bold;
+}
