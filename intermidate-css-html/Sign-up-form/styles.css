@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-size: inherit;
+}
+
+@font-face {
+    font-family: "fontwriting";
+    src: url("bold-webfont.woff") format("woff");
+    src: url("bold-webfont.woff2") format(("woff2"));
+    font-weight: normal;
+    font-size: normal;
+}
+
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.odin{
+    height: 150px;
+}
+
+.odinProject {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     position: absolute;
+     top: 200px;
+
+     background-color: black;
+     opacity: 0.6;
+     width: 100%;
+}
+
+body > div > div {
+    position: relative;
+    width: 400px;
+    height: 100%;
+}
+
+.img {
+    width: 400px;
+    height: 100%;
+}
+
+#myodin {
+    color: white;
+    font-family: "fontwriting";
+    font-size: 50px;
+}
+
+.form {
+    display: flex;
+    gap: 95px;
+
+    position: relative;
+    height: 100%;
+
+    background-color: white;
+    
+}
+
+section{
+    margin-top: 100px;
+
+    font-family: "fontwriting";
+    font-size: 1.2rem;
+}
+
+section > p + p{
+    margin-top: 20px;
+}
+
+form > p {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+form {
+    margin-top: 30px;
+}
+
+form > div {
+    display: flex;
+    gap: 55px;
+    margin-bottom: 15px;
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+}
+
+form:last-of-type div:last-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    margin-top: 30px;
+}
+
+input {
+    border: 2px solid #E5E7EB;
+    border-radius: 3px;
+    outline: none;
+
+}
+
+input:invalid{
+    border: 2px solid red;
+    border-radius: 3px;
+}
+
+input:focus {
+    border: 1px solid #007BFF; 
+    box-shadow: 0 0 2px blue;
+}
+
+button {
+    margin-right: 200px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+label {
+    font-size: 12px;
+}
+
+a {
+    color: rgb(112, 75, 7);
+    text-decoration: none;
+}
+
+form:last-of-type div:last-of-type p:last-of-type {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}

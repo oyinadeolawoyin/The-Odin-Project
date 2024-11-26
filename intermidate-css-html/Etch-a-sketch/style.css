@@ -1,0 +1,61 @@
+/* style */
+ 
+body{
+    margin-bottom: 12x;
+    margin-top: 25px;
+    margin-left: 15px;
+    margin-right: 15x;
+    background-color: rgb(31, 16, 44);
+    display: flex;
+    justify-content: center;
+}
+
+ #columns {
+    display: flex;
+    margin: 80px 80px;
+    justify-content: center;
+    background-color: whitesmoke;
+    flex-shrink:150px ;
+}   
+
+.class_rows {
+    
+    height: 30px;
+    width: 30px;
+    flex: 1 1 auto;
+    border: 1px solid peru;
+    
+    
+}
+
+ #tools{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} 
+
+.button {
+    width: 100px; 
+    border-radius: 13px;
+    margin-bottom: 35px;
+    height: 50px;
+}  
+
+.mytools{
+    width: 100px; 
+    border-radius: 13px;
+    margin-bottom: 35px;
+    height: 50px;
+    background-color: #ffDAB9;
+    color: rgb(34, 34, 100); 
+}
+
+.image {
+    
+   
+    
+    height: 100%;
+    width: 100%;
+   
+    
+}
