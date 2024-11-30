@@ -21,7 +21,7 @@ function fibs(n) {
 let list1 = "",
   list2 = "",
   count = 0;
-function fibsRec(n, num1, num2) {
+function fibsRec(n, num1 = 0, num2 = 1) {
   count += 1;
   if (n == 2) return [];
 
@@ -36,4 +36,4 @@ function fibsRec(n, num1, num2) {
   return [...list1, ...list2];
 }
 
-// console.log(fibsRec(12, 0, 1));
+console.log(fibsRec(8));
