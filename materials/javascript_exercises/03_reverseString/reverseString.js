@@ -1,13 +1,12 @@
-const reverseString = function(word) {
-    listOfLetters = []
-   
-    for (i = 1; i < (word.length+1); i++) {
-        listOfLetters.push(word[word.length - i])
-         
-    }
+const reverseString = function (word) {
+  listOfLetters = [];
 
-    word = listOfLetters.join("")
-    return(word)
+  for (i = 1; i < word.length + 1; i++) {
+    listOfLetters.push(word[word.length - i]);
+  }
+
+  word = listOfLetters.join("");
+  return word;
 };
 
 // console.log(reverseString('Please, tell me how can i help you'))

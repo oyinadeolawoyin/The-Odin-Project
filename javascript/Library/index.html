@@ -1,64 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <script src="library.js" defer></script>
-    <link rel="stylesheet" href="libray.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="libray.css" />
+  </head>
+  <body>
     <header>
-        <h1>Library</h1>
+      <h1>Library</h1>
     </header>
 
     <button id="openFormButton">Add book</button>
     <div id="popupOverlay" class="popup-overlay">
-        <div class="popup-form">
-            <h2 class="required">* Fields are required</h2>
-            <form id="popupForm">
-                <button type="button" id="closeFormButton">Close</button>
-                <label for="title">Book Title:</label>
-                <input type="text" id="title" name="title" class="bookTitle" placeholder="*Title" required />
-                <label for="author">Author:</label>
-                <input type="text" id="author" name="author" class="bookAuthor" placeholder="*Author" required />
-                <label for="page">Pages:</label>
-                <input type="number" name="page" id="page" class="bookPages">
-                <div>
-                    <p>Have you read</p>
-                    <label for="yes">Yes</label>
-                    <input type="radio" name="status" id="yes" class="radio" value="Yes">
-                    <label for="no">No</label>
-                    <input type="radio" name="status" id="no" class="radio" value="No">
-                </div>
-                <button type="submit" id="submitForm" class="addBook">Add</button>
-            </form>
-        </div>
+      <div class="popup-form">
+        <h2 class="required">* Fields are required</h2>
+        <form id="popupForm">
+          <button type="button" id="closeFormButton">Close</button>
+          <label for="title">Book Title:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="bookTitle"
+            placeholder="*Title"
+            required
+          />
+          <label for="author">Author:</label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            class="bookAuthor"
+            placeholder="*Author"
+            required
+          />
+          <label for="page">Pages:</label>
+          <input type="number" name="page" id="page" class="bookPages" />
+          <div>
+            <p>Have you read</p>
+            <label for="yes">Yes</label>
+            <input
+              type="radio"
+              name="status"
+              id="yes"
+              class="radio"
+              value="Yes"
+            />
+            <label for="no">No</label>
+            <input
+              type="radio"
+              name="status"
+              id="no"
+              class="radio"
+              value="No"
+            />
+          </div>
+          <button type="submit" id="submitForm" class="addBook">Add</button>
+        </form>
+      </div>
     </div>
 
     <div id="bookStore">
-        <div class="parentDiv demo">
-            Book Details
-            <div class="paraDiv">
-                <p class="bookClass1">Title: Harry Potter</p>
-                <p class="bookClass2">Author: J.K Rowling</p>
-                <p class="bookClass3">pages: 300</p>
-            </div>
-            <button class="readButton">Read: Yes</button>
-            <button class="removeBook">Remove Book</button>
+      <div class="parentDiv demo">
+        Book Details
+        <div class="paraDiv">
+          <p class="bookClass1">Title: Harry Potter</p>
+          <p class="bookClass2">Author: J.K Rowling</p>
+          <p class="bookClass3">pages: 300</p>
         </div>
+        <button class="readButton">Read: Yes</button>
+        <button class="removeBook">Remove Book</button>
+      </div>
 
-        <div class="parentDiv demo">
-            Book Details
-            <div class="paraDiv">
-                <p class="bookClass1">Title: Salem's Lot</p>
-                <p class="bookClass2">Author: Steven King</p>
-                <p class="bookClass3">pages: 595</p>
-            </div>
-            <button class="readButton">Read: No</button>
-            <button class="removeBook">Remove Book</button>
+      <div class="parentDiv demo">
+        Book Details
+        <div class="paraDiv">
+          <p class="bookClass1">Title: Salem's Lot</p>
+          <p class="bookClass2">Author: Steven King</p>
+          <p class="bookClass3">pages: 595</p>
         </div>
+        <button class="readButton">Read: No</button>
+        <button class="removeBook">Remove Book</button>
+      </div>
     </div>
-</body>
+  </body>
 </html>

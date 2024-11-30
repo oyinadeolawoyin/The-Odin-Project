@@ -11,14 +11,13 @@ module.exports = function (plop) {
     const { exerciseName } = answers;
     if (!exerciseName) {
       throw new Error(
-        `Invalid exerciseName. Expected: valid string. Actual: "${exerciseName}"`
+        `Invalid exerciseName. Expected: valid string. Actual: "${exerciseName}"`,
       );
     }
 
     const camelExerciseName = camelCase(exerciseName);
-    const exerciseDirectoryName = await createExerciseDirectoryName(
-      camelExerciseName
-    );
+    const exerciseDirectoryName =
+      await createExerciseDirectoryName(camelExerciseName);
     const basePath = join("./", exerciseDirectoryName);
     const solutionPath = join(basePath, "solution");
 

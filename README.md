@@ -23,14 +23,17 @@ This repository serves as my journey log through The Odin Project. Each project 
 Below are some of the projects I am working on as part of the curriculum. This list will expand as I progress through the course:
 
 1. **HTML/CSS Foundations**
+
    - A series of exercises to build a solid understanding of HTML structure and styling with CSS.
    - Projects: Webpage layouts, responsive design, Flexbox, Grid
 
 2. **JavaScript Basics**
+
    - Basic JavaScript exercises for understanding syntax, functions, and DOM manipulation.
    - Projects: Calculator app, Rock-Paper-Scissors game
 
 3. **Intermediate JavaScript**
+
    - Diving deeper into JavaScript, working with arrays, objects, and more complex functions.
    - Projects: Etch-a-Sketch, To-Do List app
 
@@ -45,12 +48,13 @@ This repository will reflect my progress with the following skills:
 - **HTML/CSS**: Semantic HTML, Flexbox, Grid, responsive design
 - **JavaScript**: Basic syntax, functions, DOM manipulation, and ES6+ features
 - **Git and GitHub**: Version control, branching, and collaboration
-- **React** *(Coming soon)*: Components, props, state, and React Router
-- **Node.js and Express** *(Coming soon)*: Backend development
+- **React** _(Coming soon)_: Components, props, state, and React Router
+- **Node.js and Express** _(Coming soon)_: Backend development
 
 ## Getting Started
 
 To explore my projects:
+
 1. **Navigate to a specific project**:
    Each project folder will have a README with setup instructions if needed.
 

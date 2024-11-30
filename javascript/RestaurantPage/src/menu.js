@@ -2,66 +2,63 @@ import { food } from "./food.js";
 import "./menu.css";
 
 function foodType(list) {
+  let menu = document.createElement("div");
+  menu.classList.add("menu");
 
-    let menu = document.createElement("div");
-    menu.classList.add("menu");
+  let headDiv = document.createElement("div");
+  headDiv.classList.add("headDiv");
 
-    let headDiv = document.createElement("div");
-    headDiv.classList.add("headDiv");
+  let menuHead = document.createElement("h1");
+  menuHead.classList.add("menuHeadline");
+  menuHead.textContent = "Menu";
 
-    let menuHead = document.createElement("h1");
-    menuHead.classList.add("menuHeadline");
-    menuHead.textContent = "Menu";
+  headDiv.appendChild(menuHead);
 
-    headDiv.appendChild(menuHead);
+  menu.appendChild(headDiv);
 
-    menu.appendChild(headDiv);
+  for (let typeFood of list) {
+    let divType = document.createElement("div");
+    divType.classList.add(`${typeFood.typeclass}`);
 
-   for (let typeFood of list) {
+    let typeFoodTitle = document.createElement("p");
+    typeFoodTitle.classList.add("head");
+    typeFoodTitle.textContent = `${typeFood.type}`;
 
-        let divType = document.createElement("div");
-        divType.classList.add(`${typeFood.typeclass}`);
+    divType.appendChild(typeFoodTitle);
 
-        let typeFoodTitle = document.createElement("p");
-        typeFoodTitle.classList.add("head");
-        typeFoodTitle.textContent = `${typeFood.type}`;
+    let varieties = document.createElement("div");
+    varieties.classList.add(`${typeFood.class}`);
 
-        divType.appendChild(typeFoodTitle);
+    for (let variety of typeFood.varieties) {
+      let varietyDiv = document.createElement("div");
 
-        let varieties = document.createElement("div");
-        varieties.classList.add(`${typeFood.class}`);
+      // //image head
+      let varietyHead = document.createElement("p");
+      varietyHead.classList.add("head");
+      varietyHead.textContent = `${variety.name}`;
 
-        for (let variety of typeFood.varieties) {
+      // //image
+      let varietyImage = document.createElement("img");
+      varietyImage.src = variety.img;
+      varietyImage.classList.add("image");
 
-            let varietyDiv = document.createElement("div");
+      //images paragraph
+      let varietyPara = document.createElement("p");
+      varietyPara.classList.add("para");
+      varietyPara.textContent = `${variety.description}`;
 
-            // //image head
-            let varietyHead = document.createElement("p");
-            varietyHead.classList.add("head");
-            varietyHead.textContent = `${variety.name}`;
-          
-            // //image
-            let varietyImage = document.createElement("img");
-            varietyImage.src = variety.img;
-            varietyImage.classList.add("image");
-            
-            //images paragraph
-            let varietyPara = document.createElement("p");
-            varietyPara.classList.add("para");
-            varietyPara.textContent = `${variety.description}`;
+      varietyDiv.appendChild(varietyHead);
+      varietyDiv.appendChild(varietyImage);
+      varietyDiv.appendChild(varietyPara);
 
-            varietyDiv.appendChild(varietyHead);
-            varietyDiv.appendChild(varietyImage);
-            varietyDiv.appendChild(varietyPara); 
+      varieties.appendChild(varietyDiv);
+      divType.appendChild(varieties);
+    }
 
-            varieties.appendChild(varietyDiv);
-            divType.appendChild(varieties);
-        };
+    menu.appendChild(divType);
+  }
 
-        menu.appendChild(divType);
-   };
-
-   return menu;
+  return menu;
 }
 
 let foodMenu = foodType(food);

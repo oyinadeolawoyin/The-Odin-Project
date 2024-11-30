@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeFormButton = document.getElementById("close");
   const popupOverlay = document.getElementById("popupOverlay");
   const submitForm = document.getElementById("submitForm");
-  const form = document.getElementById("popupForm")
+  const form = document.getElementById("popupForm");
 
   popupOverlay.style.display = "none";
   openFormButton.addEventListener("click", () => {
@@ -319,13 +319,13 @@ let htmlDisplay = (function () {
   }
 
   function showError(input) {
-     let inputElement = document.getElementById(input);
-     let inputValue = inputElement.value.trim();
-     if (inputValue.length > 15) {
+    let inputElement = document.getElementById(input);
+    let inputValue = inputElement.value.trim();
+    if (inputValue.length > 15) {
       inputElement.setCustomValidity("Words too long");
-     } else inputElement.setCustomValidity("");
+    } else inputElement.setCustomValidity("");
 
-     inputElement.reportValidity();
+    inputElement.reportValidity();
   }
 
   document.getElementById("mytitle").addEventListener("input", () => {

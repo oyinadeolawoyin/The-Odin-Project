@@ -1,79 +1,131 @@
 @font-face {
-    font-family: "Mywriting";
-    src: url(fonts/inriasans-bold-webfont.woff2) format("woff2");
-    src: url(fonts/inriasans-bold-webfont.woff) format("woff");
+  font-family: "Mywriting";
+  src: url(fonts/inriasans-bold-webfont.woff2) format("woff2");
+  src: url(fonts/inriasans-bold-webfont.woff) format("woff");
 }
 
 @font-face {
-    font-family: "writing";
-    src: url(fonts/inriasans-bolditalic-webfont.woff2) format("woff2");
-    src: url(fonts/inriasans-bolditalic-webfont.woff) format("woff");
+  font-family: "writing";
+  src: url(fonts/inriasans-bolditalic-webfont.woff2) format("woff2");
+  src: url(fonts/inriasans-bolditalic-webfont.woff) format("woff");
 }
 
 @font-face {
-    font-family: "Handwriting";
-    src: url(fonts/inriasans-italic-webfont.woff2) format("woff2");
-    src: url(fonts/inriasans-italic-webfont.woff) format("woff");
+  font-family: "Handwriting";
+  src: url(fonts/inriasans-italic-webfont.woff2) format("woff2");
+  src: url(fonts/inriasans-italic-webfont.woff) format("woff");
 }
 
 .contactUs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    line-height: 1.5;
-    font-size: 20px;
-    font-family: "Handwriting";
-    font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  line-height: 1.5;
+  font-size: 20px;
+  font-family: "Handwriting";
+  font-family: "Courier New", Courier, monospace;
 }
 
 .contactHead {
-    text-align: center;
-    background-color: #003049;
-    padding: 0px;
-    border-radius: 10px;
+  text-align: center;
+  background-color: #003049;
+  padding: 0px;
+  border-radius: 10px;
 
-    font-family: "Mywriting";
+  font-family: "Mywriting";
 }
 
 #form {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 15px;
 }
 
 input {
-    width: 400px;
+  width: 400px;
+  height: 30px;
+
+  border-radius: 10px;
+  border: none;
+
+  font-size: 15px;
+  text-align: center;
+}
+
+textarea {
+  width: 400px;
+  height: 400px;
+  font-size: 15px;
+
+  border: 5px solid black;
+}
+
+label {
+  font-size: 20px;
+  font-family: "writing";
+}
+
+#buttonSubmit:hover {
+  background-color: #c1121f;
+}
+
+#buttonSubmit {
+  width: 400px;
+  height: 50px;
+
+  border-radius: 15px;
+  border: none;
+
+  background-color: black;
+  color: white;
+}
+
+.reach {
+  margin-top: 50px;
+}
+
+.socialMedia {
+  display: flex;
+  gap: 20px;
+}
+
+.images {
+  height: 50px;
+  width: 50px;
+}
+
+.hours {
+  color: #c1121f;
+  font-size: 30px;
+  font-family: "writing";
+  margin-top: 30px;
+}
+
+.contactHead {
+  color: #fdf0d5;
+  text-shadow: 0 0 1px black;
+  padding: 0px;
+
+  font-family: "Mywriting";
+}
+
+/* Small devices (phones, 767px and down) */
+@media (max-width: 767px) {
+  input {
+    width: 300px;
     height: 30px;
 
     border-radius: 10px;
     border: none;
 
     font-size: 15px;
-    text-align: center;  
-}
+    text-align: center;
+  }
 
-textarea {
-    width: 400px;
-    height: 400px;
-    font-size: 15px;
-
-    border: 5px solid black;
-}
-
-label {
-    font-size: 20px;
-    font-family: "writing";
-}
-
-
-#buttonSubmit:hover {
-    background-color: #C1121F;
-}
-
-#buttonSubmit {
-    width: 400px;
+  #buttonSubmit {
+    width: 300px;
     height: 50px;
 
     border-radius: 15px;
@@ -81,69 +133,13 @@ label {
 
     background-color: black;
     color: white;
-}
+  }
 
-.reach {
-    margin-top: 50px;
-}
+  textarea {
+    width: 300px;
+    height: 300px;
+    font-size: 15px;
 
-.socialMedia {
-    display: flex;
-    gap: 20px;
-}
-
-.images {
-    height: 50px;
-    width: 50px;
-} 
-
-.hours {
-    color: #C1121F;
-    font-size: 30px;
-    font-family: "writing";
-    margin-top: 30px;
-}
-
-.contactHead {
-    color: #FDF0D5;
-    text-shadow: 0 0 1px black;
-    padding: 0px;
-
-    font-family: "Mywriting";
-}
-
-/* Small devices (phones, 767px and down) */
-@media (max-width: 767px) {
-    
-    input {
-        width: 300px;
-        height: 30px;
-
-        border-radius: 10px;
-        border: none;
-
-        font-size: 15px;
-        text-align: center;
-        
-    }
-
-    #buttonSubmit {
-        width: 300px;
-        height: 50px;
-    
-        border-radius: 15px;
-        border: none;
-    
-        background-color: black;
-        color: white;
-    }
-    
-    textarea {
-        width: 300px;
-        height: 300px;
-        font-size: 15px;
-    
-        border: 5px solid black;
-    }
-    
+    border: 5px solid black;
+  }
 }

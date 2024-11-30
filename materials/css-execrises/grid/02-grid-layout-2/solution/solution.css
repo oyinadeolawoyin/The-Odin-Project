@@ -26,7 +26,7 @@ html {
 }
 
 .sidebar {
-  background-color: #005B94;
+  background-color: #005b94;
   grid-row: 2 / 4;
 }
 
@@ -35,7 +35,7 @@ html {
 }
 
 .article {
-  background-color: #7E1DC3;
+  background-color: #7e1dc3;
 }
 
 .article p {

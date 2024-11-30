@@ -6,9 +6,9 @@ Leaving it here for posterity, or a good challenge for anyone that wants to give
 
 Convert phrases and words into snake case
 
-> Snake case (or snake\_case) is the practice of writing compound words or phrases in which the elements are separated with one underscore character (\_) and no spaces, with each element's initial letter usually lowercased as in "foo\_bar" 
+> Snake case (or snake_case) is the practice of writing compound words or phrases in which the elements are separated with one underscore character (\_) and no spaces, with each element's initial letter usually lowercased as in "foo_bar"
 
 ```javascript
-snakeCase('Hello, World!') // hello_world
-snakeCase('snakeCase') // snake_case
+snakeCase("Hello, World!"); // hello_world
+snakeCase("snakeCase"); // snake_case
 ```

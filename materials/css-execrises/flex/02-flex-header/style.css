@@ -1,11 +1,10 @@
-.header  {
+.header {
   font-family: monospace;
   background: papayawhip;
   display: flex;
   justify-content: space-between;
   align-self: center;
   padding: 20px;
-  
 }
 
 .logo {
@@ -14,7 +13,6 @@
   color: tomato;
   background: white;
   padding: 4px 32px;
-  
 }
 
 ul {

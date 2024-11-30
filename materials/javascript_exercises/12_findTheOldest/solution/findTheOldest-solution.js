@@ -3,7 +3,7 @@ const findTheOldest = function (array) {
     const oldestAge = getAge(oldest.yearOfBirth, oldest.yearOfDeath);
     const currentAge = getAge(
       currentPerson.yearOfBirth,
-      currentPerson.yearOfDeath
+      currentPerson.yearOfDeath,
     );
     return oldestAge < currentAge ? currentPerson : oldest;
   });

@@ -19,14 +19,13 @@
   background-color: #393f4d;
 }
 
-
 .menu ul,
 .menu li {
   font-size: 16px;
 }
 
 .sidebar {
-  background-color: #C50208;
+  background-color: #c50208;
 }
 
 .sidebar .photo {
@@ -37,7 +36,6 @@
   border-radius: 10px;
 }
 
-
 .sidebar .side-content {
   background-color: white;
   color: black;
@@ -46,9 +44,8 @@
 }
 
 .nav {
-  background-color: #C50208;
+  background-color: #c50208;
 }
-
 
 .nav ul li {
   font-size: 16px;
@@ -67,7 +64,7 @@
 }
 
 .article .card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: black;
   text-align: center;
 }

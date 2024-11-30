@@ -1,89 +1,88 @@
 body {
-    background-image: url(./images/Bites.webp);
-
+  background-image: url(./images/Bites.webp);
 }
 
 @font-face {
-    font-family: "Mywriting";
-    src: url(fonts/inriasans-bold-webfont.woff2) format("woff2");
-    src: url(fonts/inriasans-bold-webfont.woff) format("woff");
+  font-family: "Mywriting";
+  src: url(fonts/inriasans-bold-webfont.woff2) format("woff2");
+  src: url(fonts/inriasans-bold-webfont.woff) format("woff");
 }
 
 @font-face {
-    font-family: "writing";
-    src: url(fonts/inriasans-bolditalic-webfont.woff2) format("woff2");
-    src: url(fonts/inriasans-bolditalic-webfont.woff) format("woff");
+  font-family: "writing";
+  src: url(fonts/inriasans-bolditalic-webfont.woff2) format("woff2");
+  src: url(fonts/inriasans-bolditalic-webfont.woff) format("woff");
 }
 
 #content {
-    border: none;
-    border-radius: 20px;
-    padding: 100px;
-    margin: 100px;
+  border: none;
+  border-radius: 20px;
+  padding: 100px;
+  margin: 100px;
 
-    background-color: #FDF0D5;
-    border: #780000 5px solid;
+  background-color: #fdf0d5;
+  border: #780000 5px solid;
 }
 
 header {
-    background-color: #FDF0D5;
+  background-color: #fdf0d5;
 }
 
 #title {
-    color: #C1121F;
-    font-size: 50px;
-    font-family: "Mywriting";
+  color: #c1121f;
+  font-size: 50px;
+  font-family: "Mywriting";
 }
 
 #divTitle {
-    text-align: center;
+  text-align: center;
 }
 
 nav {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 50px;
-    justify-content: center;
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+  justify-content: center;
 }
 
 .button {
-    height: 40px;
-    width: 400px;
-    font-size: 30px;
-    font-family: "Mywriting";
+  height: 40px;
+  width: 400px;
+  font-size: 30px;
+  font-family: "Mywriting";
 
-    background-color: #003049;
-    color: #FDF0D5;
-    border: none;
-    border-radius: 10px;
+  background-color: #003049;
+  color: #fdf0d5;
+  border: none;
+  border-radius: 10px;
 }
 
 .button:hover {
-    background-color: #669BBC;
+  background-color: #669bbc;
 }
 
 .appreciation {
-    font-family: "writing";
+  font-family: "writing";
 }
 
 @media (max-width: 767px) {
-    #content { 
-        padding: 20px;
-        margin: 50px;
-    }
+  #content {
+    padding: 20px;
+    margin: 50px;
+  }
 
-    nav {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 20px;
-        padding-left: 50px;
-        align-self: center;
-    }
+  nav {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    align-self: center;
+  }
 
-    header {
-        background-color: #FDF0D5;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+  header {
+    background-color: #fdf0d5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

@@ -2,9 +2,10 @@
 
 In this exercise we have set up a simple pop-up dialog for you. It already works! Load up index.html and give it a shot!
 
-You don't need to worry about the actual functionality here; we've just written a little javascript that adds and removes a `.show` class to the popup and the backdrop.  Your task then is to make it _move_, as in the desired-outcome image below.
+You don't need to worry about the actual functionality here; we've just written a little javascript that adds and removes a `.show` class to the popup and the backdrop. Your task then is to make it _move_, as in the desired-outcome image below.
 
 ### Hints
+
 - "modal" is another word for 'pop-up'
 - In the code we've provided, the popup is sitting in its final position. You'll need to change its initial position and then use a transition to move it back to the center.
 - You might want to change the initial opacity from 0% to something like 20% while you're working on it, so you can easily see where it is coming from before you click the button.

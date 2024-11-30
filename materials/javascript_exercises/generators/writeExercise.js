@@ -16,9 +16,9 @@ module.exports = ${exerciseName};
   await writeFile(
     join(
       exercisePath,
-      `${exerciseName}${isSolutionFile ? "-solution" : ""}.js`
+      `${exerciseName}${isSolutionFile ? "-solution" : ""}.js`,
     ),
-    exerciseContent
+    exerciseContent,
   );
 }
 

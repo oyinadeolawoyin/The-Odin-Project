@@ -28,7 +28,7 @@ describe('${exerciseName}', () => {
 
   await writeFile(
     join(exercisePath, `${trueExerciseName}.spec.js`),
-    exerciseSpecContent
+    exerciseSpecContent,
   );
 }
 

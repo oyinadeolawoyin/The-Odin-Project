@@ -8,6 +8,7 @@ This repository contains a collection of projects developed as part of the Found
 2. **Landing Page**: A responsive landing page designed to engage visitors, focusing on layout, styling, and content presentation.
 3. **Calculator**: A functional calculator application that allows users to perform basic arithmetic operations, highlighting JavaScript skills.
 4. **Rock-Paper-Scissors**: A browser-based game where users can play Rock-Paper-Scissors against the computer, showcasing game logic and user interaction.
+
 ## Technologies Used
 
 - **HTML**: For structuring content across projects.

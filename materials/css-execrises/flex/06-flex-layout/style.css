@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 body {
   height: 100vh;
@@ -7,42 +7,43 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-ul{
-   list-style-type: none;
+ul {
+  list-style-type: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-.header{
+.header {
   display: flex;
 }
 
-.left-links{
-   flex: auto;
+.left-links {
+  flex: auto;
 }
-.left-links, .right-links{
-   display: flex;
-   gap: 12px;
-   padding: 10px;
+.left-links,
+.right-links {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
 }
 
-.my{
+.my {
   display: flex;
   flex-direction: column;
   height: 90%;
 }
 
-.footer{
-    display:flex;
-    background-color: rgb(182, 161, 133);
-    margin-top: auto;
+.footer {
+  display: flex;
+  background-color: rgb(182, 161, 133);
+  margin-top: auto;
 }
 
-.content{
-   text-align: center;
+.content {
+  text-align: center;
 }
 
 img {

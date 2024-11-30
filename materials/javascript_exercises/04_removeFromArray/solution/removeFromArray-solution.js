@@ -6,7 +6,7 @@ const removeFromArray = function (array, ...args) {
   const newArray = [];
   // use forEach to go through the array
   array.forEach((item) => {
-    console.log(item)
+    console.log(item);
     // push every element into the new array
     // UNLESS it is included in the function arguments
     // so we create a new array with every item, except those that should be removed
@@ -18,15 +18,14 @@ const removeFromArray = function (array, ...args) {
   return newArray;
 };
 
-
 // A simpler, but more advanced way to do it is to use the 'filter' function,
 // which basically does what we did with the forEach above.
 
-var RemoveFromArray = function(array, ...args) {
-  return array.filter(val => !args.includes(val))
-}
+var RemoveFromArray = function (array, ...args) {
+  return array.filter((val) => !args.includes(val));
+};
 //
 
-console.log(RemoveFromArray([1, 2, 3, 4, 5], 1, 2, 3))
+console.log(RemoveFromArray([1, 2, 3, 4, 5], 1, 2, 3));
 
 module.exports = removeFromArray;
