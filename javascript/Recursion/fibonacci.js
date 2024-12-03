@@ -16,12 +16,11 @@ function fibs(n) {
   return list;
 }
 
-function fibsRec(n, num1 = 0, num2 = 1, result = [1, 2]) {
-
+function fibsRec(n, num1 = 0, num2 = 1, result = [0, 1]) {
   if (n == 2) return [];
   
-  result.push(num1 + num2);
-  return [num1 + num2, ...fibsRec(n - 1, num2, num1 + num2, result)];
+  result.push(num1 + num2); 
+  return [...result, ...fibsRec(n - 1, num2, num1 + num2, [])];
 }
 
-console.log(fibsRec(8));
+console.log(fibsRec(12));
