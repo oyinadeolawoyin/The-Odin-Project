@@ -17,10 +17,10 @@ function fibs(n) {
 }
 
 function fibsRec(n, num1 = 0, num2 = 1, result = [0, 1]) {
-  if (n == 2) return [];
+  if (result.length >= n) return result.slice(0, n);
   
   result.push(num1 + num2); 
-  return [...result, ...fibsRec(n - 1, num2, num1 + num2, [])];
+  return [...fibsRec(n, num2, num1 + num2, result)];
 }
 
-console.log(fibsRec(12));
+console.log(fibsRec(8));
