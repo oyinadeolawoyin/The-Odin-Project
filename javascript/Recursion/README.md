@@ -35,12 +35,10 @@ The `fibsRec` function generates the Fibonacci sequence recursively. It starts w
 ---
 
 ### 3. `mergeSort` Function
-The `mergeSort` function is a sorting algorithm that uses the **merge sort** technique. It recursively divides the array into halves, sorts each half, and then merges them back together in sorted order.
 
 - **How it works**:
-  1. The array is recursively split into two halves.
-  2. Each half is sorted by calling the `mergeSort` function on it.
-  3. The sorted halves are merged by comparing the elements and choosing the smaller one at each step.
+  -  Recursively generates Fibonacci numbers using two variables (num1 and num2) for the current and next values.
+  -  Builds two lists, list1 and list2, and combines them for the result.
 
 
 - **Example**:
