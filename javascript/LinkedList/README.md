@@ -12,7 +12,6 @@ A JavaScript-based implementation of a LinkedList data structure, created as par
 - Access the head and tail of the list.
 - Retrieve and manipulate nodes at specific positions.
 - Check if a node exists or find a specific value.
-- Efficiently handle cases with no modifications to the original list, ensuring immutability.
 
 ---
 
@@ -22,7 +21,6 @@ This linked list implementation includes:
 1. **Node Factory**: Each node has a `value` and a reference to the `next` node.
 2. **LinkedList Factory**:
    - Provides utility methods to manipulate the list.
-   - Returns a new list instead of modifying the original (ensures immutability).
 
 ---
 

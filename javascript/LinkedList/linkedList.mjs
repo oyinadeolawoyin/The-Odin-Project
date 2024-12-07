@@ -1,17 +1,16 @@
-function node(value, nextNode) {
+function node(value, nextNode = null) {
   return {
     value: value,
     next: nextNode,
   };
 }
 
-// console.log(node(3, null));
+function linkedList(value) {
+  let newList = creatNewList(value);
 
-// The linkedList function factory creates and returns a new list without modifying the original list passed as an argument.
-// Similar to how strings remain unchanged when methods are applied to them, the original list stays intact.
-// To access the modified list, use the getList method provided by this function factory.
-function linkedList(list) {
-  let newList = list;
+  function creatNewList(value, next) {
+    return node(value, next);
+  }
 
   function append(value, linkedlist = newList) {
     if (linkedlist === null) return node(value, null);
@@ -145,10 +144,4 @@ function linkedList(list) {
   };
 }
 
-// let myList = {}
-
-// let linked = linkedList(myList);
-// linked.prepend("Orange");
-// linked.append("Apple!");
-
-// console.log(linked.toString());
+export { linkedList };
