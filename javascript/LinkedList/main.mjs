@@ -42,4 +42,5 @@ let myList = list.getList();
 
 console.log(myList);
 
+
 console.log(list.toString());

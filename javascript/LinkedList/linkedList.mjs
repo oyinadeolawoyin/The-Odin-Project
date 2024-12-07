@@ -5,6 +5,7 @@ function node(value, nextNode = null) {
   };
 }
 
+
 function linkedList(value) {
   let newList = creatNewList(value);
 
@@ -14,10 +15,6 @@ function linkedList(value) {
 
   function append(value, linkedlist = newList) {
     if (linkedlist === null) return node(value, null);
-    else if (Object.keys(linkedlist).length === 0) {
-      newList = node(value, null);
-      return newList;
-    }
 
     newList = {
       value: linkedlist.value,
@@ -28,11 +25,7 @@ function linkedList(value) {
   }
 
   function prepend(value) {
-    if (Object.keys(newList).length === 0) {
-      newList = node(value, null);
-    } else {
-      newList = node(value, newList);
-    }
+    newList = node(value, newList);
 
     return newList;
   }
