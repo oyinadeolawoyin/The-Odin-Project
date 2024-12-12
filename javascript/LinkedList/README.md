@@ -28,7 +28,7 @@ This linked list implementation includes:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/linkedlist-odin.git
+   git clone https://github.com/oyinadeolawoyin/The-Odin-Project/tree/main/javascript/LinkedList
    cd linkedlist-odin
    ```
 2. Open the project in your favorite code editor (e.g., VS Code).
