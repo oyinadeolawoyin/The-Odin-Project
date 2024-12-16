@@ -82,6 +82,72 @@ function tree(array) {
         return root; // Return the modified tree
     }
 
+    function find(root, value) {
+        if (root.data === value) return root;
+
+        if (value < root.data) return find(root.left, value);
+        else if (value > root.data) return find(root.right, value);
+    }
+
+    function levelOrdercallback(node) {
+        if (node === undefined || node === null) return [];
+
+       let left = null, right = null;
+       if (node.left) left = node.left.data;
+       if (node.right) right = node.right.data;
+       
+       return [left, right];
+    }
+
+    //mySolution:
+    function levelOrder(root, callback) {
+    
+        if (typeof callback !== 'function') {
+            throw new Error("A callback function is required");
+        }
+
+        let queue = [];
+        let result = [];
+
+        queue.push(root.data);
+        
+        while (queue.length > 0) {
+         
+            let currentNode = queue.shift();
+            result.push(currentNode);
+            queue.push(...callback(find(root, currentNode)));
+               
+        } 
+        return result.filter((x) => x !== null);
+    }
+    
+    //efficient code:
+
+    // function levelOrder(root, callback) {
+    //     if (typeof callback !== 'function') {
+    //         throw new Error("A callback function is required");
+    //     }
+
+    //     if (root === null) return [];
+
+    //     let queue = [root]; // Start with the root node
+    //     let result = [];
+
+    //     while (queue.length > 0) {
+    //         let currentNode = queue.shift(); // Dequeue the first node
+
+    //         callback(currentNode); // Apply the callback
+    //         result.push(currentNode.data); // Collect the value
+
+    //         // Enqueue left and right children if they exist
+    //         if (currentNode.left) queue.push(currentNode.left);
+    //         if (currentNode.right) queue.push(currentNode.right);
+    //     }
+
+    //     return result; // Return the collected values
+    // }
+      
+
     function prettyPrint(node, prefix = "", isLeft = true) {
         if (node === null) {
           return;
@@ -95,7 +161,7 @@ function tree(array) {
         }
     }
 
-    return { btsRec, insert, prettyPrint, deleteNode}
+    return { btsRec, insert, prettyPrint, deleteNode, find ,levelOrdercallback ,levelOrder}
 }
 
 
@@ -104,4 +170,8 @@ const root = tree(arr);
 const btu = root.btsRec()
 root.insert(btu, 0);
 // root.deleteNode(btu, 8);
+// console.log(root.find(btu, 4));
+// console.log(btu);
 root.prettyPrint(btu);
+
+console.log(root.levelOrder(btu,  root.levelOrdercallback));
