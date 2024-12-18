@@ -115,20 +115,17 @@ function tree(array) {
          
             let currentNode = queue.shift();
             result.push(currentNode);
-            queue.push(...callback(find(root, currentNode)));
+            if (currentNode !== null) queue.push(...callback(find(root, currentNode)));
                
         } 
         return result.filter((x) => x !== null);
     }
     
     //efficient code:
-
     // function levelOrder(root, callback) {
     //     if (typeof callback !== 'function') {
     //         throw new Error("A callback function is required");
     //     }
-
-    //     if (root === null) return [];
 
     //     let queue = [root]; // Start with the root node
     //     let result = [];
@@ -146,8 +143,131 @@ function tree(array) {
 
     //     return result; // Return the collected values
     // }
-      
 
+
+    function inOrder(root, callback) {
+
+        if (typeof callback !== 'function') {
+            throw new Error("A callback function is required");
+        }
+
+        if (root === null) return root;
+        
+        if (root.left) inOrder((root.left), callback);
+        callback(root);
+        if (root.right) inOrder((root.right), callback);
+
+        return;
+    }
+
+    function preOrder(root, callback) {
+
+        if (typeof callback !== 'function') {
+            throw new Error("A callback function is required");
+        }
+
+        if (root === null) return root;
+        
+        callback(root);
+        if (root.left) preOrder((root.left), callback);
+       
+        if (root.right) preOrder((root.right), callback);
+
+        return;
+    }
+      
+    function postOrder(root, callback) {
+
+        if (typeof callback !== 'function') {
+            throw new Error("A callback function is required");
+        }
+
+        if (root === null) return root;
+        
+        if (root.left) postOrder((root.left), callback);
+        if (root.right) postOrder((root.right), callback);
+        callback(root);
+
+        return;
+    }
+
+    function height(node, count = 0) {
+
+        if (node === null) return count;
+
+        let leftCount = depth(node.left, count + 1);
+        let rightCount = depth(node.right, count + 1);
+            
+        
+        return Math.max(leftCount, rightCount);
+    }
+
+    function depth(node, count = 0) {
+        
+        if (!node) {
+            return count; 
+        }
+        
+        
+    }
+
+    //mysolution:
+    function isBalance(node) {
+        
+        if (node.left === null && node.right === null) return true;
+        if (node.left !== null && node.right === null) return false;
+        else if (node.left === null && node.right !== null) return false;
+        else {
+            
+            const leftBalanced = isBalance(node.left);
+            const rightBalanced = isBalance(node.right);
+
+            if (!leftBalanced || !rightBalanced) {
+                return false;
+            }
+
+            return true;
+        }  
+    }
+    
+    //efficient code:
+    // function isBalance(node) {
+    //     // Helper function to check balance and calculate height
+    //     function checkHeightAndBalance(node) {
+    //         if (node === null) {
+    //             return { height: 0, balanced: true };
+    //         }
+    
+    //         // Check left subtree
+    //         const left = checkHeightAndBalance(node.left);
+    //         if (!left.balanced) return left; // If left subtree is unbalanced, no need to check further
+    
+    //         // Check right subtree
+    //         const right = checkHeightAndBalance(node.right);
+    //         if (!right.balanced) return right; // If right subtree is unbalanced, no need to check further
+    
+    //         // Check the height difference
+    //         const heightDifference = Math.abs(left.height - right.height);
+    //         if (heightDifference > 1) {
+    //             return { height: 0, balanced: false }; // If height difference > 1, tree is unbalanced
+    //         }
+    
+    //         // Return the height of the current node
+    //         const height = Math.max(left.height, right.height) + 1;
+    //         return { height, balanced: true };
+    //     }
+    
+    //     const result = checkHeightAndBalance(node);
+    //     return result.balanced;
+    // }
+
+    function reBalance(node) {
+        let array = [];
+        let sortnode = inOrder(node);
+        array.push(sortnode);
+        return buildTree(array);
+    }
+    
     function prettyPrint(node, prefix = "", isLeft = true) {
         if (node === null) {
           return;
@@ -161,17 +281,7 @@ function tree(array) {
         }
     }
 
-    return { btsRec, insert, prettyPrint, deleteNode, find ,levelOrdercallback ,levelOrder}
+    return { btsRec, insert, prettyPrint, deleteNode, find ,levelOrdercallback ,levelOrder, inOrder, preOrder, postOrder, height, depth, isBalance, reBalance }
 }
 
-
-const arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-const root = tree(arr);
-const btu = root.btsRec()
-root.insert(btu, 0);
-// root.deleteNode(btu, 8);
-// console.log(root.find(btu, 4));
-// console.log(btu);
-root.prettyPrint(btu);
-
-console.log(root.levelOrder(btu,  root.levelOrdercallback));
+export { tree }
