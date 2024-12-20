@@ -191,25 +191,27 @@ function tree(array) {
         return;
     }
 
-    function height(node, count = 0) {
-
-        if (node === null) return count;
-
-        let leftCount = depth(node.left, count + 1);
-        let rightCount = depth(node.right, count + 1);
-            
+    function height(node) {
+        if (node === null) return -1; 
+    
+        let leftHeight = height(node.left);
+        let rightHeight = height(node.right);
         
-        return Math.max(leftCount, rightCount);
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 
-    function depth(node, count = 0) {
-        
-        if (!node) {
-            return count; 
-        }
-        
-        
+    function depth(node, target, count = 0) {
+        if (node === null) return -1; 
+    
+        if (node === target) return count;
+    
+        let leftDepth = depth(node.left, target, count + 1);
+        if (leftDepth !== -1) return leftDepth;
+    
+        let rightDepth = depth(node.right, target, count + 1);
+        return rightDepth; 
     }
+    
 
     //mysolution:
     function isBalance(node) {

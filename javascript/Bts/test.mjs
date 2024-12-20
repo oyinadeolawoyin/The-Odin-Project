@@ -14,8 +14,9 @@ console.log(root.levelOrder(btu,  root.levelOrdercallback));
 function printNode(node) {
     console.log (node.data);
 }
-// console.log('pre',root.preOrder(btu, printNode));
-// console.log('in',root.inOrder(btu, printNode));
-// console.log('post',root.postOrder(btu, printNode));
+console.log('pre',root.preOrder(btu, printNode));
+console.log('in',root.inOrder(btu, printNode));
+console.log('post',root.postOrder(btu, printNode));
+console.log(root.height(btu));
 console.log(root.depth(btu));
-// console.log(root.isBalance(btu));
+console.log(root.isBalance(btu));
