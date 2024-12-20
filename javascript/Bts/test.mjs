@@ -1,13 +1,13 @@
 import { tree } from "./bts.mjs";
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const arr = [2, 5, 3, 7, 0, 12, 1, 4, 6, 8, 9, 10]
 
 const root = tree(arr);
 const btu = root.btsRec()
 root.insert(btu, 0);
 root.deleteNode(btu, 0);
 console.log(root.find(btu, 4));
-// console.log(btu);
+console.log(btu);
 root.prettyPrint(btu);
 
 console.log(root.levelOrder(btu,  root.levelOrdercallback));
