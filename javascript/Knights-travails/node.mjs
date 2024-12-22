@@ -22,9 +22,10 @@ function graph(array) {
         if (array[i][0] >= 8 || array[i][1] >= 8 || array[i][0] < 0 || array[i][1] < 0) continue;
         else graph[key].push(array[i]);
     }
-
     return graph;
 }
-let k = knightsMoves(0, 6);
+
+let k = knightsMoves(4, 5);
 // console.log(k);
-console.log(graph(k));
+let g = graph(k);
+console.log(g);
