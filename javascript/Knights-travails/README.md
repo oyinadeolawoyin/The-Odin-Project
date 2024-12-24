@@ -20,7 +20,7 @@ This project is a solution to the classic "Knight's Travails" problem, where the
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/knight-travails.git
+   git clone https://github.com/oyinadeolawoyin/The-Odin-Project/tree/main/javascript/Knights-travails
    ```
 2. Navigate to the project directory:
    ```bash
