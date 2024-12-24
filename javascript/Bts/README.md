@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project implements a **Binary Search Tree (BST)** with various methods for interacting with and manipulating the tree. It includes functionality for building a tree from an array, inserting and deleting nodes, performing tree traversal, and checking tree properties like balance and height. 
+This project implements a **Binary Search Tree (BST)** with various methods for interacting with and manipulating the tree. It includes functionality for building a tree from an array, inserting and deleting nodes, performing tree traversal, and checking tree properties like balance and height.
 
 The following operations and methods are included:
 
@@ -24,11 +24,11 @@ The `Node` class represents a single node in the binary tree. Each node contains
 
 ```javascript
 class Node {
-    constructor(data) {
-        this.data = data;
-        this.left = null;
-        this.right = null;
-    }
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
 }
 ```
 
@@ -37,6 +37,7 @@ class Node {
 The `Tree` class manages the binary search tree. It is initialized with an array of data values and constructs a balanced tree. The root node of the tree is created using the `buildTree` function.
 
 #### Key Methods:
+
 - **`insert(value)`**: Inserts a new node with the given value into the tree.
 - **`deleteItem(value)`**: Deletes a node with the given value from the tree.
 - **`find(value)`**: Searches for a node with the specified value.
@@ -55,7 +56,7 @@ The `buildTree(array)` function is responsible for constructing a balanced binar
 - Removes duplicates.
 - Creates a balanced BST by recursively placing the middle element of the array as the root and building subtrees with the left and right halves of the array.
 
-```
+````
 
 ### 4. **prettyPrint Function**
 
@@ -74,34 +75,42 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
         prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
     }
 };
-```
+````
 
 ### 5. **Tree Traversals**
 
 #### **`levelOrder(callback)`**
+
 Traverses the tree in level-order (breadth-first) and applies the callback function to each node.
 
 #### **`inOrder(callback)`**
+
 Traverses the tree in an in-order (left-root-right) depth-first order, applying the callback function to each node.
 
 #### **`preOrder(callback)`**
+
 Traverses the tree in a pre-order (root-left-right) depth-first order, applying the callback function to each node.
 
 #### **`postOrder(callback)`**
+
 Traverses the tree in a post-order (left-right-root) depth-first order, applying the callback function to each node.
 
 ### 6. **Tree Properties**
 
 #### **`height(node)`**
+
 Returns the height of the node, defined as the number of edges from the node to the deepest leaf node.
 
 #### **`depth(node)`**
+
 Returns the depth of the node, defined as the number of edges from the node to the root of the tree.
 
 #### **`isBalanced()`**
+
 Checks if the tree is balanced. A tree is considered balanced if the difference between the heights of the left and right subtrees of each node is no more than 1.
 
 #### **`rebalance()`**
+
 Rebalances the tree by rebuilding it from a sorted array of node values. This ensures the tree is balanced.
 
 ---
