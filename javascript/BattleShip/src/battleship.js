@@ -166,7 +166,7 @@ player(board2).realPlayer("Destroyer", "F9");
 // console.log(second);
 
 gameBoard().receiveAttack("A2", first.board, myship1);
-gameBoard().receiveAttack("A1", second.board, myship2);
+gameBoard().receiveAttack("A1", second.board, myship2);ship
 gameBoard().receiveAttack("A2", second.board, myship2);
 gameBoard().receiveAttack("A3", second.board, myship2);
 gameBoard().receiveAttack("A4", second.board, myship2);
