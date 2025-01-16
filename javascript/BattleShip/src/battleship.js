@@ -17,7 +17,7 @@ function ship(ship) {
     }
 
     function laidShip(index, shipName, board) {
-        // console.log(index, board[index])
+        // console.log("ind",index, 'bo:',board[index])
         board[index].push(shipName);
         return board;
     }
@@ -45,32 +45,36 @@ function gameBoard() {
 
     function computerBoard(board) {
         console.log("bbb:", board);
-        let carrier = Math.floor(Math.random() * 29); console.log("cc:", carrier);
+        // let set = new Set();
+
+        let carrier = Math.floor(Math.random() * 20); console.log("cc:", carrier);
         ship().laidShip(carrier, "Carrier", board);
         ship().laidShip((carrier + 1), "Carrier", board);
         ship().laidShip((carrier + 2), "Carrier", board);
         ship().laidShip((carrier + 3), "Carrier", board);
         ship().laidShip((carrier + 4), "Carrier", board);
 
-        let battleShip = Math.floor(Math.random() * (89 - 80 + 1)) + 80;
+
+        let battleShip = Math.floor(Math.random() * (40 - 21 + 1)) + 21; console.log("batt:", battleShip);
         ship().laidShip(battleShip, "Battleship", board);
         ship().laidShip((battleShip + 1), "Battleship", board);
         ship().laidShip((battleShip + 2), "Battleship", board);
         ship().laidShip((battleShip + 3), "Battleship", board);
 
-        let submarine = Math.floor(Math.random() * (59 - 30 + 1)) + 30;
+        let  submarine = Math.floor(Math.random() * (60 - 41 + 1)) + 41; console.log("subb:", submarine);
         ship().laidShip(submarine, "Submarine", board);
-        ship().laidShip((submarine + 10), "Submarine", board);
-        ship().laidShip((submarine + 20), "Submarine", board);
+        ship().laidShip((submarine + 1), "Submarine", board);
+        ship().laidShip((submarine + 2), "Submarine", board);
 
-        let cruiser = Math.floor(Math.random() * (79 - 60 + 1)) + 60;
+        let destroyer = Math.floor(Math.random() * (70 - 61 + 1)) + 61; console.log("destr:", destroyer);
+        ship().laidShip(destroyer, "Destroyer", board);
+        ship().laidShip(destroyer + 1, "Destroyer", board);
+
+       
+        let cruiser = Math.floor(Math.random() * (79 - 73 + 1)) + 73; console.log("ccrr:", cruiser);
         ship().laidShip(cruiser, "Cruiser", board);
         ship().laidShip((cruiser + 10), "Cruiser", board);
         ship().laidShip((cruiser + 20), "Cruiser", board);
-
-        let destroyer = Math.floor(Math.random() * (99 - 90 + 1)) + 90;
-        ship().laidShip(destroyer, "Destroyer", board);
-        ship().laidShip((destroyer + 1), "Destroyer", board);
 
         return board;
     }
@@ -105,19 +109,19 @@ function gameBoard() {
     return { board, computerBoard, opponentBoard, receiveAttack }
 }
 
-function player(board, shipName, coordinate, name = "Evelyn") {
+function player(board) {
     function computerPlayer() {
         return {
             name: "Oliver",
-            board: gameBoard().computerBoard(board)  // Make sure computerBoard is defined
+            board: gameBoard().computerBoard(board)
         }
         
     }
 
-    function realPlayer() {
+    function realPlayer(shipName, coordinate, name = "Evelyn") {
         return {
             name: name,
-            board: gameBoard().opponentBoard(board, coordinate, shipName)  // Corrected spelling
+            board: gameBoard().opponentBoard(board, coordinate, shipName)
         }
         
     }
@@ -127,22 +131,11 @@ function player(board, shipName, coordinate, name = "Evelyn") {
 
 
 // let myship = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
-// console.log(JSON.stringify(gameBoard().board()));
 let board1 = gameBoard().board();
-// console.log(gameBoard().computerBoard(board1));
 let board2 = gameBoard().board();
-// console.log(gameBoard().opponetBoard(board2, "B2", "Battleship"));
-// console.log(gameBoard().opponetBoard(board2, "B3", "Battleship"));
-// console.log(gameBoard().opponetBoard(board2, "B4", "Battleship"));
-// console.log(gameBoard().opponetBoard(board2, "B5", "Battleship"));
-// console.log(gameBoard().opponetBoard(board2, "I9", "Destroyer"));
-// console.log(gameBoard().opponetBoard(board2, "J9", "Destroyer"));
-// console.log(gameBoard().receiveAttack("A1", board2, myship));
-// console.log(JSON.stringify(player(board2, "Tolani").computerPlayer))
 
-console.log(player(board1, "Tolani", "Carrier").computerPlayer())
-console.log((player(board2,"Carrier", "A1").realPlayer()))
-// console.log(JSON.stringify(player(board1, "Tolani", "Carrier", "A2").realPlayer()))
-// console.log(JSON.stringify(player(board1, "Tolani", "Carrier", "A4").realPlayer()))
-// console.log(JSON.stringify(player(board1, "Tolani", "Carrier", "A5").realPlayer()))
+console.log(player(board1).computerPlayer())
+console.log((player(board2).realPlayer("Carrier", "A1")));
+console.log((player(board2).realPlayer("Carrier", "A2")))
+
 module.exports = { ship, gameBoard };
