@@ -1,10 +1,11 @@
 
 
 import { player, gameBoard, ship } from "./battleship";
+import { OliverGame } from "./OliverGame";
 
 let gameInterface = (function() {
    
-    function board() {
+    function playerOneboard() {
         let boardContainer = document.querySelector("#boardContainer");
         let board = document.createElement("div");
         board.className = "board";
@@ -18,6 +19,30 @@ let gameInterface = (function() {
             for (let j = 1; j < 11; j++) {
                 let coordinate = document.createElement("button");
                     coordinate.className = "coordinate";
+                    coordinate.textContent = `${letters[i]+j}`;
+                    grid.appendChild(coordinate);
+                        
+            }
+            board.appendChild(grid);
+            boardContainer.appendChild(board);
+        };
+        return boardContainer;
+    }
+
+    function playerTwoboard() {
+        let boardContainer = document.querySelector("#boardContainer");
+        let board = document.createElement("div");
+        board.className = "board";
+    
+        let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+
+        for (let i = 0; i < letters.length; i++) {
+            let grid = document.createElement("button");
+            grid.className = "grid";
+    
+            for (let j = 1; j < 11; j++) {
+                let coordinate = document.createElement("button");
+                    coordinate.className = "ships";
                     coordinate.textContent = `${letters[i]+j}`;
                     grid.appendChild(coordinate);
                         
@@ -73,12 +98,12 @@ let gameInterface = (function() {
 
         return shipContainer.append(carrier, battleship, submarine, cruiser, destroyer);
     }
-    return { board, ships };
+    return { playerOneboard, playerTwoboard, ships };
 
 })();
 
-let boardPlayer1 = gameInterface.board();
-let boardPlayer2 = gameInterface.board();
+let boardPlayer1 = gameInterface.playerOneboard();
+let boardPlayer2 = gameInterface.playerTwoboard();
 let shippPlayer1 = gameInterface.ships();
 let shipPlayer2 = gameInterface.ships();
 
@@ -94,7 +119,7 @@ let playGame = (function() {
         return player(board).realPlayer(shipName, coordinate, name);
     }
 
-    function hit_and_miss(board, ships) {
+    function hit_and_miss(board, ships, board2, ships2) {
         
         let buttons = document.querySelectorAll(".coordinate");
 
@@ -103,21 +128,36 @@ let playGame = (function() {
             let coordinate = button.textContent;
             gameBoard().receiveAttack(coordinate, board, ships); 
 
+            let index = board.findIndex(subArray => subArray[0] === coordinate);
+            if (board[index][1] === "Miss") button.style.backgroundColor = "green";
+            else button.style.backgroundColor = "red"
 
+            OliverGame(board2, ships2);
             console.log("b", board); console.log("s:",ships)
             return board;
         }));
     }
 
-    function OliverGame(board, ships) {
+    function OliverGame2(board, ships) {
         let guess = Math.floor(Math.random() * 99);
         console.log("gue", guess, board[guess]);
         let coordinate = board[guess][0];
         gameBoard().receiveAttack(coordinate, board, ships);
+        
+
+        let buttons = document.querySelectorAll(".ships");
+        // let coordinateText = buttons.textContent;
+        buttons.forEach(button => {
+            if (button.textContent === coordinate) {
+                if (board[guess][1] === "Miss") button.style.backgroundColor = "green";
+                else button.style.backgroundColor = "red";
+            }
+        });
+        
         return board;
     }
 
-    return { playerOne, playerTwo, hit_and_miss, OliverGame };
+    return { playerOne, playerTwo, hit_and_miss, OliverGame2 };
 })();
 
 
@@ -127,15 +167,15 @@ let board2 = gameBoard().board();
 let myship1 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
 let myship2 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
 
-console.log(playGame.playerOne(board1));
+console.log("pla2:",playGame.playerOne(board1));
 playGame.playerTwo(board2, "Carrier", "A1");
 playGame.playerTwo(board2, "Carrier", "A2");
 playGame.playerTwo(board2, "Carrier", "A3");
 playGame.playerTwo(board2, "Carrier", "A4");
 console.log("p1", playGame.playerTwo(board2, "Carrier", "A5"));
 
-console.log(playGame.hit_and_miss(board2, myship2));
-console.log(playGame.OliverGame(board1, myship1));
+console.log(playGame.hit_and_miss(board2, myship2, board1, myship2));
+// console.log(playGame.OliverGame(board1, myship1));
 
 // player(board2).realPlayer("Submarine", "E1");
 // player(board2).realPlayer("Submarine", "F1");
