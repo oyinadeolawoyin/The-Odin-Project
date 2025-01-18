@@ -95,7 +95,7 @@ function gameBoard() {
         let index = board.findIndex(subArray => subArray[0] === coordinate);
         
         if (board[index].length === 2) {
-            let guess = ship(ships).hit(board[index][1]); console.log("gue:", guess);
+            let guess = ship(ships).hit(board[index][1]); 
 
             if (guess.status === true) {
                 let index = board.findIndex(subArray => subArray[0] === coordinate);
