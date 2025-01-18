@@ -15,8 +15,8 @@ export default [
     plugins: ["prettier"], // Adds the Prettier plugin
     rules: {
       "prettier/prettier": "error", // Ensures Prettier issues are flagged as ESLint errors
-      "semi": ["error", "always"], // Enforce semicolons at the end of statements
-      "quotes": ["error", "double"], // Enforce double quotes for strings
+      semi: ["error", "always"], // Enforce semicolons at the end of statements
+      quotes: ["error", "double"], // Enforce double quotes for strings
       "no-unused-vars": "warn", // Warn if there are unused variables
       "no-console": "off", // Allows console.log statements
     },
