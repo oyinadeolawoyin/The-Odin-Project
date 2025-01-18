@@ -58,7 +58,6 @@ let gameInterface = (function() {
 
         let carrier = document.createElement("div");
         carrier.className = "Carrier";
-        carrier.className = "ship";
         carrier.textContent = "Carrirer: 5";
 
         let battleship = document.createElement("div");
@@ -85,24 +84,23 @@ let gameInterface = (function() {
         let shipContainer = document.querySelector("#ships2");
 
         let carrier = document.createElement("div");
-        carrier.className = "Carrier";
-        carrier.textContent = "Carrirer: 5";
+        carrier.className = "carrier";
+        carrier.textContent = "carrirer: 5";
 
         let battleship = document.createElement("div");
-        battleship.className = "Battleship";
+        battleship.className = "battleship";
         battleship.textContent = "Battleship: 4";
 
         let submarine = document.createElement("div");
-        submarine.className = "Submarine";
+        submarine.className = "submarine";
         submarine.textContent = "Submarine: 3";
 
         let cruiser = document.createElement("div");
-        cruiser.className = "Cruiser";
+        cruiser.className = "cruiser";
         cruiser.textContent = "Cruiser: 3";
         
         let destroyer = document.createElement("div");
-        destroyer.className = "Destroyer";
-        // destroyer.className = "ship";
+        destroyer.className = "destroyer";
         destroyer.textContent = "Destroyer: 2";
 
         return shipContainer.append(carrier, battleship, submarine, cruiser, destroyer);
@@ -112,10 +110,6 @@ let gameInterface = (function() {
     return { playerOneboard, playerTwoboard, shipsPlayer1, shipsPlayer2 };
 
 })();
-gameInterface.playerOneboard();
-gameInterface.playerTwoboard();
-gameInterface.shipsPlayer1();
-gameInterface.shipsPlayer2();
 
 
 
@@ -132,19 +126,14 @@ let playGame = (function() {
     function hitShips(ships) {
         let ship = Object.keys(ships);
         for (let key of ship) {
-            console.log("kkk", key);
             
-            // Get all elements with the class name matching the current key
-            let shipKeys = document.getElementsByClassName(`${key}`);
-            console.log("ship:", shipKeys);
-            
-            // Iterate over the HTMLCollection
-            for (let shipKey of shipKeys) {
-                shipKey.innerHTML = ""; 
-                shipKey.textContent = `${key}: ${ships[key]}`;
-            }
+            let shipKeys = document.querySelector(`.${key.toLowerCase()}`);
+         
+                shipKeys.innerHTML = ""; 
+                shipKeys.textContent = `${key}: ${ships[key]}`;
         } 
     }
+    
     
 
     function hit_and_miss(board1, ships1, board2, ships2) {
@@ -160,13 +149,13 @@ let playGame = (function() {
             let index = board2.findIndex(subArray => subArray[0] === coordinate);
             if (board2[index][1] === "Miss") button.style.backgroundColor = "green";
             else {
-                hitShips(ships2);
+                hitShips(ships2, "ships1");
                 button.style.backgroundColor = "red";
             };
 
             let olive = OliverGame(board1, ships1);
            
-            if (olive === "It's sunk") {
+            if (olive === false) {
                 button.style.backgroundColor = "white";
                 winnerSpace.textContent = "Your Ships Sunk! Oliver Wins!"
             }
@@ -180,18 +169,39 @@ let playGame = (function() {
         }));
     }
 
-    return { playerOne, playerTwo, hit_and_miss };
+    function newGame() {
+        let start = document.querySelector("#start");
+        start.addEventListener("click", () => {
+            let playerBoard1 = document.querySelector("#board1");
+            let playerBoard2 = document.querySelector("#board2");
+            let playerShip1 = document.querySelector("#ships1");
+            let playerShip2 = document.querySelector("#ships2");
+            let winningSpace = document.querySelector("#space");
+
+            playerBoard1.innerHTML = "";
+            playerBoard2.innerHTML = "";
+            playerShip1.innerHTML = "";
+            playerShip2.innerHTML = "";
+            winningSpace.innerHTML = "";
+
+            gameInterface.playerOneboard();
+            gameInterface.playerTwoboard();
+            gameInterface.shipsPlayer1();
+            gameInterface.shipsPlayer2();
+
+            let board1 = gameBoard().board();
+            let board2 = gameBoard().board();
+
+            let myship1 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
+            let myship2 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
+
+            let player1 = playerOne(board2);
+            let player2 = playerTwo(board1);
+            hit_and_miss(player1.board, myship1, player2.board, myship2);
+        });
+    }
+
+    return { newGame };
 })();
 
-
-let board1 = gameBoard().board();
-let board2 = gameBoard().board();
-
-let myship1 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
-let myship2 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
-
-let player1 = playGame.playerOne(board2);
-let player2 = playGame.playerTwo(board1);
-
-
-console.log(playGame.hit_and_miss(player1.board, myship1, player2.board, myship2));
+playGame.newGame();
