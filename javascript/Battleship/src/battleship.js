@@ -42,8 +42,8 @@ function gameBoard() {
         return board;
     }
 
-    function computerBoard(board) {
-        let carrier = Math.floor(Math.random() * 20);
+    function shipsOnBoard(board) {
+        let carrier = Math.floor(Math.random() * 19);
         ship().laidShip(carrier, "Carrier", board);
         ship().laidShip((carrier + 1), "Carrier", board);
         ship().laidShip((carrier + 2), "Carrier", board);
@@ -75,12 +75,6 @@ function gameBoard() {
         return board;
     }
 
-    function opponentBoard(board, coordinate, shipName) {
-        let index = board.findIndex(subArray => subArray[0] === coordinate);
-        ship().laidShip(index, shipName, board);
-        return board;
-    }
-
     function validMoves(coordinate) {
         let set = new Set();
         if (set.has(coordinate)) return false;
@@ -90,7 +84,7 @@ function gameBoard() {
     }
 
     function receiveAttack(coordinate, board, ships) {
-        if (ship(ships).isSunk()) return "It's sunk";
+        if (ship(ships).isSunk()) return false;
 
         let index = board.findIndex(subArray => subArray[0] === coordinate);
         
@@ -111,22 +105,22 @@ function gameBoard() {
         return board;
     }
 
-    return { board, computerBoard, opponentBoard, receiveAttack, validMoves }
+    return { board, shipsOnBoard, receiveAttack, validMoves }
 }
 
 function player(board) {
     function computerPlayer() {
         return {
             name: "Oliver",
-            board: gameBoard().computerBoard(board)
+            board: gameBoard().shipsOnBoard(board)
         }
         
     }
 
-    function realPlayer(shipName, coordinate, name = "Evelyn") {
+    function realPlayer() {
         return {
-            name: name,
-            board: gameBoard().opponentBoard(board, coordinate, shipName)
+            name: "You",
+            board: gameBoard().shipsOnBoard(board)
         }
         
     }
@@ -134,63 +128,5 @@ function player(board) {
     return { computerPlayer, realPlayer };
 }
 
-
-let myship1 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
-let myship2 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
-let board1 = gameBoard().board();
-let board2 = gameBoard().board();
-
-let first = player(board1).computerPlayer()
-let second = player(board2).realPlayer("Carrier", "A1");
-player(board2).realPlayer("Carrier", "A2");
-player(board2).realPlayer("Carrier", "A3");
-player(board2).realPlayer("Carrier", "A4");
-player(board2).realPlayer("Carrier", "A5");
-
-player(board2).realPlayer("Submarine", "E1");
-player(board2).realPlayer("Submarine", "F1");
-player(board2).realPlayer("Submarine", "G1");
-
-player(board2).realPlayer("Cruiser", "B7");
-player(board2).realPlayer("Cruiser", "B8");
-player(board2).realPlayer("Cruiser", "B9");
-
-player(board2).realPlayer("Battleship", "J4");
-player(board2).realPlayer("Battleship", "J5");
-player(board2).realPlayer("Battleship", "J6");
-player(board2).realPlayer("Battleship", "J7");
-
-player(board2).realPlayer("Destroyer", "E9");
-player(board2).realPlayer("Destroyer", "F9");
-// console.log(first);
-// console.log(second);
-
-gameBoard().receiveAttack("A2", first.board, myship1);
-gameBoard().receiveAttack("A1", second.board, myship2);
-gameBoard().receiveAttack("A2", second.board, myship2);
-gameBoard().receiveAttack("A3", second.board, myship2);
-gameBoard().receiveAttack("A4", second.board, myship2);
-gameBoard().receiveAttack("A5", second.board, myship2);
-gameBoard().receiveAttack("B7", second.board, myship2);
-gameBoard().receiveAttack("B8", second.board, myship2);
-gameBoard().receiveAttack("B9", second.board, myship2);
-gameBoard().receiveAttack("E1", second.board, myship2);
-gameBoard().receiveAttack("F1", second.board, myship2);
-gameBoard().receiveAttack("G1", second.board, myship2);
-gameBoard().receiveAttack("E9", second.board, myship2);
-gameBoard().receiveAttack("F9", second.board, myship2);
-gameBoard().receiveAttack("J4", second.board, myship2);
-gameBoard().receiveAttack("J5", second.board, myship2);
-gameBoard().receiveAttack("J6", second.board, myship2);
-gameBoard().receiveAttack("C1", second.board, myship2);
-gameBoard().receiveAttack("B10", second.board, myship2);
-gameBoard().receiveAttack("C6", second.board, myship2);
-gameBoard().receiveAttack("G7", second.board, myship2);
-gameBoard().receiveAttack("J1", second.board, myship2);
-gameBoard().receiveAttack("J9", second.board, myship2);
-gameBoard().receiveAttack("J7", second.board, myship2);
-console.log(gameBoard().receiveAttack("B1", second.board, myship2));
-
-console.log(myship2, second);
 
 module.exports = { ship, gameBoard, player };

@@ -6,7 +6,7 @@ import { OliverGame } from "./OliverGame";
 let gameInterface = (function() {
    
     function playerOneboard() {
-        let boardContainer = document.querySelector("#boardContainer");
+        let boardContainer = document.querySelector("#board1");
         let board = document.createElement("div");
         board.className = "board";
     
@@ -30,7 +30,7 @@ let gameInterface = (function() {
     }
 
     function playerTwoboard() {
-        let boardContainer = document.querySelector("#boardContainer");
+        let boardContainer = document.querySelector("#board2");
         let board = document.createElement("div");
         board.className = "board";
     
@@ -53,111 +53,134 @@ let gameInterface = (function() {
         return boardContainer;
     }
 
-    function ships() {
-        let shipContainer = document.querySelector("#shipContainer");
+    function shipsPlayer1() {
+        let shipContainer = document.querySelector("#ships1");
 
         let carrier = document.createElement("div");
-        carrier.className = "carrier";
-        carrier.textContent = "Carrirer";
-        for (let i = 0; i < 5; i++) {
-            let carrierShip = document.createElement("button");
-            carrier.appendChild(carrierShip);
-        }
+        carrier.className = "Carrier";
+        carrier.className = "ship";
+        carrier.textContent = "Carrirer: 5";
 
         let battleship = document.createElement("div");
-        battleship.className = "battleship";
-        battleship.textContent = "Battleship";
-        for (let i = 0; i < 4; i++) {
-            let battleShip = document.createElement("button");
-            battleship.appendChild(battleShip);
-        }
+        battleship.className = "Battleship";
+        battleship.textContent = "Battleship: 4";
 
         let submarine = document.createElement("div");
-        submarine.className = "submarine";
-        submarine.textContent = "Submarine";
-        for (let i = 0; i < 3; i++) {
-            let submarineShip = document.createElement("button");
-            submarine.appendChild(submarineShip);
-        }
+        submarine.className = "Submarine";
+        submarine.textContent = "Submarine: 3";
 
         let cruiser = document.createElement("div");
-        cruiser.className = "cruiser";
-        cruiser.textContent = "Cruiser";
-        for (let i = 0; i < 3; i++) {
-            let cruiserShip = document.createElement("button");
-            cruiser.appendChild(cruiserShip);
-        }
+        cruiser.className = "Cruiser";
+        cruiser.textContent = "Cruiser: 3";
         
         let destroyer = document.createElement("div");
-        destroyer.className = "destroyer";
-        destroyer.textContent = "Destroyer";
-        for (let i = 0; i < 2; i++) {
-            let destroyerShip = document.createElement("button");
-            destroyer.appendChild(destroyerShip);
-        }
+        destroyer.className = "Destroyer";
+        destroyer.textContent = "Destroyer: 2";
 
         return shipContainer.append(carrier, battleship, submarine, cruiser, destroyer);
     }
-    return { playerOneboard, playerTwoboard, ships };
+
+
+    function shipsPlayer2() {
+        let shipContainer = document.querySelector("#ships2");
+
+        let carrier = document.createElement("div");
+        carrier.className = "Carrier";
+        carrier.textContent = "Carrirer: 5";
+
+        let battleship = document.createElement("div");
+        battleship.className = "Battleship";
+        battleship.textContent = "Battleship: 4";
+
+        let submarine = document.createElement("div");
+        submarine.className = "Submarine";
+        submarine.textContent = "Submarine: 3";
+
+        let cruiser = document.createElement("div");
+        cruiser.className = "Cruiser";
+        cruiser.textContent = "Cruiser: 3";
+        
+        let destroyer = document.createElement("div");
+        destroyer.className = "Destroyer";
+        // destroyer.className = "ship";
+        destroyer.textContent = "Destroyer: 2";
+
+        return shipContainer.append(carrier, battleship, submarine, cruiser, destroyer);
+    }
+
+
+    return { playerOneboard, playerTwoboard, shipsPlayer1, shipsPlayer2 };
 
 })();
-
-let boardPlayer1 = gameInterface.playerOneboard();
-let boardPlayer2 = gameInterface.playerTwoboard();
-let shippPlayer1 = gameInterface.ships();
-let shipPlayer2 = gameInterface.ships();
+gameInterface.playerOneboard();
+gameInterface.playerTwoboard();
+gameInterface.shipsPlayer1();
+gameInterface.shipsPlayer2();
 
 
 
 let playGame = (function() {
 
     function playerOne(board) {
+        return player(board).realPlayer(board);
+    }
+
+    function playerTwo(board) {
         return player(board).computerPlayer();
     }
 
-    function playerTwo(board, shipName, coordinate, name) {
-        return player(board).realPlayer(shipName, coordinate, name);
+    function hitShips(ships) {
+        let ship = Object.keys(ships);
+        for (let key of ship) {
+            console.log("kkk", key);
+            
+            // Get all elements with the class name matching the current key
+            let shipKeys = document.getElementsByClassName(`${key}`);
+            console.log("ship:", shipKeys);
+            
+            // Iterate over the HTMLCollection
+            for (let shipKey of shipKeys) {
+                shipKey.innerHTML = ""; 
+                shipKey.textContent = `${key}: ${ships[key]}`;
+            }
+        } 
     }
+    
 
-    function hit_and_miss(board, ships, board2, ships2) {
-        
-        let buttons = document.querySelectorAll(".coordinate");
+    function hit_and_miss(board1, ships1, board2, ships2) {
+        let checkBoard = null;
+        let buttons = document.querySelectorAll(".ships");
+        let winnerSpace = document.querySelector("#space");
 
         buttons.forEach(button => button.addEventListener("click", ()=> {
           
             let coordinate = button.textContent;
-            gameBoard().receiveAttack(coordinate, board, ships); 
+            checkBoard = gameBoard().receiveAttack(coordinate, board2, ships2); 
 
-            let index = board.findIndex(subArray => subArray[0] === coordinate);
-            if (board[index][1] === "Miss") button.style.backgroundColor = "green";
-            else button.style.backgroundColor = "red"
+            let index = board2.findIndex(subArray => subArray[0] === coordinate);
+            if (board2[index][1] === "Miss") button.style.backgroundColor = "green";
+            else {
+                hitShips(ships2);
+                button.style.backgroundColor = "red";
+            };
 
-            OliverGame(board2, ships2);
-            console.log("b", board); console.log("s:",ships)
-            return board;
+            let olive = OliverGame(board1, ships1);
+           
+            if (olive === "It's sunk") {
+                button.style.backgroundColor = "white";
+                winnerSpace.textContent = "Your Ships Sunk! Oliver Wins!"
+            }
+           
+            if (checkBoard == false) {
+                button.style.backgroundColor = "white";
+                winnerSpace.textContent = "Oliver Ships Sunk! You Win!"
+            }else {
+                return checkBoard;
+            }    
         }));
     }
 
-    function OliverGame2(board, ships) {
-        let guess = Math.floor(Math.random() * 99);
-        console.log("gue", guess, board[guess]);
-        let coordinate = board[guess][0];
-        gameBoard().receiveAttack(coordinate, board, ships);
-        
-
-        let buttons = document.querySelectorAll(".ships");
-        // let coordinateText = buttons.textContent;
-        buttons.forEach(button => {
-            if (button.textContent === coordinate) {
-                if (board[guess][1] === "Miss") button.style.backgroundColor = "green";
-                else button.style.backgroundColor = "red";
-            }
-        });
-        
-        return board;
-    }
-
-    return { playerOne, playerTwo, hit_and_miss, OliverGame2 };
+    return { playerOne, playerTwo, hit_and_miss };
 })();
 
 
@@ -167,62 +190,8 @@ let board2 = gameBoard().board();
 let myship1 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
 let myship2 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
 
-console.log("pla2:",playGame.playerOne(board1));
-playGame.playerTwo(board2, "Carrier", "A1");
-playGame.playerTwo(board2, "Carrier", "A2");
-playGame.playerTwo(board2, "Carrier", "A3");
-playGame.playerTwo(board2, "Carrier", "A4");
-console.log("p1", playGame.playerTwo(board2, "Carrier", "A5"));
-
-console.log(playGame.hit_and_miss(board2, myship2, board1, myship2));
-// console.log(playGame.OliverGame(board1, myship1));
-
-// player(board2).realPlayer("Submarine", "E1");
-// player(board2).realPlayer("Submarine", "F1");
-// player(board2).realPlayer("Submarine", "G1");
-
-// player(board2).realPlayer("Cruiser", "B7");
-// player(board2).realPlayer("Cruiser", "B8");
-// player(board2).realPlayer("Cruiser", "B9");
-
-// player(board2).realPlayer("Battleship", "J4");
-// player(board2).realPlayer("Battleship", "J5");
-// player(board2).realPlayer("Battleship", "J6");
-// player(board2).realPlayer("Battleship", "J7");
-
-// player(board2).realPlayer("Destroyer", "E9");
-// player(board2).realPlayer("Destroyer", "F9");
-
-// console.log("hello!"); console.log("jelllllllo");
+let player1 = playGame.playerOne(board2);
+let player2 = playGame.playerTwo(board1);
 
 
-// console.log(board);
-// boardContainer.appendChild(board);
-
-// return boardContainer;
-
-
-// console.log("looooo");
-// let myship1 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
-// let myship2 = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
-// let board1 = gameBoard().board();
-// let board2 = gameBoard().board();
-
-// let firstPlayer = player(board1).computerPlayer()
-// let secondsecond = player(board2).realPlayer("Carrier", "A1");
-
-
-// console.log("Hi, Omotolani!!!!!!!")
-// gameBoard().receiveAttack("A2", first.board, myship1);
-// gameBoard().receiveAttack("A1", second.board, myship2);
-
-// let turn = [];
-// function turns(coordinate, name) {
-//     if (gameBoard().receiveAttack(coordinate, firstPlayer.board, myship1) == "it's sunk") {
-//             return "you win!";
-//     } else {
-//         gameBoard().receiveAttack(coordinate, firstPlayer.board, myship1)
-//         turn.pop();
-//         turn.push(name);
-//     }
-// }
+console.log(playGame.hit_and_miss(player1.board, myship1, player2.board, myship2));
