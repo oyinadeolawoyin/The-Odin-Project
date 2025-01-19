@@ -74,16 +74,19 @@ function gameBoard() {
     let index = board.findIndex((subArray) => subArray[0] === coordinate);
 
     if (board[index].length === 2) {
+      console.log("bor", board[index]);
       let guess = ship(ships).hit(board[index][1]);
 
       if (guess.status === true) {
         let index = board.findIndex((subArray) => subArray[0] === coordinate);
         board[index].pop();
         board[index].push("Hit");
+        console.log("hitboard", board[index]);
       }
     } else {
       let index = board.findIndex((subArray) => subArray[0] === coordinate);
       board[index].push("Miss");
+      console.log("missboard", board[index]);
     }
 
     return board;

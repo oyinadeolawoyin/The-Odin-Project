@@ -1,0 +1,115 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+@font-face {
+  font-family: "Mywriting";
+  src: url(fonts/inriasans-bold-webfont.woff2) format("woff2");
+  src: url(fonts/inriasans-bold-webfont.woff) format("woff");
+}
+
+@font-face {
+  font-family: "writing";
+  src: url(fonts/inriasans-bolditalic-webfont.woff2) format("woff2");
+  src: url(fonts/inriasans-bolditalic-webfont.woff) format("woff");
+}
+
+body {
+  background-color: #123524;
+  padding: 20px;
+  font-family: Mywriting;
+}
+
+#gameBoard {
+  display: flex;
+  gap: 30px;
+  margin: 10px;
+  padding: 10px;
+  width: 500px;
+}
+
+#player1 {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+#player2 {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: flex;
+  gap: 2px;
+}
+
+.grid button {
+  width: 50px;
+  height: 50px;
+
+  background-color: #ffe8b6;
+  font-family: writing;
+
+  border: none;
+  outline: none;
+}
+
+#startSpace {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 5px;
+}
+
+#start {
+  padding: 5px;
+  background-color: #efe3c2;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  border-color: #123524;
+}
+
+#ships1 p {
+  color: #efe3c2;
+  font-size: 20px;
+}
+
+#ships2 p {
+  color: #efe3c2;
+  font-size: 20px;
+}
+
+#boardContainer1 p {
+  color: #efe3c2;
+  font-size: 20px;
+}
+
+#boardContainer2 p {
+  color: #efe3c2;
+  font-size: 20px;
+}
+
+#winnerSpace {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#space {
+  color: #efe3c2;
+  font-size: 20px;
+}

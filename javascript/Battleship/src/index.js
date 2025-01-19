@@ -1,11 +1,13 @@
 import { player, gameBoard } from "./battleship";
 import { OliverGame } from "./OliverGame";
+import "./index.css";
 
 let gameInterface = (function () {
   function playerOneboard() {
     let boardContainer = document.querySelector("#board1");
     let board = document.createElement("div");
     board.className = "board";
+    board.id = "myBoard";
 
     let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
@@ -51,23 +53,23 @@ let gameInterface = (function () {
   function shipsPlayer1() {
     let shipContainer = document.querySelector("#ships1");
 
-    let carrier = document.createElement("div");
+    let carrier = document.createElement("p");
     carrier.className = "Carrier";
     carrier.textContent = "Carrirer: 5";
 
-    let battleship = document.createElement("div");
+    let battleship = document.createElement("p");
     battleship.className = "Battleship";
     battleship.textContent = "Battleship: 4";
 
-    let submarine = document.createElement("div");
+    let submarine = document.createElement("p");
     submarine.className = "Submarine";
     submarine.textContent = "Submarine: 3";
 
-    let cruiser = document.createElement("div");
+    let cruiser = document.createElement("p");
     cruiser.className = "Cruiser";
     cruiser.textContent = "Cruiser: 3";
 
-    let destroyer = document.createElement("div");
+    let destroyer = document.createElement("p");
     destroyer.className = "Destroyer";
     destroyer.textContent = "Destroyer: 2";
 
@@ -83,23 +85,23 @@ let gameInterface = (function () {
   function shipsPlayer2() {
     let shipContainer = document.querySelector("#ships2");
 
-    let carrier = document.createElement("div");
+    let carrier = document.createElement("p");
     carrier.className = "carrier";
     carrier.textContent = "carrirer: 5";
 
-    let battleship = document.createElement("div");
+    let battleship = document.createElement("p");
     battleship.className = "battleship";
     battleship.textContent = "Battleship: 4";
 
-    let submarine = document.createElement("div");
+    let submarine = document.createElement("p");
     submarine.className = "submarine";
     submarine.textContent = "Submarine: 3";
 
-    let cruiser = document.createElement("div");
+    let cruiser = document.createElement("p");
     cruiser.className = "cruiser";
     cruiser.textContent = "Cruiser: 3";
 
-    let destroyer = document.createElement("div");
+    let destroyer = document.createElement("p");
     destroyer.className = "destroyer";
     destroyer.textContent = "Destroyer: 2";
 
@@ -112,7 +114,35 @@ let gameInterface = (function () {
     );
   }
 
-  return { playerOneboard, playerTwoboard, shipsPlayer1, shipsPlayer2 };
+  function showShip(board) {
+    let board1 = document.querySelector("#myBoard");
+
+    let children = board1.children;
+
+    for (let child of children) {
+      let elements = child.children;
+
+      for (let elem of elements) {
+        let coordinate = elem.textContent;
+
+        let subArray = board.find(
+          (subArray) => subArray.length === 2 && subArray[0] === coordinate,
+        );
+
+        if (subArray) {
+          elem.style.backgroundColor = "#C84C05";
+        }
+      }
+    }
+  }
+
+  return {
+    playerOneboard,
+    playerTwoboard,
+    shipsPlayer1,
+    shipsPlayer2,
+    showShip,
+  };
 })();
 
 let playGame = (function () {
@@ -147,23 +177,24 @@ let playGame = (function () {
         let index = board2.findIndex((subArray) => subArray[0] === coordinate);
         if (board2[index][1] === "Miss") button.style.backgroundColor = "green";
         else {
-          hitShips(ships2, "ships1");
+          hitShips(ships2);
           button.style.backgroundColor = "red";
         }
 
-        let olive = OliverGame(board1, ships1);
-
-        if (olive === false) {
-          button.style.backgroundColor = "white";
-          winnerSpace.textContent = "Your Ships Sunk! Oliver Wins!";
-        }
-
+        let olive = null;
         if (checkBoard == false) {
-          button.style.backgroundColor = "white";
-          winnerSpace.textContent = "Oliver Ships Sunk! You Win!";
+          olive = OliverGame(board1, ships1, false);
+          button.style.backgroundColor = "#FFE8B6";
+          winnerSpace.textContent = "Oliver Ships' Sunk! You Win!";
         } else {
-          return checkBoard;
+          olive = OliverGame(board1, ships1, true);
+          if (olive === false) {
+            button.style.backgroundColor = "#FFE8B6";
+            winnerSpace.textContent = "Your Ships' Sunk! Oliver Wins!";
+          }
         }
+
+        return checkBoard;
       }),
     );
   }
@@ -208,6 +239,8 @@ let playGame = (function () {
 
       let player1 = playerOne(board2);
       let player2 = playerTwo(board1);
+      gameInterface.showShip(player1.board);
+      console.log("board", player1.board);
       hit_and_miss(player1.board, myship1, player2.board, myship2);
     });
   }

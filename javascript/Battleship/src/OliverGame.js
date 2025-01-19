@@ -25,7 +25,7 @@ function hitShips(ships) {
 let guessCount = 1;
 let guess = 0;
 
-function OliverGame(board, ships) {
+function OliverGame(board, ships, status) {
   let coordinate = null;
   let checkBoard = null;
 
@@ -51,10 +51,13 @@ function OliverGame(board, ships) {
   let buttons = document.querySelectorAll(".coordinate");
   buttons.forEach((button) => {
     if (button.textContent === coordinate) {
-      if (board[guess][1] === "Miss") button.style.backgroundColor = "green";
+      if (status === false) button.style.backgroundColor = "#FFE8B6";
       else {
-        hitShips(ships);
-        button.style.backgroundColor = "red";
+        if (board[guess][1] === "Miss") button.style.backgroundColor = "green";
+        else {
+          hitShips(ships);
+          button.style.backgroundColor = "red";
+        }
       }
     }
   });

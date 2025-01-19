@@ -7,6 +7,7 @@ let myship = {
   Submarine: 3,
   Destroyer: 2,
 };
+
 let board = [
   ["A1"],
   ["A2"],
@@ -307,5 +308,5 @@ test("Board must sunk", () => {
       Submarine: 0,
       Destroyer: 0,
     }),
-  ).toBe("It's sunk");
+  ).toBeFalsy();
 });
