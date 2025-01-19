@@ -4,6 +4,12 @@
 
 This is a **Battleship** game project, the final project in the Full-Stack JavaScript curriculum by The Odin Project. The game is implemented using HTML, CSS, and JavaScript, and it demonstrates key concepts such as DOM manipulation, modular code structure, and test-driven development.
 
+## Live Demo
+
+- Check out the live version of the project here:  
+  [Live Demo: Battleship Game](https://battleship-odin-project.netlify.app/)
+
+
 ## Features
 
 - **Player vs. Computer Gameplay:** Compete against an AI opponent.
