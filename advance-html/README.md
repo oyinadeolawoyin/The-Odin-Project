@@ -28,7 +28,7 @@ To view this project on your local machine, you can clone this repository:
 
 2. Navigate to the project folder:
    ```bash
-   cd responsive-birthday-gift-boxes-homepage
+   cd rindex.html
    ```
 
 3. Open the **index.html** file in your preferred web browser to see the project.
