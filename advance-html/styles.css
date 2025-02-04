@@ -1,0 +1,257 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "writing";
+    src: url(fonts/roboto-variablefont_wdthwght-webfont.woff2) format("woff2");
+    src: url(fonts/roboto-variablefont_wdthwght-webfont.woff) format("woff");
+}
+  
+@font-face {
+    font-family: "Handwriting";
+    src: url(fonts/playfairdisplay-italic-variablefont_wght-webfont.woff2) format("woff2");
+    src: url(fonts/playfairdisplay-italic-variablefont_wght-webfont.woff) format("woff");
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #6F4E37;
+    color: #3B2F2F;
+    font-family: writing, sans-serif;
+}
+
+header {
+    min-height: 500px;
+    transform: skewY(-12deg); 
+    transform-origin: bottom left;
+    z-index: -1; 
+
+}
+
+.header {
+    display: flex;
+    padding: 50px;
+    justify-content: center;
+    z-index: 0;
+    position: relative;
+
+    margin-top: -500px;
+}
+
+.header img {
+    max-width: 400px;
+    max-height: 400px;
+    z-index: 1;
+    position: relative;
+}
+
+.aboutBox {
+    display: flex;
+    align-items: center;
+    z-index: 0;   
+}
+
+.about {
+    max-width: 500px;
+    padding: 20px;
+    background-color: #F3E5AB;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.image {
+    max-width: 100%;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.icons {
+    width: 50px;
+    height: 50px;
+    filter: brightness(0) invert(1);
+}
+
+.word {
+    filter: brightness(0) invert(1);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 90px;
+}
+
+section {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 50px;
+    color: #F8E8D9;
+    font-size: 20px;
+}
+
+.myImage {
+    max-width: 350px;
+    max-height: 350px;
+}
+
+.socia {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.word {
+    margin-bottom: 20px;
+}
+
+.boxes {
+    position: absolute;
+    top: 77%;
+    font-size: 50px;
+    z-index: 2;
+    color: #FFD700;
+    font-family: Handwriting;
+}
+
+.titles {
+    color: #F8E8D9;
+    font-size: 35px;
+    font-family: Handwriting, sans-serif;
+}
+
+.title {
+    font-family: Handwriting, sans-serif;
+    color: #A97142;
+    font-size: 25px;
+    display: flex;
+    flex: auto;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.wrapper:hover {
+    transform: scale(1.02);
+}
+
+.content {
+    padding: 15px;
+    box-shadow: 0px 0px 10px #C08081;
+    background-color: #F3E5AB;
+}
+
+.choco {
+    background-color: #4E2A1E;
+}
+
+@media (max-width: 1000px) and (min-width: 600px) {
+    header {
+         transform: skewY(-20deg);  
+    }
+
+    .header {
+        padding: 100px;
+    }
+     
+    .header img {
+        max-width: 400px;
+        max-height: 300px;
+        position: relative;
+        left: -150px; 
+        top: -35px;
+    }
+
+    .aboutBox {
+        display: flex;
+        align-items: center;
+        position: absolute; 
+        left: 50%;
+        margin-top: 90px;
+
+        margin-left: -300px;
+    }
+
+    .boxes  {
+        position: absolute;
+        top: 20%;
+        left: 340px;
+    }
+
+    .para1 {
+        margin-left: 295px;
+    }
+
+    .para2 {
+        margin-top: 20px;
+    }
+
+    section {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 30px;
+    }
+} 
+
+@media (max-width: 600px) {
+    header {
+        transform: skewY(-25deg); 
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        padding: 50px;
+        justify-content: center;
+    } 
+
+    .boxes  {
+        position: absolute;
+        top: 47%;
+        font-size: 50px;
+    }
+
+    section {
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: 30px;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        padding: 50px; 
+    }
+}
