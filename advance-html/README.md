@@ -33,9 +33,9 @@ To view this project on your local machine, you can clone this repository:
 
 3. Open the **index.html** file in your preferred web browser to see the project.
 
-## **Preview**
-![Website](https://birthdayboxes.netlify.app/)  
-*A preview of the homepage showcasing the birthday gift boxes.*
+## **Link**
+*[https://birthdayboxes.netlify.app/](https://birthdayboxes.netlify.app/)*
+
 
 ## **Acknowledgments**
 This project was built as part of my learning and practice with **HTML** and **CSS** as part of **The Odin Project**. I came up with the **birthday gift box concept** to test and improve my understanding of **responsive web design**.
