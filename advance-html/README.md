@@ -34,7 +34,7 @@ To view this project on your local machine, you can clone this repository:
 3. Open the **index.html** file in your preferred web browser to see the project.
 
 ## **Link**
-*[https://birthdayboxes.netlify.app/](https://birthdayboxes.netlify.app/)*
+*[https://birthdayboxes.netlify.app/](https://birthdaybox.netlify.app/)*
 
 
 ## **Acknowledgments**
