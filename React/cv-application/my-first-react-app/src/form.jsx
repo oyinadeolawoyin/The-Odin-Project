@@ -346,7 +346,10 @@ function App() {
       <div className="cvApplication"> 
         {!showDetails && 
           <>
-            <h1>CV APPLICATION FORM</h1>
+            <div className="cv">
+             <h1>CV APPLICATION FORM</h1>
+            </div>
+         
             <General formData={formData} handleChange={handleChange} />
 
             <button
