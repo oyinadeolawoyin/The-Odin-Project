@@ -1,12 +1,34 @@
-# React + Vite
+## Shopping Cart 🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+- This is a fully functional Shopping Cart application built using React, as part of the final project in The Odin Project's React Course. It allows users to browse products, add items to the cart, adjust quantities, and view the total price dynamically.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Preview
 
-## Expanding the ESLint configuration
+- https://easeshopping.netlify.app/
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- 🛒 **Add to Cart**: Users can add items to their shopping cart.
+- ➕ **Update Quantity**: The quantity of each product in the cart can be adjusted.
+- 💰 **Total Price Calculation**: The total price updates dynamically based on selected quantities.
+- 🗑️ **Remove Items**: Users can remove products from the cart.
+- 🚀 **React Router**: Implements navigation between different pages.
+- 🎨 **CSS Modules**: For an enhanced UI/UX.
+- ⚛️ **React Hooks**: Uses `useState` and `useContext` for state management.
+
+## Tech Stack
+
+- **React** (with hooks)
+- **React Router** for navigation
+- **Context API** for state management
+- \*\*CSS Modules \*\*for styling
+
+## Usage
+
+- Navigate through the store and add products to your cart.
+- Adjust product quantities using the input field.
+- Click the **Checkout** button to review your total cost.
+
+###

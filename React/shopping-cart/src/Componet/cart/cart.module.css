@@ -1,77 +1,99 @@
 .item {
-    background-color: aliceblue;
-    width: 200px;
-    height: 300px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 8px;
-    padding: 50px;
-    color: #7D1C4A;
+  background-color: aliceblue;
+  width: 200px;
+  height: 300px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 8px;
+  padding: 50px;
+  color: #7d1c4a;
 }
 
 .imageDiv {
-    background-color: #F8EDED;
-    
+  background-color: #f8eded;
 }
 
 .home {
-    padding: 50px;
-    color: #7D1C4A;
-    font-size: 20px;
+  padding: 50px;
+  color: #7d1c4a;
+  font-size: 20px;
 }
 
 .input {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .header {
-    color: aliceblue;
-    font-size: 25px;
-    background-color: #56021F;
-    margin-top: -32px;
-    margin-left: -8px;
-    position: relative;
-    padding-left: 50px;
-    padding: 25px;
+  color: aliceblue;
+  font-size: 25px;
+  background-color: #56021f;
+  margin-top: -32px;
+  margin-left: -8px;
+  position: relative;
+  padding-left: 50px;
+  padding: 25px;
 }
 
 .h2:hover {
-    transform: scaley(1.1);
-    cursor: pointer;
+  transform: scaley(1.1);
+  cursor: pointer;
 }
 
 .tbody {
-    margin-bottom: 100px;
-    padding-top: 0px;
-    padding: 50px;
-    border-spacing: 0 45px;
+  margin-bottom: 100px;
+  padding-top: 0px;
+  padding: 50px;
+  border-spacing: 0 45px;
 }
 
 .thead {
-    border-bottom: 2px solid black;
-    font-size: 20px;
-    color: #7D1C4A;
+  border-bottom: 2px solid black;
+  font-size: 20px;
+  color: #7d1c4a;
 }
 
 .img {
-    height: 200px;
-    width: 200px;
+  height: 200px;
+  width: 200px;
 }
 
 .description {
-    padding: 20px;
+  padding: 20px;
 }
 
-.remove{
-    padding: 10px;
-    color: aliceblue;
-    background-color: #B8001F;
-    width: 150px;
-    font-size: 20px;
-    border-radius: 6px;
+.remove {
+  padding: 10px;
+  color: aliceblue;
+  background-color: #b8001f;
+  width: 150px;
+  font-size: 20px;
+  border-radius: 6px;
 }
 
 .remove:hover {
-    transform: scaley(1.1);
-    cursor: pointer;
+  transform: scaley(1.1);
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .item {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .item {
+    width: 0px;
+    height: 300px;
+    padding: 5px;
+  }
+
+  .img {
+    height: 100px;
+    width: 100px;
+  }
+
+  .header {
+    margin-right: -250px;
+  }
 }

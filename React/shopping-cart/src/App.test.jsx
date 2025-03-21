@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import Product from "./Componet/Product/product"; 
+import Product from "./Componet/Product/product";
 import { vi, afterEach, describe, it, expect, beforeEach } from "vitest";
 
 describe("API fetch Mock", () => {
@@ -17,7 +17,7 @@ describe("API fetch Mock", () => {
               images: ["https://example.com/mock.jpg"],
             },
           ]),
-      })
+      }),
     );
   });
 
@@ -30,10 +30,14 @@ describe("API fetch Mock", () => {
 
     // Wait for the data to load
     await waitFor(() => {
-        expect(screen.findByRole("heading", { name: "Mock Product" })).toBeTruthy();
-        });
-        expect(screen.findByRole("p", { name: "$99.99"})).toBeTruthy();
-        expect(screen.findByRole("p", {name: "This is a mock product"})).toBeTruthy();
-        expect(fetch).toHaveBeenCalledTimes(1); // Ensure fetch was called
+      expect(
+        screen.findByRole("heading", { name: "Mock Product" }),
+      ).toBeTruthy();
+    });
+    expect(screen.findByRole("p", { name: "$99.99" })).toBeTruthy();
+    expect(
+      screen.findByRole("p", { name: "This is a mock product" }),
+    ).toBeTruthy();
+    expect(fetch).toHaveBeenCalledTimes(1); // Ensure fetch was called
   });
 });
