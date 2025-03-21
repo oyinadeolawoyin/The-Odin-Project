@@ -1,7 +1,3 @@
-Here's the README rewritten in Markdown without the Future Plans section:
-
----
-
 # The Odin Project - Learning Journey
 
 Welcome to my repository for [The Odin Project](https://www.theodinproject.com/) curriculum! This repository contains my completed projects, exercises, and notes as I progress through the course. My goal is to build a solid foundation in web development by learning full-stack skills, including HTML, CSS, JavaScript, Git, and more.
