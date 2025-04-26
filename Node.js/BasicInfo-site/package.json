@@ -1,0 +1,15 @@
+{
+  "name": "basicinfo-site",
+  "version": "1.0.0",
+  "description": "Welcome to the Basic Information site, created as part of the **Odin Project's Node.js course**. This project is designed to help you practice your Node.js skills by building a simple server that serves static HTML files for a basic informational website.",
+  "main": "demo_fileserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

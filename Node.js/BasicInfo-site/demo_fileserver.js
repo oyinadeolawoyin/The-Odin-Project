@@ -1,8 +1,10 @@
-var http = require('http');
-var url = require('url');
-var fs = require('fs');
+const express = require("express");
+const fs = require("fs");
+const url = require("url");
 
-http.createServer(function (req, res) {
+const app = express();
+
+app.get("/", function (req, res) {
   var q = url.parse(req.url, true);
   var filename = "." + q.pathname;
   fs.readFile(filename, function(err, data) {
@@ -14,4 +16,9 @@ http.createServer(function (req, res) {
     res.write(data);
     return res.end();
   });
-}).listen(8080);
+});
+
+const PORT = 8080;
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}/`);
+});
