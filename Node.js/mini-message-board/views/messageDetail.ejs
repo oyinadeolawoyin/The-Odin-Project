@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Messages</title>
+    </head>
+    <body>
+        <h1>Message Details</h1>        
+        <ul>
+            <li>
+                <strong><%= message.user %>:</strong> 
+                <%= message.text %> 
+                <br>
+                <small><%= message.added.toLocaleString() %></small>
+            </li>
+            <li><a href="/">Back to Board</a></li>
+        </ul>
+    </body>
+</html>

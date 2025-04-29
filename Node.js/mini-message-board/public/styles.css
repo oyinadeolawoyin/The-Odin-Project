@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: greenyellow;
+}
+
+ul {
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: aliceblue;
+}
+
+li {
+   text-decoration: none;
+    background-color: limegreen;
+
+    padding: 50px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+}
+
+.a {
+    font-size: 22px;
+}

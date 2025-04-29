@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Messages</title>
+    </head>
+    <body>
+        <h1>Message Board</h1>
+        <div>
+            <% link.forEach(item => { %>
+              <p class="a">
+                <a href="<%= item.href %>"><%= item.text %></a>
+              </p>
+            <% }) %>
+            </div>          
+        <ul>
+            <% messages.forEach((message) => {%>
+                <li>
+                    <strong><%= message.user %>:</strong> 
+                    <%= message.text %> 
+                    <br>
+                    <small><%= message.added.toLocaleString() %></small>
+                    <br>
+                    <a href="/messageDetail/<%= message.id %>">Open</a>
+                </li>
+            <%}) %>
+        </ul>
+    </body>
+</html>

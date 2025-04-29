@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: greenyellow;
+}
+
+ul {
+   text-decoration: none;
+    background-color: limegreen;
+
+    padding: 50px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

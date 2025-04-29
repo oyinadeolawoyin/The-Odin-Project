@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: greenyellow;
+}
+
+form {
+   text-decoration: none;
+    background-color: limegreen;
+
+    padding: 50px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    height: 30px;
+    border-radius: 5px;
+    font-size: 20px;
+    border: none;
+    padding: 5px;
+}
+
+label {
+    font-size: 20px;
+}
+
+button {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
