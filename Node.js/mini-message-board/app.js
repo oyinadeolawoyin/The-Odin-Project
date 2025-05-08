@@ -1,6 +1,10 @@
 const express = require("express");
+require('dotenv').config();
 const app = express();
-const db = require("./db");
+const homeRoutes = require("./routes/homeRouter");
+const messageRoutes = require("./routes/messageRouter");
+const messageDetailsRoutes = require("./routes/messageDetailsRouter");
+
 
 const path = require("node:path");
 
@@ -12,39 +16,13 @@ app.use(express.static(assestsPath));
 
 app.use(express.urlencoded({ extended: false }));
 
-const link = [
-    { href: "new", text: "Write New Message" }
-]
 
-app.get("/", (req, res) => {
-    res.render("index", { link: link, messages: db.messages });
-});
-
-app.get("/new", (req, res) => {
-    res.render("new");
-});
-
-app.post("/new", (req, res) => {
-    const { user, text } = req.body;
-
-    db.messages.push({
-        id: (db.messages.length),
-        text,
-        user,
-        added: new Date()
-    });
-
-    res.redirect("/");
-});
-
-app.get("/messageDetail/:id", (req, res) => {
-    const message = db.messages[req.params.id];
-    
-    res.render("messageDetail", { message: message });
-});
+app.use('/', homeRoutes);
+app.use("/new", messageRoutes);
+app.use("/", messageDetailsRoutes);
 
 
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 app.listen(PORT, () => {
     console.log(`My first Express app - listening on port: ${PORT}`);
 });

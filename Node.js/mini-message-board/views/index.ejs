@@ -8,17 +8,17 @@
         <div>
             <% link.forEach(item => { %>
               <p class="a">
-                <a href="<%= item.href %>"><%= item.text %></a>
+                <a href="/<%= item.href %>"><%= item.text %></a>
               </p>
             <% }) %>
             </div>          
         <ul>
             <% messages.forEach((message) => {%>
                 <li>
-                    <strong><%= message.user %>:</strong> 
+                    <strong><%= message.name %>:</strong> 
                     <%= message.text %> 
                     <br>
-                    <small><%= message.added.toLocaleString() %></small>
+                    <small><%= new Date(message.added).toLocaleString() %></small>
                     <br>
                     <a href="/messageDetail/<%= message.id %>">Open</a>
                 </li>
