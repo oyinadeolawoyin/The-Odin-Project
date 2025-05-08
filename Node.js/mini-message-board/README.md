@@ -17,5 +17,6 @@ This app allow users to view and post messages on a shared board. Messages displ
 
 - Node.js
 - Express
+- PostgreSQL
 - EJS (Embedded JavaScript templating)
 - CSS
