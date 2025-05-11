@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Form</title>
+</head>
+<body>
+    <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+        <ul>
+          <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+    <% } %>
+
+    <form action="/itemForm" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+    
+        <br>
+    
+        <label for="description">Description:</label>
+        <textarea name="description" id="description">...</textarea>
+    
+        <br>
+    
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price">
+        <br>
+    
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity">
+        <br>
+    
+        <label for="category">Category:</label>
+        <input type="text" name="category" id="category">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

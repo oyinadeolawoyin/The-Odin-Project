@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= itemName %></title>
+</head>
+<body>
+    <h1><%= itemName %></h1>
+    <p><%= item.description %></p>
+    <p>Price: $<%= item.price %></p>
+    <p>Quantity: <%= item.quantity %></p>
+    <div>
+        <form action="/item/<%= item.id %>/delete" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+        </form>
+        
+        <form action="/item/<%= item.id %>/edit" method="GET" style="display:inline;">
+            <button type="submit">Edit</button>
+        </form>
+    </div>
+    <button><a href="/">Back to Categories</a></button>
+</body>
+</html>

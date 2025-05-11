@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= categoryName %></title>
+</head>
+<body>
+    <h1><%= categoryName %></h1>
+    <main>
+        <ul>
+            <% category.forEach((item) => {
+                %>
+                <li>
+                    <strong><%= item.name %> $<%= item.price %>:</strong>
+                    <br>
+                    <%= item.description %>
+                    <br>
+                    Quatity: <%= item.quantity %>
+                    <br>
+                    <button><a href="/item/<%= item.id %>">Open</a></button>
+                </li>
+            <%}) %>
+        </ul>
+    </main>
+</body>
+</html>

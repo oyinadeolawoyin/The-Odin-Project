@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+    <h1>Edit Item</h1>
+    <form action="/item/<%= item.id %>/edit" method="POST">
+    <label>Name:</label>
+    <input type="text" name="name" value="<%= item.name %>" required>
+    <label>Description:</label>
+    <input type="text" name="description" value="<%= item.description %>" required>
+    <label>Price:</label>
+    <input type="number" name="price" value="<%= item.price %>" required>
+    <label>Quantity:</label>
+    <input type="number" name="quantity" value="<%= item.quantity %>" required>
+    <button type="submit">Save</button>
+    </form>
+</body>
+</html>

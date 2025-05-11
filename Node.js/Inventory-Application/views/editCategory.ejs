@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Update Category</title>
+</head>
+<body>
+    <form action="/category/<%= category.id %>/edit" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= category.name %>">
+        
+        <br>
+
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" value="<%= category.description %>">Write...</textarea>
+        <br>
+        <button type="submit">Sumbit</button>
+    </form>
+</body>
+</html>
