@@ -9,8 +9,7 @@ const lengthErr1 = "must be 1–10 characters.";
 const validateItem = [
     body("name")
       .trim()
-      .matches(/^[A-Za-z\s]+$/).withMessage(`Description ${alphaErr}`)
-      .isLength({ min: 1, max: 10 }).withMessage(`Name ${lengthErr1}`)
+      .isLength({ min: 1, max: 20 }).withMessage(`Name ${lengthErr1}`)
       .escape(),
   
     body("description")

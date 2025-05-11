@@ -1,14 +1,14 @@
 const db = require("../db/queries");
 const { validationResult } = require("express-validator");
 
-async function itemForm(req, res) {
+function itemForm(req, res) {
    res.render("itemForm") 
 };
 
 async function addItem(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).render("categoryForm", {
+      return res.status(400).render("itemForm", {
         title: "Create category",
         errors: errors.array(),
       });

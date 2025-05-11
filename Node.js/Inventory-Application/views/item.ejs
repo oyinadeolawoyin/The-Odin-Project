@@ -2,21 +2,30 @@
 <html>
 <head>
     <title><%= itemName %></title>
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <h1><%= itemName %></h1>
-    <p><%= item.description %></p>
-    <p>Price: $<%= item.price %></p>
-    <p>Quantity: <%= item.quantity %></p>
-    <div>
-        <form action="/item/<%= item.id %>/delete" method="POST" style="display:inline;">
-            <button type="submit">Delete</button>
-        </form>
-        
-        <form action="/item/<%= item.id %>/edit" method="GET" style="display:inline;">
-            <button type="submit">Edit</button>
-        </form>
-    </div>
-    <button><a href="/">Back to Categories</a></button>
+    <header>
+        <h1><%= itemName %></h1>
+    </header>
+    <hr>
+    <main>
+        <div>
+            <p><b>Title:</b> <%= item.name %></p>
+            <p><%= item.description %></p>
+            <p><b>Price:</b> $<%= item.price %></p>
+            <p><b>Quantity:</b> <%= item.quantity %></p>
+        </div>
+        <div class="forms">
+            <form action="/item/<%= item.id %>/delete" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+            
+            <form action="/item/<%= item.id %>/edit" method="GET" style="display:inline;">
+                <button type="submit">Edit</button>
+            </form>
+        </div>
+        <button><a href="/">Back to Categories</a></button>
+    </main>
 </body>
 </html>

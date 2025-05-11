@@ -1,11 +1,7 @@
 const db = require("../db/queries");
 
 async function itemDetails(req, res) {
-    console.log("get", req.params.id);
     const item = await db.getItem(req.params.id);
-    if (!item) {
-        return res.status(404).send("Item not found");
-    }
     res.render("item", { itemName: item.name,  item: item})
 }
 
@@ -17,7 +13,6 @@ async function deleteItem(req, res) {
 
 async function showeditForm(req, res) {
     const item = await db.getItem(req.params.id);
-    if (!item) return res.status(404).send("Item not found");
     res.render("editItem", { item });
 }
 

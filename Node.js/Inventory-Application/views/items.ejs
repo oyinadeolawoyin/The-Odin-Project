@@ -2,10 +2,21 @@
 <html lang="en">
 <head>
     <title><%= categoryName %></title>
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <h1><%= categoryName %></h1>
+    <header>
+        <h1><%= categoryName %></h1>
+    </header>
+    <hr>
     <main>
+        <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+            <ul>
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }) %>
+            </ul>
+          <% } %>
         <ul>
             <% category.forEach((item) => {
                 %>

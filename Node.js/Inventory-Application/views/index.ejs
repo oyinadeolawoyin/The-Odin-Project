@@ -2,34 +2,46 @@
 <html lang="en">
 <head>
     <title>Bookshop</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header>
-        <h1>Store Categories</h1>
+        <h1>Genres Categories</h1>
         <button><a href="/categoryForm">Add category</a></button>
         <button><a href="/itemForm">Add Item</a></button>
     </header>
+    <hr>
     <main>
-        <ul>
-            <% categories.forEach((category) => {
-                %>
-                <li>
-                    <strong><%= category.name %>:</strong>
-                    <br>
-                    <%= category.description %>
-                    <br>
-                    <div>
+        <% if (errors && errors.length > 0) { %>
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li style="color: red;"><%= error.msg %></li>
+                <% }) %>
+            </ul>
+        <% } %>
+    
+        <% if (categories.length === 0) { %>
+            <p>No categories found</p>
+        <% } else { %>
+            <ul>
+                <% categories.forEach((category) => { %>
+                    <li>
+                        <p>
+                            <strong><%= category.name %>:</strong>
+                            <br>
+                            <%= category.description %>
+                        </p>
                         <button><a href="/items/<%= category.id %>/items">Open</a></button>
                         <form action="/category/<%= category.id %>/delete" method="POST" style="display:inline;">
                             <button type="submit">Delete</button>
-                        </form> 
+                        </form>
                         <form action="/category/<%= category.id %>/edit" method="GET" style="display:inline;">
                             <button type="submit">Edit</button>
                         </form>  
-                    </div>                 
-                </li>
-            <%}) %> 
-        </ul>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %>
     </main>
 </body>
 </html>

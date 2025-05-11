@@ -1,7 +1,7 @@
 const db = require("../db/queries");
 const { validationResult } = require("express-validator");
 
-async function categoryForm(req, res) {
+function categoryForm(req, res) {
    res.render("categoryForm") 
 };
 

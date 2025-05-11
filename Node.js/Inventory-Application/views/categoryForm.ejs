@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>BookShop</title>
+    <link rel="stylesheet" href="/form.css">
 </head>
 <body>
-    <h1>Add new categories</h1>
-    <% if (typeof errors !== "undefined" && errors.length > 0) { %>
-        <ul>
-          <% errors.forEach(error => { %>
-            <li><%= error.msg %></li>
-          <% }) %>
-        </ul>
-      <% } %>
-      
-    <form action="/categoryForm" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
-        
-        <br>
-
-        <label for="description">Description:</label>
-        <textarea name="description" id="description">Write...</textarea>
-        <br>
-        <button type="submit">Sumbit</button>
-    </form>
+    <header>
+        <h1>Add new categories</h1>
+    </header>
+    <hr>
+    <main>
+        <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+            <ul>
+              <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }) %>
+            </ul>
+          <% } %>
+          
+        <form action="/categoryForm" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+            
+            <br>
+    
+            <label for="description">Description:</label>
+            <textarea name="description" id="description">Write...</textarea>
+            <br>
+            <button type="submit">Sumbit</button>
+        </form>
+    </main>
 </body>
 </html>

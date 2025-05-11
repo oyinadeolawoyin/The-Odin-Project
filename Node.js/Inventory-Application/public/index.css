@@ -1,0 +1,75 @@
+body {
+    background-color: #FBFBFB;
+}
+
+header {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin: -8px;
+    padding: 10px;
+    color: #0118D8;
+}
+
+h1 {
+    display: flex;
+    flex: auto;
+}
+
+main {
+    margin-top: 50px;
+    padding: 10px;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+li {
+    list-style-type: none;
+    background-color:#0118D8;
+    color: #FFF2F2;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+li button {
+    margin-top: 10px;
+    width: 50px;
+    background-color: #E9DFC3;
+    color: #0118D8;
+}
+
+li a {
+    color: #0118D8;
+}
+
+a {
+    text-decoration: none;
+    color: #E9DFC3;
+}
+
+button {
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    color: #E9DFC3;
+    background-color: #0118D8;
+    border: none;
+}
+
+hr {
+    box-shadow: 0 0 5px black;
+    margin: -8px;
+}
+
+.forms {
+    margin-top: 5px;
+}
+
+.forms button {
+    width: 50px;
+}
