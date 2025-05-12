@@ -73,3 +73,15 @@ hr {
 .forms button {
     width: 50px;
 }
+
+@media (max-width: 500px) {
+    ul {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 5px;
+    } 
+
+    button {
+        height: 50px;
+    }
+}

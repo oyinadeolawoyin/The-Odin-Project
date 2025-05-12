@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-const { Client } = require("pg");
+const { Client, Client } = require("pg");
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS categories(
@@ -35,7 +35,10 @@ VALUES
 async function main() {
     console.log("seeding... ");
     const client = new Client({
-        connectionString: "postgresql://oyinade:Bunkumi@localhost:5432/top_users",
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+          rejectUnauthorized: false,
+        },
     });
     await client.connect();
     await client.query(SQL);
