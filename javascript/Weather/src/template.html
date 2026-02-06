@@ -3,19 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
+    <meta name="description" content="Modern weather forecast app with beautiful design" />
+    <title>Weather Forecast App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="app-header">
+      <h1 class="app-title">Weather Forecast</h1>
+      <p class="app-subtitle">Get accurate weather information for any location</p>
+    </div>
+    
     <form id="form">
       <input
         type="text"
         id="search"
         name="search"
-        placeholder="Location"
+        placeholder="Enter city name or location..."
         required
+        autocomplete="off"
       />
-      <button id="submit" type="submit">Submit</button>
+      <button id="submit" type="submit">Search</button>
     </form>
+    
     <div id="content"></div>
   </body>
 </html>
