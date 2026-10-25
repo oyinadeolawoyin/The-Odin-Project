@@ -1,6 +1,12 @@
 #! /usr/bin/env node
+require("dotenv").config();
+console.log("DATABASE_URL is:", process.env.DATABASE_URL); // Debug log
 
-const { Client, Client } = require("pg");
+if (!process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL is not defined. Did you forget to load the .env file?");
+}
+
+const { Client } = require("pg");
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS categories(
@@ -35,10 +41,7 @@ VALUES
 async function main() {
     console.log("seeding... ");
     const client = new Client({
-        connectionString: process.env.DATABASE_URL,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        connectionString: process.env.DATABASE_URL
     });
     await client.connect();
     await client.query(SQL);
