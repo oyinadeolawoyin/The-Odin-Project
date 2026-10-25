@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sips And Secrets</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <h1 class="sips"><i>Sips and Secrets</i></h1>
+                <button><a href="/memberForm">Member</a></button> 
+                <% if (isAuthenticated) { %>
+                    <button><a href="/contentForm">Post</a></button> 
+                    <li><a href="/profile/<%= user.username %>"><button class="profile">P</button></a></li>
+                  <% } else { %>
+                    <button><a href="/profileForm">Sign up</a></button>
+                    <button><a href="/logIn">Log In</a></button>
+                <% } %>                  
+            </ul>              
+        </nav>
+    </header>
+        <main>
+            <section class="firstsection">
+                <h1>Welcome to Sip and Secrets private clubhouse</h1>
+                <p><i>Where great minds meet in private</i></p>
+            </section>
+            <hr>
+            <section class="secondsection">
+                <h2>All Posts</h2>
+                <% if (errors && errors.length > 0) { %>
+                    <ul>
+                        <% errors.forEach(error => { %>
+                            <li style="color: red;"><%= error.msg %></li>
+                        <% }) %>
+                    </ul>
+                <% } %>
+
+                <% if (posts.length === 0) { %>
+                    <p>No posts found</p>
+                <% } else { %>
+                    <ul>
+                        <% posts.forEach((post) => { %>
+                            <ul>
+                            <li class="title"><strong><%= post.title %></strong></li>
+                            <li class="content"><%= post.content %></li>
+                            <% if (isAuthenticated && user.admin === true && user.membership === true) { %>
+                                <!-- Admin + Member -->
+                                <li class="button">
+                                    <img src="/images/pen.svg" alt="read">
+                                    <a href="/profile/post/<%= post.username %>" class="username"><%= post.username %></a>
+                                </li>
+                                <li class="button">
+                                    <img src="/images/calendar-range.svg" alt="Date">
+                                    <%= new Date(post.date).toLocaleString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                }) %></li>
+                                <div class="form">
+                                    <button class="button">
+                                        <img src="/images/pen.svg" alt="read">
+                                        <a href="/content/<%= post.id %>">Read</a>
+                                    </button>
+                                    <form action="/content/<%= post.id %>/delete" method="POST" style="display:inline;">
+                                        <button type="submit" class="button">
+                                            <img src="/images/delete-forever.svg" alt="delete">
+                                            <li>Delete</li>
+                                        </button>
+                                    </form>
+                                    <form action="/content/<%= post.id %>/update" method="GET" style="display:inline;">
+                                        <button type="submit" class="button">
+                                            <img src="/images/update.svg" alt="update">
+                                            <li>Edit</li>
+                                        </button>
+                                    </form>
+                                </div>
+                            
+                            <% } else if (isAuthenticated && user.admin === true) { %>
+                                <!-- Only Admin -->
+                                <li>
+                                    <a href="/profile/post/<%= post.username %>"><%= post.username %></a>
+                                </li>
+                                <li class="button">
+                                    <img src="/images/calendar-range.svg" alt="Date">
+                                    <%= new Date(post.date).toLocaleString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                }) %></li>
+                                <div class="form">
+                                    <button class="button">
+                                        <img src="/images/pen.svg" alt="read">
+                                        <a href="/content/<%= post.id %>">Read</a>
+                                    </button>
+                                    <form action="/content/<%= post.id %>/delete" method="POST" style="display:inline;">
+                                        <button type="submit" class="button">
+                                            <img src="/images/delete-forever.svg" alt="delete">
+                                            <p>Delete</p>
+                                        </button>
+                                    </form>
+                                    <form action="/content/<%= post.id %>/update" method="GET" style="display:inline;">
+                                        <button type="submit" class="button">
+                                            <img src="/images/update.svg" alt="update">
+                                            <p>Edit</p>
+                                        </button>
+                                    </form>
+                                </div>
+                            
+                            <% } else if (isAuthenticated && user.membership === true) { %>
+                                <!-- Only Member -->
+                                <li class="button">
+                                    <img src="/images/pen.svg" alt="read">
+                                    <a href="/profile/post/<%= post.username %>"><%= post.username %></a>
+                                </li>
+                                <li><img src="/images/calendar-range.svg" alt="Date">
+                                    <%= new Date(post.date).toLocaleString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                }) %></li>
+                                <div class="form">
+                                    <button class="button">
+                                        <img src="/images/pen.svg" alt="read">
+                                        <a href="/content/<%= post.id %>">Read</a>
+                                    </button>
+                                </div>
+                            
+                            <% } else { %>
+                                <!-- Guest -->
+                                <li>
+                                    Anonymous
+                                    <br>
+                                    XX-XX-XXXX
+                                </li>
+                                <div class="form">
+                                    <button class="button">
+                                        <img src="/images/pen.svg" alt="read">
+                                        <a href="/content/<%= post.id %>">Read</a>
+                                    </button>
+                                </div>
+                            <% } %>                          
+                            </ul>
+                        <% }) %>                      
+                    </ul>
+                <% } %>
+        </section>
+    </main>
+</body>
+</html>

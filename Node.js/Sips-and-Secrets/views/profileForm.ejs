@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/form.css">
+</head>
+<body>
+    <header class="header">
+        <h1><i>Sign Up</i></h1>
+    </header>
+    <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+        <ul>
+          <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+    <% } %>
+    <main>
+        <form action="/profileForm" method="POST" class="form">
+            <label for="firstname"><b><i>First Name</i></b></label>
+            <input type="text" name="firstname" id="firstname" placeholder="Christen">
+            <label for="lastname"><b><i>Last Name</i></b></label>
+            <input type="text" name="lastname" id="lastname" placeholder="Alder">
+            <label for="username"><b><i>Username</i></b></label>
+            <input type="text" name="username" id="username">
+            <label for="email"><b><i>Email</i></b></label>
+            <input type="text" id="email" name="email" placeholder="ChristenAlder@gmail.com">
+            <label for="password"><b><i>Password</i></b></label>
+            <input type="password" id="password" name="password">
+            <label for="confirm"><b><i>Confirm password</i></b></label>
+            <input type="password" id="confirm" name="confirm">
+            <button type="submit">Sign Up</button>
+        </form>
+    </main>
+</body>
+</html>

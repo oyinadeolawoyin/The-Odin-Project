@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="/form.css">
+</head>
+<body>
+    <header>
+        <h1><i>Log In</i></h1>
+    </header>
+    <% if (error_msg.length > 0) { %>
+        <div class="alert alert-danger">
+          <% error_msg.forEach(function(msg){ %>
+            <p><%= msg %></p>
+          <% }) %>
+        </div>
+    <% } %>
+      
+    <% if (error.length > 0) { %>
+        <div class="alert alert-danger">
+          <% error.forEach(function(msg){ %>
+            <p><%= msg %></p>
+          <% }) %>
+        </div>
+    <% } %>
+      
+    <% if (success_msg.length > 0) { %>
+        <div class="alert alert-success">
+          <% success_msg.forEach(function(msg){ %>
+            <p><%= msg %></p>
+          <% }) %>
+        </div>
+    <% } %>
+    <main>
+        <form action="/logIn" method="POST">
+            <label for="username"><b><i>Username</i></b></label>
+            <input type="text" id="username" name="username">
+            <label for="password"><b><i>Password</i></b></label>
+            <input type="password" name="password" id="password">
+            <button type="submit">Log In</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int  @id @default(autoincrement())
+  username  String
+  game      Game[]
+}
+
+model Game {
+  id          Int  @id @default(autoincrement())
+  record      Int
+  user        User  @relation(fields: [userId], references: [id])
+  userId      Int  
+}
+
+model Characters {
+  id        Int     @id @default(autoincrement())
+  name      String
+  xpixel    Float
+  ypixel    Float
+  tolerance Float
+  type      String
+}

@@ -1,0 +1,345 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 0;
+    background-color: #000000;
+    color: #d4d4d4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 20px;
+    max-height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #c0c0c0;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    box-shadow: 0px 0px 10px #ffd700;
+    margin-bottom: 40px;
+}
+
+.pro {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    font-size: 20px;
+    background-color: #ffd700;
+    color: #000000;
+    border: none;
+    font-weight: 600;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.div {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.status {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.status p {
+    font-size: 14px;
+}
+
+.settings {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.settings button {
+    min-width: 120px;
+    padding: 10px 15px;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.settings button a {
+    color: #000000;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section h2.post {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #ffd700;
+    text-align: center;
+}
+
+/* Posts Grid */
+section > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0;
+}
+
+section > ul > ul {
+    background-color: #ffd700;
+    color: #000000;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+section > ul > ul:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.3);
+}
+
+.title {
+    font-size: 20px;
+    color: #6a0dad;
+    margin-bottom: 15px;
+    word-wrap: break-word;
+}
+
+section > ul > ul > li:nth-child(2) {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+section > ul > ul > li:nth-child(3) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+    background-color: #6a0dad;
+    color: #c0c0c0;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #5a0c9d;
+}
+
+.form,
+.forms {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.button,
+.butt {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    min-width: 80px;
+    justify-content: center;
+}
+
+.buttons,
+.butt {
+    flex: 1;
+    min-width: 80px;
+}
+
+/* No posts message */
+section > p {
+    text-align: center;
+    color: #d4d4d4;
+    font-size: 18px;
+    margin-top: 40px;
+}
+
+/* Tablet - 768px and below */
+@media (max-width: 768px) {
+    header {
+        padding: 25px 15px;
+    }
+
+    .pro {
+        height: 90px;
+        width: 90px;
+        font-size: 18px;
+    }
+
+    .status {
+        gap: 20px;
+    }
+
+    .settings {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .settings button {
+        flex: 1;
+        min-width: 100px;
+    }
+
+    section h2.post {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    section > ul {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+    }
+
+    section > ul > ul {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+}
+
+/* Mobile - 600px and below */
+@media (max-width: 600px) {
+    main {
+        padding: 15px;
+    }
+
+    header {
+        padding: 20px 10px;
+        margin-bottom: 30px;
+    }
+
+    .pro {
+        height: 80px;
+        width: 80px;
+        font-size: 16px;
+    }
+
+    .status {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .status p {
+        font-size: 13px;
+    }
+
+    .settings {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .settings button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    section h2.post {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    section > ul {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    section > ul > ul {
+        padding: 18px;
+    }
+
+    .title {
+        font-size: 17px;
+    }
+
+    .form,
+    .forms {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button,
+    .butt,
+    .buttons {
+        width: 100%;
+        min-width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Very small phones - 400px and below */
+@media (max-width: 400px) {
+    header {
+        padding: 15px 10px;
+    }
+
+    .pro {
+        height: 70px;
+        width: 70px;
+        font-size: 15px;
+    }
+
+    section h2.post {
+        font-size: 20px;
+    }
+
+    section > ul > ul {
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+
+    section > ul > ul > li:nth-child(3) {
+        font-size: 12px;
+    }
+
+    img {
+        max-width: 18px;
+        max-height: 18px;
+    }
+}

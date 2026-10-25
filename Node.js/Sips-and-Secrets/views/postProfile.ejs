@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= poster.username %></title>
+    <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+    <header>       
+        <button class="pro"><%= poster.username %></button>
+        <div class="div">
+            <div class="status">
+                <p><%= poster.membership ? "✓ Member" : "Not Member" %></p>
+                <p><%= poster.admin ? "✓ Admin" : "Not Admin" %></p>
+            </div>
+            <div class="settings">
+                <% if (poster.username === user.username) { %>
+                    <button><a href="/profile/<%= user.username %>/edit">Settings</a></button>
+                    <button><a href="/logOut">Log Out</a></button>
+                <% } %>  
+                <button><a href="/">Home</a></button> 
+            </div> 
+        </div> 
+    </header>
+    
+    <main>
+        <section>
+            <h2 class="post"><i>Posts</i></h2>
+            <% if (posts.length === 0) { %>
+                <p>No posts found</p>
+            <% } else { %>
+                <ul>
+                    <% posts.forEach((post) => { %>
+                        <ul>
+                            <li class="title"><strong><%= post.title %></strong></li>
+                            <li><%= post.content %></li> 
+                            <li>
+                                <img src="/images/calendar-range.svg" alt="Date">
+                                <span>
+                                    <%= new Date(post.date).toLocaleString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                    }) %>
+                                </span>
+                            </li>
+                            <div class="forms form">
+                                <button class="butt">
+                                    <img src="/images/pen.svg" alt="read">
+                                    <a href="/content/<%= post.id %>">Read</a>
+                                </button>
+                                <% if (poster.username === user.username) { %>    
+                                    <form action="/content/<%= post.id %>/delete" method="POST" style="display:inline; flex: 1;">
+                                        <button type="submit" class="butt">
+                                            <img src="/images/delete-forever.svg" alt="delete">
+                                            <span>Delete</span>
+                                        </button>
+                                    </form>
+                                    <form action="/content/<%= post.id %>/update" method="GET" style="display:inline; flex: 1;">
+                                        <button type="submit" class="butt">
+                                            <img src="/images/update.svg" alt="update">
+                                            <span>Edit</span>
+                                        </button>
+                                    </form>
+                                <% } %> 
+                            </div>                      
+                        </ul>
+                    <% }) %>                      
+                </ul>
+            <% } %>
+        </section>     
+    </main>
+</body>
+</html>

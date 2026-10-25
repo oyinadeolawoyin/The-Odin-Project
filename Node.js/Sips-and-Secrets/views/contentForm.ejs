@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content</title>
+    <link rel="stylesheet" href="/form.css">
+</head>
+<body>
+    <header>
+        <h1><i>Write</i></h1>
+    </header>
+    <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+        <ul>
+          <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+    <% } %>
+    <main>
+        <form action="/contentForm" method="POST">
+            <label for="title"><b><i>Title</i></b></label>
+            <input type="text" id="title" name="title">
+            <label for="content"><b><i>Content</i></b></label>
+            <textarea name="content" id="content">Write..</textarea>
+            <button type="submit">Post</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,135 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int     @id @default(autoincrement())
+  username   String
+  password   String
+  email      String  @unique
+  country    String
+  gender     String
+  newsletter Boolean @default(false)
+  role       Role    @default(USER)
+
+  comments Comment[]
+  reviews  Review[]
+  images   Image[]
+  videos   Video[]
+  stories  Story[]
+  chapters Chapter[]
+  posts    Post[]
+}
+
+model Post {
+  id         Int      @id @default(autoincrement())
+  title      String
+  content    String
+  uploadedAt DateTime @default(now())
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model Image {
+  id         Int      @id @default(autoincrement())
+  caption    String
+  url        String
+  uploadedAt DateTime @default(now())
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model Video {
+  id         Int      @id @default(autoincrement())
+  caption    String
+  url        String
+  uploadedAt DateTime @default(now())
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model Story {
+  id      Int    @id @default(autoincrement())
+  title   String
+  imgUrl  String
+  summary String
+  tags    String
+  views   Int    @default(0)
+  likes   Int    @default(0)
+  status  String @default("ongoing")
+
+  reviews  Review[]
+  chapters Chapter[]
+  comments Comment[]
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model Review {
+  id         Int      @id @default(autoincrement())
+  title      String
+  rate       Int
+  likes      Int      @default(0)
+  uploadedAt DateTime @default(now())
+
+  story   Story @relation(fields: [storyId], references: [id])
+  storyId Int
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model Chapter {
+  id         Int      @id @default(autoincrement())
+  title      String
+  content    String
+  likes      Int      @default(0)
+  views      Int      @default(0)
+  uploadedAt DateTime @default(now())
+  status     String   @default("unpublish")
+
+  comments Comment[]
+
+  story   Story @relation(fields: [storyId], references: [id])
+  storyId Int
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model Comment {
+  id         Int      @id @default(autoincrement())
+  content    String
+  likes      Int      @default(0)
+  uploadedAt DateTime @default(now())
+
+  story   Story @relation(fields: [storyId], references: [id])
+  storyId Int
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  chapter   Chapter? @relation(fields: [chapterId], references: [id])
+  chapterId Int?
+
+  parent   Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  parentId Int?
+  replies  Comment[] @relation("CommentReplies")
+}
+
+enum Role {
+  USER
+  ADMIN
+  SPONSOR
+  FAN
+}

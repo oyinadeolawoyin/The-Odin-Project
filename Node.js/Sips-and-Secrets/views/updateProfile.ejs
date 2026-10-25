@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <link rel="stylesheet" href="/form.css">
+</head>
+<header>
+    <h1><i>Update Profile</i></h1>
+</header>
+<body>
+    <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+        <ul>
+          <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+    <% } %>
+    <main>
+        <form action="/profile/<%= user.username %>/edit" method="POST">
+            <label for="firstname"><b><i>First Name</i></b></label>
+            <input type="text" name="firstname" id="firstname" value="<%= user.firstname %>">
+            <label for="lastname"><b><i>Last Name</i></b></label>
+            <input type="text" name="lastname" id="lastname" value="<%= user.lastname %>">
+            <label for="username"><b><i>Username</i></b></label>
+            <input type="text" name="username" id="username" value="<%= user.username %>">
+            <label for="email"><b><i>Email</i></b></label>
+            <input type="text" id="email" name="email" value="<%= user.email %>">
+            <label for="password"><i><b>Password</b></i></label>
+            <input type="password" id="password" name="password"">
+            <button type="submit">Update</button>
+        </form>
+    </main>
+</body>
+</html>

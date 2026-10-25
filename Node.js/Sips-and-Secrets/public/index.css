@@ -1,0 +1,172 @@
+body {
+    padding: 10px;
+    background-color: #000000;
+    color: #d4d4d4;
+}
+
+header {
+    padding: 20px;
+    margin: -20px;
+    margin-bottom: 40px;
+    box-shadow: 0px 0px 5px #ffd700;
+    color: #ffd700;
+}
+
+hr {
+    background-color: #ffd700;
+}
+
+nav > ul {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav > ul > h1 {
+    display: flex;
+    flex: auto;
+    font-size: 30px;
+}
+
+nav > ul> button {
+    padding: 10px;
+    width: 80px;
+    border-radius: 5px;
+    background-color: #ffd700;
+}
+
+nav > ul> button > a {
+    color: #000000;
+}
+
+img {
+    height: 20px;
+    width: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.profile {
+   height: 50px;
+   width: 50px;
+   border-radius: 100px;
+   border: 2px solid black;
+   background-color: #ffd700;
+   color: #000000;
+}
+
+li {
+    list-style-type: none;
+}
+
+.firstsection {
+    margin: 20px;
+    padding: 20px;
+}
+
+.firstsection > h1 {
+    font-size: 40px;
+}
+
+.firstsection > p {
+    font-size: 30px;
+}
+
+.secondsection {
+    padding: 20px;
+}
+
+.secondsection > h2 {
+    font-size: 25px;
+    padding: 10px;
+    margin-bottom: 50px;
+    color: #ffd700;
+}
+
+.secondsection > ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.secondsection > ul > ul {
+    background-color: #ffd700;
+    color: #000000;
+    border-radius: 5px;
+}
+
+.content {
+    overflow: hidden;
+}
+
+.secondsection > ul > ul {
+    padding: 20px;
+}
+
+a {
+   text-decoration: none; 
+   color: #c0c0c0;
+}
+
+.form {
+    margin-top: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: 20px;
+    color: #6a0dad;
+}
+
+button {
+    background-color: #6a0dad;
+    color: #c0c0c0;color: #c0c0c0;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.username {
+    color: #6a0dad;
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 5px;
+    }
+
+    nav > ul {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: -20px;
+    }
+    
+    nav > ul > h1 {
+        display: flex;
+        flex: auto;
+        font-size: 15px;
+    }
+
+    .firstsection > h1 {
+        font-size: 20px;
+    }
+    
+    .firstsection > p {
+        font-size: 15px;
+    }
+
+    .secondsection > ul {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+        margin-left: -3px;
+        padding: 10px;
+    }
+}

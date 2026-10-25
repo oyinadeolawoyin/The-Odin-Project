@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a member</title>
+    <link rel="stylesheet" href="/form.css">
+</head>
+<body>
+    <header>
+        <h1><i>Become a member</i></h1>
+    </header>
+    <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+        <ul>
+          <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+    <% } %>
+    <main>
+        <form action="/memberForm" method="POST">
+            <label for="username"><i><b>Username*</b></i></label>
+            <input type="text" id="username" name="username" required />
+            <label for="passcodeMember"><b><i>Member passcode</i></b></label>
+            <input type="text" id="passcodeMember" name="passcodeMember" placeholder="Input MEMBER">
+            <label for="passcodeAdmin"><b><i>Admin passcode</i></b></label>
+            <input type="text" id="passcodeAdmin" name="passcodeAdmin" placeholder="Input ADMIN">
+            <button type="submit">Submit</button>  
+        </form>
+    </main>
+</body>
+</html>

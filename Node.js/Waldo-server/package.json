@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "@prisma/client": "^6.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  },
+  "name": "waldo-server",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "prisma": "^6.9.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "prisma generate && prisma db push"
+  },
+  "prisma": {
+    "seed": "node controllers/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oyinadeolawoyin/Waldo-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oyinadeolawoyin/Waldo-server/issues"
+  },
+  "homepage": "https://github.com/oyinadeolawoyin/Waldo-server#readme"
+}

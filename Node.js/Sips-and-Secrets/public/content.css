@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-top: 70px;
+    background-color: #000000;
+    color: #c0c0c0;
+}
+
+section {
+    border: 2px solid black;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #ffd700;
+    color: #000000;
+}
+
+h1 {
+    text-shadow: 0px 0px 5px #ffd700;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding-top: 300px;
+    }
+}
