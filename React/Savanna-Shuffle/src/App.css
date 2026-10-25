@@ -1,0 +1,125 @@
+:root {
+    background-color: #191A19;
+    font-family: "Mywriting";
+}
+
+
+@font-face {
+    font-family: "Mywriting";
+    src: url(fonts/inriasans-bold-webfont.woff2) format("woff2");
+    src: url(fonts/inriasans-bold-webfont.woff) format("woff");
+  }
+  
+  @font-face {
+    font-family: "writing";
+    src: url(fonts/inriasans-bolditalic-webfont.woff2) format("woff2");
+    src: url(fonts/inriasans-bolditalic-webfont.woff) format("woff");
+  }
+
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;  
+}
+
+
+.animal {
+    background: #1E5128;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 5px;
+    color: aliceblue;
+}
+
+img {
+    border-radius: 5px;
+}
+
+p {
+    font-size: 25px;
+}
+
+header {
+    color: #D8E9A8;
+    display: flex;
+    gap: 20px;
+    font-family: "writing";
+}
+
+#head {
+    margin-left: -110px;
+}
+
+h1 {
+    font-size: 35px;
+    color: #4E9F3D;
+}
+
+#score {
+    color:  #B33030;
+    margin-left: 400px;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+} 
+
+
+
+@media (max-width: 1500px) and (min-width: 600px) {
+    section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    } 
+
+    .animal {
+        padding: 40px;
+        margin: 5px;
+    }
+
+    header {
+        margin: 0px;
+        display: block;
+        gap: 0px;
+    }
+
+    #score {
+        margin-left: 0px;
+    }
+
+    #head {
+        margin-left: 0px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    section {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    } 
+
+    .animal {
+        padding: 27px;
+        margin-bottom: 27px;
+    }
+
+    header {
+        margin: 0px;
+        display: block;
+        gap: 0px;
+    }
+
+    #score {
+        margin-left: 0px;
+    }
+
+    #head {
+        margin-left: 0px;
+    }  
+}
