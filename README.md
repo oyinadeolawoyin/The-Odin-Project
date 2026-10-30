@@ -1,63 +1,25 @@
 # The Odin Project - Learning Journey
 
-Welcome to my repository for [The Odin Project](https://www.theodinproject.com/) curriculum! This repository contains my completed projects, exercises, and notes as I progress through the course. My goal is to build a solid foundation in web development by learning full-stack skills, including HTML, CSS, JavaScript, Git, and more.
+This repository documents my journey through [The Odin Project](https://www.theodinproject.com/), from zero programming knowledge to building full-stack web applications. The course was challenging and fun, and completing it is a great milestone for me.
 
-## Table of Contents
+## Favourite Projects
 
-- [Overview](#overview)
-- [Projects](#projects)
-- [Technologies and Skills](#technologies-and-skills)
-- [Getting Started](#getting-started)
-- [Acknowledgements](#acknowledgements)
+- **[Knight Moves](https://github.com/oyinadeolawoyin/The-Odin-Project/tree/main/javascript/Knights-travails).** My favourite project. It challenged my problem-solving skills and kept me thinking. I love playing chess, which may be why I enjoyed it so much.
+- **[Uploadify](https://github.com/oyinadeolawoyin/Uploadify).** Built in the Node.js course. It taught me how to work with files, and it was fun to upload and download my own files.
+- **[ChatApp](https://github.com/oyinadeolawoyin/The-Odin-Project/tree/main/Node.js/chatApp-server).** It levelled up my understanding of how authentication works.
+- **[Weather App](https://github.com/oyinadeolawoyin/The-Odin-Project/tree/main/javascript/Weather).** It taught me how to work with third-party APIs.
+- **[Where's Waldo](https://github.com/oyinadeolawoyin/The-Odin-Project/tree/main/Node.js/Waldo-server).** It taught me how to connect a separate frontend project to a server folder.
 
-## Overview
+## Skills I Built
 
-This repository serves as my journey log through The Odin Project. Each project folder includes the files for specific exercises or projects, as well as notes on concepts learned.
+- **HTML and CSS:** Semantic HTML, Flexbox, Grid, and responsive design
+- **JavaScript:** Core syntax, functions, DOM manipulation, and ES6+ features
+- **React:** Building interactive, component-based user interfaces
+- **Node.js and Express:** Building servers, working with files, and authentication
+- **Git and GitHub:** Version control and keeping my work organized
 
-## Projects
-
-Below are some of the projects I am working on as part of the curriculum. This list will expand as I progress through the course:
-
-1. **HTML/CSS Foundations**
-
-   - A series of exercises to build a solid understanding of HTML structure and styling with CSS.
-   - Projects: Webpage layouts, responsive design, Flexbox, Grid
-
-2. **JavaScript Basics**
-
-   - Basic JavaScript exercises for understanding syntax, functions, and DOM manipulation.
-   - Projects: Calculator app, Rock-Paper-Scissors game
-
-3. **Intermediate JavaScript**
-
-   - Diving deeper into JavaScript, working with arrays, objects, and more complex functions.
-   - Projects: Etch-a-Sketch, To-Do List app
-
-4. **Front-End Frameworks and Libraries**
-   - Learning to use tools like React for building interactive UIs.
-   - Projects: React-based apps to practice state and component-based development
-
-## Technologies and Skills
-
-This repository will reflect my progress with the following skills:
-
-- **HTML/CSS**: Semantic HTML, Flexbox, Grid, responsive design
-- **JavaScript**: Basic syntax, functions, DOM manipulation, and ES6+ features
-- **Git and GitHub**: Version control, branching, and collaboration
-- **React** _(Coming soon)_: Components, props, state, and React Router
-- **Node.js and Express** _(Coming soon)_: Backend development
-
-## Getting Started
-
-To explore my projects:
-
-1. **Navigate to a specific project**:
-   Each project folder will have a README with setup instructions if needed.
-
-2. **Open in your browser**:
-   Most HTML/CSS/JS projects can be opened directly in a web browser to see them in action.
+This course helped me build both my frontend and backend skills, and it gave me valuable coding experience.
 
 ## Acknowledgements
 
-- A huge thanks to [The Odin Project](https://www.theodinproject.com/) community for providing such an excellent curriculum and resources.
-- Inspiration and guidance from fellow learners and mentors who share their knowledge and experience.
+A big thank you to the Odin Project contributors for making such a wonderful course available to everyone for free.
