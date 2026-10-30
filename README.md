@@ -10,6 +10,8 @@ This repository documents my journey through [The Odin Project](https://www.theo
 - **[Weather App](https://github.com/oyinadeolawoyin/The-Odin-Project/tree/main/javascript/Weather).** It taught me how to work with third-party APIs.
 - **[Where's Waldo](https://github.com/oyinadeolawoyin/The-Odin-Project/tree/main/Node.js/Waldo-server).** It taught me how to connect a separate frontend project to a server folder.
 
+The other projects were interesting and fun too, and completing each one was rewarding. I loved most of the JavaScript and Node.js projects.
+
 ## Skills I Built
 
 - **HTML and CSS:** Semantic HTML, Flexbox, Grid, and responsive design
